@@ -1,0 +1,62 @@
+/**************************************************
+ *
+ * Global CSS (not Sass) variables
+ *
+ **************************************************/
+
+html {
+  /*Type sizes*/
+  --fontSizex1: 20px;
+  --fontSizex2: 1.5em;
+  --fontSizex3: 2.25em;
+  --fontSizex4: 3.375em;
+  --fontSizex5: 5em;
+  --fontSizex6: 7.6em;
+
+  /*Corresponding line heights*/
+  --lineHeightx1: 1.5;
+  --lineHeightx2: 1.5;
+  --lineHeightx3: 1.5;
+  --lineHeightx4: 1.5;
+  --lineHeightx5: 1.5;
+  --lineHeightx6: 1.5;
+
+  /*Colors*/
+  --light: #fff;
+  --dark: black;
+
+  /*
+   * If browser does not support
+   * dark mode, the light mode
+   * style will always be used
+   */
+
+  --fg-color: var(--lightFG);
+  --bg-color: var(--lightBG);
+  --fallback-fg-color: var(--dark);
+  --fallback-bg-color: var(--light);
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    --fg-color: var(--lightFG);
+    --bg-color: var(--lightBG);
+  }
+
+  html {
+    --fallback-fg-color: var(--dark);
+    --fallback-bg-color: var(--light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --fg-color: var(--darkFG);
+    --bg-color: var(--darkBG);
+  }
+
+  html {
+    --fallback-fg-color: var(--light);
+    --fallback-bg-color: var(--light);
+  }
+}

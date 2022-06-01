@@ -1,0 +1,45 @@
+/***************************************
+ * Fonts
+ * -----
+ * Needs to be on top so they load first
+ * Tries to load variable font if
+ * supported, falls back to "medium"
+ * otherwise. "Regular" is too light, so
+ * "medium" is used as "regular instead.
+ **************************************/
+
+// All browsers with variable font support do woff2.
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Cabinet Grotesk Variable";
+    src: url("../fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+//Prevents non-variable font from being downloaded
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Cabinet Grotesk Variable";
+    src: url("../fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+/*
+ * Placing CSS variables here
+ * because everything else
+ * depends on it
+ */
+
+html {
+  --sans: "Cabinet Grotesk", "Helvetica Neue", "Arial", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    --sans: "Cabinet Grotesk Variable", "Helvetica Neue", "Arial", sans-serif;
+  }
+}
