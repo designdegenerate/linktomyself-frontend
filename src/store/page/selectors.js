@@ -1,0 +1,1 @@
+export const selectPage = (reduxState) => reduxState.page.content;

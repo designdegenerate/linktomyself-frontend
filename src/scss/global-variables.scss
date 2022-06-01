@@ -76,7 +76,7 @@ html {
 
 @media (prefers-color-scheme: dark) {
   html {
-    ---fg-color: var(--darkFG);
-    ---bg-color: var(--darkBG);
+    --fg-color: var(--darkFG);
+    --bg-color: var(--darkBG);
   }
 }

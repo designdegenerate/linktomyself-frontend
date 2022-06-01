@@ -12,7 +12,7 @@ export default function NavBar() {
         <li>
           <details className="menu">
             <summary>Menu</summary>
-            <div class="menu-inner">
+            <div className="menu-inner">
               <ul>
                 <li>Profile Settings</li>
                 <li>Edit Links</li>
