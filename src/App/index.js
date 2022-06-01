@@ -7,11 +7,19 @@ import PrivacyPage from '../pages/Privacy';
 import SignupPage from '../pages/Signup';
 import WidgetFactory from '../pages/WidgetFactory';
 import NavBar from '../components/NavBar';
+import { useSelector } from 'react-redux';
+import { selectUserProfile } from '../store/user/selectors';
+import Footer from '../components/Footer';
 
 function App() {
+  const userProfile = useSelector(selectUserProfile);
   return (
     <div className="App">
-      <NavBar/>
+
+      {
+        userProfile ? <NavBar/> : <></>
+      }
+
       <Routes>
         {/*"static" pages*/}
         <Route path="/" element={<HomePage/>}></Route>
@@ -26,6 +34,7 @@ function App() {
         <Route path="/p/:username/edit" element={<Page/>}></Route>
         <Route path="/widgetfactory" element={<WidgetFactory/>}></Route>
       </Routes>
+      <Footer/>
     </div>
   );
 }

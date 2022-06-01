@@ -1,0 +1,18 @@
+@mixin hoverInvertEffect {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+  transition: 0.2s background-color, 
+              0.2s color;
+}
+
+%resetList {
+  list-style: none;
+  padding: 0;
+}
+
+%flexList {
+  @extend %resetList;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}

@@ -36,7 +36,7 @@ html {
 
   // Corresponding line heights
   --fontLHX1: 1.45;
-  --fontLHX2: 1.5;
+  --fontLHX2: 1.4;
   --fontLHX3: 1.5;
   --fontLHX4: 1.5;
   --fontLHX5: 1.5;
@@ -52,9 +52,11 @@ html {
    * will be overwritten by user's.
    */
 
+  //Light
   --lightFG: var(--dark);
   --lightBG: var(--light);
 
+  //Dark
   --darkFG: var(--light);
   --darkBG: var(--dark);
 
@@ -83,6 +85,8 @@ html {
     --roman: 465;
     --bold: 690;
     --text-lsp: 0.020rem;
+
     --fontLHX1: 1.50;
+    --fontLHX2: 1.45;
   }
 }
