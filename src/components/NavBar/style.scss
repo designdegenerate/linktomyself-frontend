@@ -1,29 +1,53 @@
-nav {
-  top: 0;
-  right: 0;
-  position: absolute;
-  margin: 2rem 2rem 2rem auto;
-  z-index: 1;
+@mixin hoverEffect {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
 }
 
 nav {
+  top: 0;
+  right: 0;
+  left: 20px;
+  position: sticky;
+  margin: 2rem 2rem 2rem auto;
+  z-index: 1;
+
   ul {
     padding: 0;
     list-style: none;
     display: flex;
     background-color: var(--bg-color);
+    column-gap: 1rem;
+  }
+}
+
+@media (min-width: 500px) {
+  nav {
+    width: fit-content;
+    display: flex;
+    top: 0;
+    right: 0;
+    margin: 2rem 2rem 2rem auto;
   }
 }
 
 .menu {
-  ul {
-    flex-direction: column;
-  }
 
   ul {
-    li + li {
-      margin-top: 1rem;
-    }
+    flex-direction: column;
+
+    li {
+      a {
+        text-decoration: none;
+        color: inherit;
+        padding: 0.75rem;
+        display: block;
+      }
+
+      a:hover {
+        @include hoverEffect();
+      }
+
+    } 
   }
 
   summary {
@@ -40,6 +64,10 @@ nav {
     display: none;
   }
 
+  summary:hover {
+    @include hoverEffect();
+  }
+
   .menu-inner {
     display: block;
     background-color: var(--bg-color);
@@ -48,19 +76,7 @@ nav {
     z-index: 2;
     right: 0;
     margin-top: 0.5rem;
-    padding: 1rem;
-    min-width: 200px;
-  }
-}
-
-
-@media (min-width: 500px) {
-  nav {
+    min-width: 150px;
     width: fit-content;
-    display: flex;
-    top: 0;
-    right: 0;
-    margin: 2rem 2rem 2rem auto;
-    flex-direction: row-reverse;
   }
 }
