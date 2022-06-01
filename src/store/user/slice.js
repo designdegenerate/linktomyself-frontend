@@ -9,14 +9,14 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setProfile: (state, action) => {
+    setUserProfile: (state, action) => {
       state.profile = action.payload;
     },
-    setPage: (state, action) => {
+    setUserPage: (state, action) => {
       state.page = action.payload;
     }
   }
 })
 
-export const {setPage, setProfile} = userSlice.actions;
+export const {setUserPage, setUserProfile} = userSlice.actions;
 export default userSlice.reducer;

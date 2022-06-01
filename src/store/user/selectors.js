@@ -1,3 +1,3 @@
 // export const selectPost = (reduxState) => reduxState.post;
-export const selectProfile = (reduxState) => reduxState.user.profile;
-export const selectPage = (reduxState) => reduxState.user.page;
+export const selectUserProfile = (reduxState) => reduxState.user.profile;
+export const selectUserPage = (reduxState) => reduxState.user.page;
