@@ -12,7 +12,6 @@ import { fetchPage } from "../store/page/actions";
 export default function Page() {
   const dispatch = useDispatch();
   const params = useParams();
-
   useEffect(() => {
     dispatch(fetchPage(params.username));
   }, [])
