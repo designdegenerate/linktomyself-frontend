@@ -5,7 +5,7 @@ import LoginPage from '../pages/LoginPage';
 import Page from '../pages/Page';
 import PrivacyPage from '../pages/Privacy';
 import SignupPage from '../pages/Signup';
-import WidgetFactory from '../components/WidgetFactory';
+import WidgetFactory from '../pages/WidgetFactory';
 import NavBar from '../components/NavBar';
 
 function App() {
@@ -24,8 +24,8 @@ function App() {
         {/*User Pages*/}
         <Route path="/p/:username" element={<Page/>}></Route>
         <Route path="/p/:username/edit" element={<Page/>}></Route>
+        <Route path="/widgetfactory" element={<WidgetFactory/>}></Route>
       </Routes>
-      <WidgetFactory/>
     </div>
   );
 }
