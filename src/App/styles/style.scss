@@ -1,6 +1,6 @@
 html {
-  color: var(--fg-color, --fallback-fg-color);
-  background-color: var(--bg-color, --fallback-bg-color);
+  color: var(--fg-color);
+  background-color: var(--bg-color);
 }
 
 main {

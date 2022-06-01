@@ -1,0 +1,37 @@
+nav {
+  top: 0;
+  right: 0;
+  position: absolute;
+  margin: 2rem 2rem 2rem auto;
+  background-color: var(--bg-color);
+  z-index: 1;
+}
+
+nav {
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+  }
+  ul.menu {
+    flex-direction: column;
+  }
+
+  ul.menu {
+    li + li {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  nav {
+    width: fit-content;
+    display: flex;
+    top: 0;
+    right: 0;
+    margin: 2rem 2rem 2rem auto;
+    flex-direction: row-reverse;
+  }
+}
+

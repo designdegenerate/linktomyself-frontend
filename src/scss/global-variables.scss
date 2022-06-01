@@ -47,15 +47,24 @@ html {
   --dark: black;
 
   /*
+   * Setting up default
+   * default light/dark colors
+   * will be overwritten by user's.
+   */
+
+  --lightFG: var(--dark);
+  --lightBG: var(--light);
+
+  --darkFG: var(--light);
+  --darkBG: var(--dark);
+
+  /*
    * If browser does not support
    * dark mode, the light mode
    * style will always be used
    */
-
-  --fg-color: var(--lightFG);
   --bg-color: var(--lightBG);
-  --fallback-fg-color: var(--dark);
-  --fallback-bg-color: var(--light);
+  --fg-color: var(--lightFG);
 }
 
 @media (prefers-color-scheme: light) {
@@ -63,21 +72,11 @@ html {
     --fg-color: var(--lightFG);
     --bg-color: var(--lightBG);
   }
-
-  html {
-    --fallback-fg-color: var(--dark);
-    --fallback-bg-color: var(--light);
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   html {
-    --fg-color: var(--darkFG);
-    --bg-color: var(--darkBG);
-  }
-
-  html {
-    --fallback-fg-color: var(--light);
-    --fallback-bg-color: var(--light);
+    ---fg-color: var(--darkFG);
+    ---bg-color: var(--darkBG);
   }
 }
