@@ -6,12 +6,14 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
-    
-  }
-})
+    setPage: (state, action) => {
+      state.content = action.payload;
+    },
+  },
+});
 
-export const {} = userSlice.actions;
+export const {setPage} = userSlice.actions;
 export default userSlice.reducer;

@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../store/user/actions";
-import { selectProfile } from "../store/user/selectors";
+import { selectUserProfile } from "../store/user/selectors";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
-  const hasProfile = useSelector(selectProfile);
+  const hasProfile = useSelector(selectUserProfile);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,14 +33,8 @@ export default function LoginPage() {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          // setTimeout(() => {
-          //   alert(JSON.stringify(values, null, 2));
-
-          //   setSubmitting(false);
-          // }, 400);
           dispatch(loginUser(values.email, values.password));
-
-          
+          setSubmitting = false;
         }}
       >
         {({
