@@ -13,7 +13,7 @@
   @font-face {
     font-family: "Cabinet Grotesk Variable";
     src: url("../fonts/CabinetGrotesk-Variable.woff2") format("woff2");
-    font-weight: normal;
+    font-weight: 100, 900;
     font-style: normal;
   }
 }
@@ -21,25 +21,19 @@
 //Prevents non-variable font from being downloaded
 @supports not (font-variation-settings: normal) {
   @font-face {
-    font-family: "Cabinet Grotesk Variable";
-    src: url("../fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+    font-family: "Cabinet Grotesk";
+    src: url("../fonts/CabinetGrotesk-Medium.woff2") format("woff2"),
+    url("../fonts/CabinetGrotesk-Medium.woff") format("woff");
     font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("../fonts/CabinetGrotesk-Extrabold.woff2") format("woff2"),
+    url("../fonts/CabinetGrotesk-Extrabold.woff") format("woff");
+    font-weight: 700;
     font-style: normal;
   }
 }
 
-/*
- * Placing CSS variables here
- * because everything else
- * depends on it
- */
-
-html {
-  --sans: "Cabinet Grotesk", "Helvetica Neue", "Arial", sans-serif;
-}
-
-@supports (font-variation-settings: normal) {
-  html {
-    --sans: "Cabinet Grotesk Variable", "Helvetica Neue", "Arial", sans-serif;
-  }
-}

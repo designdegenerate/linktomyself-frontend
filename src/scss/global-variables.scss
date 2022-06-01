@@ -5,7 +5,21 @@
  **************************************************/
 
 html {
-  /*Type sizes*/
+  --sans: "Cabinet Grotesk", "Helvetica Neue", "Arial", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    --sans: "Cabinet Grotesk Variable", "Helvetica Neue", "Arial", sans-serif;
+  }
+}
+
+html {
+  // font weights
+  --roman: 450;
+  --bold: 700;
+
+  // Type sizes
   --fontSizex1: 20px;
   --fontSizex2: 1.5em;
   --fontSizex3: 2.25em;
@@ -13,7 +27,7 @@ html {
   --fontSizex5: 5em;
   --fontSizex6: 7.6em;
 
-  /*Corresponding line heights*/
+  // Corresponding line heights
   --lineHeightx1: 1.5;
   --lineHeightx2: 1.5;
   --lineHeightx3: 1.5;
@@ -21,7 +35,7 @@ html {
   --lineHeightx5: 1.5;
   --lineHeightx6: 1.5;
 
-  /*Colors*/
+  // Colors
   --light: #fff;
   --dark: black;
 
