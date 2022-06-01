@@ -1,7 +1,4 @@
-@mixin hoverEffect {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
-}
+@use '../../scss/_global-mixins' as mix;
 
 nav {
   top: 0;
@@ -44,7 +41,7 @@ nav {
       }
 
       a:hover {
-        @include hoverEffect();
+        @include mix.hoverInvertEffect;
       }
 
     } 
@@ -65,7 +62,7 @@ nav {
   }
 
   summary:hover {
-    @include hoverEffect();
+    @include mix.hoverInvertEffect;
   }
 
   .menu-inner {
