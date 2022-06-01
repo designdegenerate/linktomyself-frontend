@@ -1,15 +1,32 @@
+@use '../../scss/_global-mixins' as mix;
+
 .page {
   padding: 1rem;
 }
 
+.sidebar {
+  h1 {
+    font-size: var(--fontX3);
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-size: var(--fontX2);
+    margin-bottom: 0.5rem;
+  }
+
+  .bio {
+    margin: 2rem auto;
+  }
+}
+
 .link-collection {
-  padding: 0;
-  list-style: none;
+  @extend %resetList;
 
   li {
-    background-color: #fff;
     border-radius: 8px;
     border-width: 1px;
+    border-style: solid;
     border-color: var(--fg-color);
   }
 
@@ -22,8 +39,20 @@
     }
   }
 
+  a:hover{
+    @include mix.hoverInvertEffect;
+  }
+
+
   li + li {
     margin-top: 1rem;
   }
 
+}
+
+.content {
+  h2 {
+    font-size: var(--fontX2);
+    line-height: var(--fontLHX2);
+  }
 }

@@ -8,8 +8,9 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <h1>{getPage.user.name}</h1>
+      <h2>My Links</h2>
       <LinkCollection/>
-      <p>{getPage.bio}</p>
+      <p className="bio">{getPage.bio}</p>
     </div>
   );
 }
