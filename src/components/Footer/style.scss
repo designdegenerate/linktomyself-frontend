@@ -1,9 +1,17 @@
+@use '../../scss/_global-mixins' as mix;
+
 footer {
   padding: 1rem;
   opacity: 0.75;
   font-size: 0.85rem;
   text-align: center;
   margin-top: 4rem;
+
+  ul {
+    @extend %flexList;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+  }
 
   a {
     color: inherit;
