@@ -6,10 +6,12 @@ import Page from '../pages/Page';
 import PrivacyPage from '../pages/Privacy';
 import SignupPage from '../pages/Signup';
 import WidgetFactory from '../components/WidgetFactory';
+import NavBar from '../components/NavBar';
 
 function App() {
   return (
     <div className="App">
+      <NavBar/>
       <Routes>
         {/*"static" pages*/}
         <Route path="/" element={<HomePage/>}></Route>
