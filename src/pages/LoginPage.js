@@ -1,9 +1,21 @@
 import { Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../store/user/actions";
+import { selectProfile } from "../store/user/selectors";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
+  const hasProfile = useSelector(selectProfile);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (hasProfile !== null) {
+      navigate("/");
+    }
+  }, [hasProfile, navigate])
+
   return (
     <main>
       <h1>login</h1>
