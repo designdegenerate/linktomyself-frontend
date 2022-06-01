@@ -1,6 +1,9 @@
 import { Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../store/user/actions";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   return (
     <main>
       <h1>login</h1>
@@ -18,11 +21,14 @@ export default function LoginPage() {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+          // setTimeout(() => {
+          //   alert(JSON.stringify(values, null, 2));
 
-            setSubmitting(false);
-          }, 400);
+          //   setSubmitting(false);
+          // }, 400);
+          dispatch(loginUser(values.email, values.password));
+
+          
         }}
       >
         {({

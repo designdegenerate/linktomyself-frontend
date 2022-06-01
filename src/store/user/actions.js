@@ -1,21 +1,13 @@
 import axios from "axios";
-import { postFullyfetched, startLoading } from "./slice";
+import { setPage, setProfile } from "./slice";
+import apiUrl from "../../apiUrl";
 
-const API_URL = ""
-
-// export function fetchPost(id) {
-//   return async function thunk(dispatch, getState) {
-//     try {
-//       dispatch(startLoading);
-
-//       const [postResponse, commentsResponse] = await Promise.all([
-//         axios.get(`${API_URL}/posts/${id}`),
-//         axios.get(`${API_URL}/posts/${id}/comments`),
-//       ]);
-
-//       dispatch(postFullyfetched({postResponse, commentsResponse}));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// }
+export const loginUser = (email, password) => async(dispatch, getState) => {
+  try {
+    const userInfo = await axios.post(`${apiUrl}/auth/login`, {email, password})
+    dispatch(setProfile(userInfo.data.profile));
+    dispatch(setPage(userInfo.data.page));
+  } catch (error) {
+    console.log(error);
+  }
+}
