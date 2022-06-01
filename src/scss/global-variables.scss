@@ -16,24 +16,31 @@ html {
 
 html {
   // font weights
-  --roman: 450;
+  --roman: 475;
   --bold: 700;
 
   // Type sizes
-  --fontSizex1: 20px;
-  --fontSizex2: 1.5em;
-  --fontSizex3: 2.25em;
-  --fontSizex4: 3.375em;
-  --fontSizex5: 5em;
-  --fontSizex6: 7.6em;
+  --fontX1: 1rem;
+  --fontX2: 1.333rem;
+  --fontX3: 1.777rem;
+  --fontX4: 2.369rem;
+  --fontX5: 3.157rem;
+  --fontX6: 4.209rem;
+
+  /*
+   * Optional extra
+   * letterspacing for
+   * legibility
+   */
+  --text-lsp: 0.015rem;
 
   // Corresponding line heights
-  --lineHeightx1: 1.5;
-  --lineHeightx2: 1.5;
-  --lineHeightx3: 1.5;
-  --lineHeightx4: 1.5;
-  --lineHeightx5: 1.5;
-  --lineHeightx6: 1.5;
+  --fontLHX1: 1.45;
+  --fontLHX2: 1.5;
+  --fontLHX3: 1.5;
+  --fontLHX4: 1.5;
+  --fontLHX5: 1.5;
+  --fontLHX6: 1.5;
 
   // Colors
   --light: #fff;

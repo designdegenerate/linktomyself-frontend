@@ -1,11 +1,5 @@
 /***************************************
  * Fonts
- * -----
- * Needs to be on top so they load first
- * Tries to load variable font if
- * supported, falls back to "medium"
- * otherwise. "Regular" is too light, so
- * "medium" is used as "regular instead.
  **************************************/
 
 // All browsers with variable font support do woff2.

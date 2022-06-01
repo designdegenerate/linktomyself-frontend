@@ -1,0 +1,36 @@
+html {
+  font-family: var(--sans);
+  font-weight: var(--roman);
+  font-size: var(--fontX1);
+  line-height: var(--fontLHX1);
+  letter-spacing: var(--text-lsp);
+}
+
+// Clamp is nice and all, but 
+// terrible for accessibility
+
+@media (min-width: 600px) {
+  html {
+    font-size: 17.5px;
+  }
+}
+
+@media (min-width: 800px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 18.5px;
+  }
+}
+
+strong {
+  font-weight: var(--bold);
+}
+
+p, li, blockquote, a {
+  letter-spacing: var(--text-lsp);
+}

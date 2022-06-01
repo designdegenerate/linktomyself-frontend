@@ -3,6 +3,7 @@ html {
   background-color: var(--bg-color, --fallback-bg-color);
 }
 
-html {
-  font-family: var(--sans);
+main {
+  max-width: 1000px;
+  margin: 0 auto;
 }
