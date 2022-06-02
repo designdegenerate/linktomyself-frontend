@@ -1,19 +1,26 @@
 import { useSelector } from "react-redux";
 import { selectPage } from "../../../store/page/selectors";
+import Section from "./section";
 
 export default function Content() {
   const getPage = useSelector(selectPage);
+
   return (
     <article className="content">
       <h2 className="oneliner">{getPage.oneLiner}</h2>
-      <section>
-        <h3>Favourite Food</h3>
-        <ul>
-          <li>cheese</li>
-          <li>kroket</li>
-          <li>tacos</li>
-        </ul>
-      </section>
+      {
+        getPage.sections.map( sect => {
+          return (
+            <Section data={sect}/>
+          )
+        })
+      }
     </article>
   );
 }
+
+// {
+//   getPage.sections.map( section => {
+    
+//   })
+// }
