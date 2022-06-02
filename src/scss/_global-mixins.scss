@@ -1,9 +1,36 @@
-@mixin hoverInvertEffect {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
-  transition: 0.2s background-color, 
-              0.2s color;
+/***************************************
+ * @media
+ **************************************/
+
+@mixin phone {
+  @media (max-width: 599px) {
+    @content;
+  }
 }
+@mixin tablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin tablet-large {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin desktop-large {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
+
+/***************************************
+ * <ul>, <li>
+ **************************************/
 
 %resetList {
   list-style: none;
@@ -15,4 +42,26 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+/***************************************
+ * <a>, <li>
+ **************************************/
+
+@mixin hoverInvertEffect {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+  transition: 0.2s background-color, 0.2s color;
+}
+
+%border {
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--fg-color);
+}
+
+%resetLink {
+  text-decoration: none;
+  color: inherit;
 }

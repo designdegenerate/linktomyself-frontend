@@ -7,7 +7,12 @@ html {
 }
 
 // Clamp is nice and all, but 
-// terrible for accessibility
+// terrible for accessibility.
+// Just guessing the numbers here
+// will need to do it properly.
+// font is defined as PX. That
+// way, it will change the global
+// value of REM.
 
 @media (min-width: 600px) {
   html {

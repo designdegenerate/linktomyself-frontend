@@ -8,8 +8,10 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <h1>{getPage.user.name}</h1>
-      <h2>My Links</h2>
+      <h2 className="oneliner">{getPage.oneLiner}</h2>
+      <h2 className="header-med">My Links</h2>
       <LinkCollection/>
+      <h2 className="header-med">About me</h2>
       <p className="bio">{getPage.bio}</p>
     </div>
   );

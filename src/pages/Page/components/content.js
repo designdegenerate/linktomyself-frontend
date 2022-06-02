@@ -5,7 +5,7 @@ export default function Content() {
   const getPage = useSelector(selectPage);
   return (
     <article className="content">
-      <h2>{getPage.oneLiner}</h2>
+      <h2 className="oneliner">{getPage.oneLiner}</h2>
       <section>
         <h3>Favourite Food</h3>
         <ul>

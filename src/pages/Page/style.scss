@@ -5,35 +5,40 @@
 }
 
 .sidebar {
+  margin-bottom: 2rem;
+
   h1 {
     font-size: var(--fontX3);
-    margin-bottom: 4rem;
+    line-height: var(--fontLHX3);
   }
 
-  h2 {
-    font-size: var(--fontX2);
-    margin-bottom: 0.5rem;
+  h2.oneliner {
+    font-weight: var(--roman);
+    line-height: var(--fontLHX1);
+    font-size: var(--fontX1);
+    margin: 0.5rem 0 3rem 0;
+  }
+
+  @include mix.tablet-large {
+    h2.oneliner {
+      display: none;
+    }
   }
 
   .bio {
-    margin: 2rem auto;
+    max-width: 45ch;
   }
+
 }
 
 .link-collection {
   @extend %resetList;
-
-  li {
-    border-radius: 8px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--fg-color);
-  }
+  margin-bottom: 4rem;
 
   li {
     a {
-      text-decoration: none;
-      color: inherit;
+      @extend %border;
+      @extend %resetLink;
       padding: 0.5rem 1rem;
       display: block;
     }
@@ -43,7 +48,6 @@
     @include mix.hoverInvertEffect;
   }
 
-
   li + li {
     margin-top: 1rem;
   }
@@ -51,8 +55,20 @@
 }
 
 .content {
+
+  h2.oneliner {
+    display: none;
+  }
+
+  @include mix.tablet-large {
+    h2.oneliner {
+      display: block;
+    }
+  }
+
   h2 {
     font-size: var(--fontX2);
     line-height: var(--fontLHX2);
+    margin-bottom: 2rem;
   }
 }
