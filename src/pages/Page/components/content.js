@@ -8,6 +8,7 @@ export default function Content() {
   return (
     <article className="content">
       <h2 className="oneliner">{getPage.oneLiner}</h2>
+      <p className="bio">{getPage.bio}</p>
       {
         getPage.sections.map( sect => {
           return (
