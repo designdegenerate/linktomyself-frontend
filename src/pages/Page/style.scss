@@ -1,11 +1,23 @@
-@use '../../scss/_global-mixins' as mix;
+@use "../../scss/_global-mixins" as mix;
 
 .page {
   padding: 1rem;
+
+  @include mix.tablet-large {
+    display: grid;
+    grid-template-columns: 25% auto;
+    max-width: 100%;
+    padding: 0;
+    column-gap: 4rem;
+  }
 }
 
 .sidebar {
   margin-bottom: 2rem;
+
+  @include mix.tablet {
+    margin-bottom: 8rem;
+  }
 
   h1 {
     font-size: var(--fontX3);
@@ -20,20 +32,34 @@
   }
 
   @include mix.tablet-large {
+    padding: 1rem;
+
+    h1 {
+      margin-bottom: 4rem;
+    }
+
     h2.oneliner {
       display: none;
     }
+
+    h2.mylinks {
+      display: none;
+    }
+
   }
 
   .bio {
     max-width: 45ch;
   }
-
 }
 
 .link-collection {
   @extend %resetList;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 600px) {
+    margin-bottom: 2rem;
+  }
 
   li {
     a {
@@ -43,33 +69,50 @@
       padding: 0.5rem 1rem;
       display: block;
     }
-  }
 
-  a:hover{
-    @include mix.hoverInvertEffect;
+    a:hover {
+      @include mix.hoverInvertEffect;
+    }
   }
 
   li + li {
     margin-top: 1rem;
   }
 
+  @media (min-width: 375px) {
+    li a {
+      max-width: 250px;
+    }
+
+    @include mix.tablet {
+      display: flex;
+      gap: 1rem;
+
+      li + li {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @include mix.tablet-large {
+    flex-direction: column;
+  }
 }
 
 .content {
-
   h2.oneliner {
     display: none;
   }
 
   @include mix.tablet-large {
+    width: fit-content;
+
     h2.oneliner {
       display: block;
+      font-size: var(--fontX3);
+      line-height: var(--fontLHX3);
+      font-weight: var(--roman);
+      margin: 2rem 0 4rem 0;
     }
-  }
-
-  h2 {
-    font-size: var(--fontX2);
-    line-height: var(--fontLHX2);
-    margin-bottom: 2rem;
   }
 }

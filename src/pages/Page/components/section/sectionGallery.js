@@ -1,10 +1,9 @@
 export default function SectionGallery(props) {
   return (
     <div key={props._id}>
-      <h2 className="oneline">{props.sectionName}</h2>
+      <h2 className="header-med">{props.sectionName}</h2>
       <ul className="section-gallery">
         {props.content.map((item) => {
-          console.log(item);
           return (
             <li key={item._id}>
               <div

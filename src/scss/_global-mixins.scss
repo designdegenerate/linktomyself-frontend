@@ -3,12 +3,12 @@
  **************************************/
 
 @mixin phone {
-  @media (max-width: 599px) {
+  @media (max-width: 499px) {
     @content;
   }
 }
 @mixin tablet {
-  @media (min-width: 600px) {
+  @media (min-width: 500px) {
     @content;
   }
 }
@@ -63,4 +63,14 @@
 %resetLink {
   text-decoration: none;
   color: inherit;
+}
+
+/***************************************
+ * <a>, <li>
+ **************************************/
+
+%header-med-base {
+  font-size: var(--fontX2);
+  line-height: var(--fontLHX2);
+  margin-bottom: 0.5rem;
 }

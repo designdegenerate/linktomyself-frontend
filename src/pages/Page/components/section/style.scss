@@ -1,4 +1,10 @@
-@use '../../../../scss/_global-mixins' as mix;
+@use "../../../../scss/_global-mixins" as mix;
+
+@include mix.tablet-large {
+  article {
+    padding: 1rem;
+  }
+}
 
 section {
   overflow: hidden;
@@ -19,7 +25,6 @@ section + section {
   overflow: scroll;
   gap: 1rem;
   padding: 0 0 1rem 1rem;
-
 
   li {
     @extend %border;
@@ -59,17 +64,40 @@ section + section {
     margin-right: 3rem;
   }
 
+  @include mix.tablet-large {
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+
+    li:last-child {
+      margin: 0;
+    }
+
+  }
+
+
 }
 
 .section-list {
   @extend %resetList;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
 
   li {
     @extend %border;
     padding: 1rem;
-  }
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 
-  li + li {
-    margin-top: 1rem;
+    p {
+      max-width: 40ch;
+    }
+
+    p:last-child {
+      margin-top: auto;
+    }
   }
 }

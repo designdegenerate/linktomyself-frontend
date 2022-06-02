@@ -1,3 +1,5 @@
+@use '../../scss/_global-mixins' as mix;
+
 html {
   color: var(--fg-color);
   background-color: var(--bg-color);
@@ -9,9 +11,7 @@ main {
 }
 
 .header-med {
-  font-size: var(--fontX2);
-  line-height: var(--fontLHX2);
-  margin-bottom: 0.5rem;
+  @extend %header-med-base;
 }
 
 .loading-screen {
