@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectUserPage, selectUserProfile } from "../../store/user/selectors";
+import { selectUserProfile } from "../../store/user/selectors";
 import "./style.scss";
 export default function NavBar() {
   const user = useSelector(selectUserProfile);
-  const page = useSelector(selectUserPage);
   return (
     <nav>
       <ul>
