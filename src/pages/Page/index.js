@@ -23,7 +23,6 @@ export default function Page() {
     <main className="page">
       <Sidebar/>
       <Content/>
-      
     </main>
   );
 }

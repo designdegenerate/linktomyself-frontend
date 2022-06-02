@@ -1,18 +1,13 @@
-export default function SectionGallery(props) {
+export default function SectionList(props) {
   return (
     <div key={props._id}>
       <h2 className="oneline">{props.sectionName}</h2>
-      <ul className="section-gallery">
+      <ul className="section-list">
         {props.content.map((item) => {
           return (
             <li key={item._id}>
-              <img
-                alt="alt tag"
-                decoding="async"
-                loading="lazy"
-                src={item.image}
-              ></img>
               <h3>{item.title}</h3>
+              {item.author ? <p className="author">{item.author}</p> : <></>}
               <p>{item.description}</p>
             </li>
           );

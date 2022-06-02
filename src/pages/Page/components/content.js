@@ -18,9 +18,3 @@ export default function Content() {
     </article>
   );
 }
-
-// {
-//   getPage.sections.map( section => {
-    
-//   })
-// }

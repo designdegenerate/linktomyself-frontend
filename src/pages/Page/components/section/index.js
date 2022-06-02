@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import SectionGallery from "./sectionGallery";
 import SectionList from "./sectionList";
+import './style.scss';
 
-//Use props and pass down each section and render
 export default function Section(props) {
   const { _id, sectionName, icon, type, content } = props.data;
 
