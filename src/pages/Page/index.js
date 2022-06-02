@@ -16,7 +16,9 @@ export default function Page() {
     dispatch(fetchPage(params.username));
   }, [dispatch, params.username]);
   return !getPage ? (
-    <p>loading...</p>
+    <div className="loading-screen">
+      <p>loading...</p>
+    </div>
   ) : (
     <main className="page">
       <Sidebar/>

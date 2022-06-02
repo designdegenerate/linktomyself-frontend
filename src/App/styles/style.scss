@@ -13,3 +13,10 @@ main {
   line-height: var(--fontLHX2);
   margin-bottom: 0.5rem;
 }
+
+.loading-screen {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
