@@ -65,8 +65,16 @@
   color: inherit;
 }
 
+%link-button {
+  @extend %border;
+  border-radius: 6px;
+  @extend %resetLink;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
 /***************************************
- * <a>, <li>
+ * <h1> to <h6>
  **************************************/
 
 %header-med-base {

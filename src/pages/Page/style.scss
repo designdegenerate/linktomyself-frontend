@@ -68,11 +68,7 @@
 
   li {
     a {
-      @extend %border;
-      border-radius: 6px;
-      @extend %resetLink;
-      padding: 0.5rem 1rem;
-      display: block;
+      @extend %link-button;
     }
 
     a:hover {
@@ -127,5 +123,9 @@
       margin-bottom: 6rem;
       max-width: 60ch;
     }
+  }
+
+  @include mix.desktop {
+    margin-right: 2rem;
   }
 }

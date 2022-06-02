@@ -10,7 +10,7 @@ export default function LinkCollection() {
           getPage.permaLinks.map(link => {
             return (
               <li key={link._id}>
-                <a href={link.link}>{link.text}</a>
+                <a className="link-button" href={link.link}>{link.text}</a>
               </li>
             )
           })

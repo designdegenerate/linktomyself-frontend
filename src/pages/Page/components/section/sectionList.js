@@ -1,4 +1,5 @@
 export default function SectionList(props) {
+  console.log(props);
   return (
     <div key={props._id}>
       <h2 className="header-med">{props.sectionName}</h2>
@@ -15,6 +16,7 @@ export default function SectionList(props) {
           );
         })}
       </ul>
+      {props.fullLink? <a className="full-link" href={props.fullLink.link}>{props.fullLink.text}</a> : <></>}
     </div>
   );
 }

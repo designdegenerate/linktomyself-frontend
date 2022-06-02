@@ -12,10 +12,31 @@ section {
   .author {
     margin-bottom: 1rem;
   }
+
+  a.full-link {
+    @extend %link-button;
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+    margin-top: 1rem;
+    width: fit-content;
+    max-width: 250px;
+    font-weight: var(--bold);
+  }
+
+  a.full-link:hover {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+  }
 }
 
 section + section {
   margin-top: 2rem;
+}
+
+@include mix.tablet-large {
+  section + section {
+    margin-top: 4rem;
+  }
 }
 
 .section-gallery {

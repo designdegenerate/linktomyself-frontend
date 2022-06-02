@@ -20,6 +20,7 @@ export default function SectionGallery(props) {
           );
         })}
       </ul>
+      {props.fullLink? <a className="full-link" href={props.fullLink.link}>{props.fullLink.text}</a> : <></>}
     </div>
   );
 }

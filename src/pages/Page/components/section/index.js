@@ -3,7 +3,7 @@ import SectionList from "./sectionList";
 import './style.scss';
 
 export default function Section(props) {
-  const { _id, sectionName, icon, type, content } = props.data;
+  const { _id, sectionName, icon, type, content, fullLink } = props.data;
 
   return (
     <section className="page-section" key={_id}>
@@ -13,12 +13,15 @@ export default function Section(props) {
             _id={_id}
             sectionName={sectionName}
             content={content}
+            fullLink={fullLink}
+
           />
         ) : type === "list" ? (
           <SectionList
           _id={_id}
           sectionName={sectionName}
           content={content}
+          fullLink={fullLink}
         />
         ) : (
           <></>
