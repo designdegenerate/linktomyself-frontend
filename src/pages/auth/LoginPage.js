@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../store/user/actions";
 import { selectUserProfile } from "../../store/user/selectors";
 import "./style.scss";
@@ -49,10 +49,11 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit}>
             <h1>Welcome back!</h1>
             <div>
-              <label>username</label>
+              <label>Email</label>
               <input
                 type="email"
                 name="email"
+                placeholder="user@example.com"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
@@ -60,7 +61,7 @@ export default function LoginPage() {
               {errors.email && touched.email && errors.email}
             </div>
             <div>
-            <label>password</label>
+            <label>Password</label>
               <input
                 type="password"
                 name="password"
@@ -73,6 +74,7 @@ export default function LoginPage() {
             <button type="submit" disabled={isSubmitting}>
               Continue
             </button>
+            <Link to="/signup">Or sign up</Link>
           </form>
         )}
       </Formik>
