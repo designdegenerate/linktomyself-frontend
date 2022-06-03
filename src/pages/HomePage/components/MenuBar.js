@@ -5,9 +5,13 @@ export default function MenuBar() {
     <div className="menubar">
       <p>Linktomyself</p>
       <div>
-      <Link className="button-border" to="/login">login</Link>
-      <Link className="button-border" to="/signup">signup</Link>
+        <Link className="button-border" to="/login">
+          login
+        </Link>
+        <Link className="button-border" to="/signup">
+          signup
+        </Link>
       </div>
     </div>
-  )
+  );
 }

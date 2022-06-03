@@ -17,8 +17,8 @@ export default function LoginPage() {
   }, [hasProfile, navigate])
 
   return (
-    <main>
-      <h1>login</h1>
+    <main className="">
+      <h1>Welcome back!</h1>
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {

@@ -8,7 +8,7 @@ export default function NavBar() {
     <nav>
       <ul>
         <li>
-          <p>{user.name}</p>
+          <p>logged in as: <strong>{user.name}</strong></p>
         </li>
         <li>
           <details className="menu">

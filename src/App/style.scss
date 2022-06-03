@@ -48,3 +48,16 @@ main {
 .button-filled:hover {
   @include mix.hoverFilledInvertEffect;
 }
+
+/***************************************
+ * Input
+ **************************************/
+
+input[type="text"],
+input[type="email"],
+input[type="password"]
+ {
+  border-color: var(--fg-color);
+  border-width: 1px;
+  border-style: solid;
+}
