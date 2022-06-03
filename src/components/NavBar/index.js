@@ -22,10 +22,10 @@ export default function NavBar() {
                   <Link to={`/p/${user.username}/settings`}>Profile Settings</Link>
                 </li>
                 <li>
-                  <Link to={`/p/${user.username}/edit-links`}>Edit Links</Link>
+                  <Link to={`/p/${user.username}/edit-links`}>Edit My Links</Link>
                 </li>
                 <li>
-                  <Link to={`/p/${user.username}/edit-sections`}>Edit Sections</Link>
+                  <Link to={`/p/${user.username}/edit-sections`}>Edit My Sections</Link>
                 </li>
                 <li>
                   <Link to="/">Log Out</Link>

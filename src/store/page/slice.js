@@ -5,14 +5,16 @@ const initialState = {
   content: null,
 };
 
-const userSlice = createSlice({
-  name: "user",
+const pageSlice = createSlice({
+  name: "page",
   initialState,
   reducers: {
     setPage: (state, action) => {
       state.content = action.payload;
       if (state.content.colors) {
         const html = document.documentElement.style;
+        const main = document.querySelector("main");
+        console.log(main);
         const colors = state.content.colors;
 
         //This is usually a bad idea, but it's quite
@@ -28,5 +30,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setPage } = userSlice.actions;
-export default userSlice.reducer;
+export const { setPage } = pageSlice.actions;
+export default pageSlice.reducer;

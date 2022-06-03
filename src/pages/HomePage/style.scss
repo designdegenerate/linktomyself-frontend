@@ -1,0 +1,24 @@
+.menubar {
+  width: 100%;
+  padding: 0 2rem 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid var(--fg-color);
+
+  > p {
+    font-size: var(--fontX2);
+  }
+
+  div:last-child {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.homepage {
+  article {
+    margin-top: 2rem;
+  }
+}

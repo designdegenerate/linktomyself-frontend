@@ -1,0 +1,50 @@
+@use '../scss/_global-mixins' as mix;
+
+html {
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+}
+
+main {
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+  max-width: 1200px;
+  margin: 1rem auto;
+}
+
+/***************************************
+ * Components
+ **************************************/
+
+.header-med {
+  @extend %header-med-base;
+}
+
+.loading-screen {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/***************************************
+ * Buttons
+ **************************************/
+
+.button-border {
+  @extend %link-button;
+}
+
+.button-border:hover {
+  @include mix.hoverInvertEffect;
+}
+
+.button-filled {
+  @extend %link-button;
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+}
+
+.button-filled:hover {
+  @include mix.hoverFilledInvertEffect;
+}
