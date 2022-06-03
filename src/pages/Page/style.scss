@@ -1,12 +1,13 @@
 @use "../../scss/_global-mixins" as mix;
 
 .page {
+  max-width: 1200px;
+  margin: 1rem auto;
   padding: 1rem;
 
   @include mix.tablet-large {
     display: grid;
     grid-template-columns: clamp(275px, 25%, 400px) auto;
-    max-width: 100%;
     padding: 0;
     column-gap: 1rem;
   }
@@ -20,6 +21,7 @@
       display: flex;
       align-items: center;
       gap: 2rem;
+      margin-top: 1rem;
       margin-bottom: 4rem;
       padding: 0 1rem;
     }

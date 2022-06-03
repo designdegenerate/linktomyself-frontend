@@ -1,11 +1,20 @@
 .menubar {
   width: 100%;
-  padding: 0 2rem 1rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
   border-bottom: 1px solid var(--fg-color);
+
+  //todo, move both navbars to a ul, give
+  //ul a max-width
+  //then style login and build sign up
+  // then figure consistent auth and logout
+  ul {
+
+  }
+
 
   > p {
     font-size: var(--fontX2);
@@ -20,5 +29,6 @@
 .homepage {
   article {
     margin-top: 2rem;
+    max-width: 1200px;
   }
 }

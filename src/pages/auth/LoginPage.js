@@ -2,8 +2,9 @@ import { Formik } from "formik";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../store/user/actions";
-import { selectUserProfile } from "../store/user/selectors";
+import { loginUser } from "../../store/user/actions";
+import { selectUserProfile } from "../../store/user/selectors";
+import "./style.scss";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -14,11 +15,10 @@ export default function LoginPage() {
     if (hasProfile !== null) {
       navigate("/");
     }
-  }, [hasProfile, navigate])
+  }, [hasProfile, navigate]);
 
   return (
-    <main className="">
-      <h1>Welcome back!</h1>
+    <main className="auth">
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -47,24 +47,31 @@ export default function LoginPage() {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {errors.email && touched.email && errors.email}
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            {errors.password && touched.password && errors.password}
+            <h1>Welcome back!</h1>
+            <div>
+              <label>username</label>
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+              {errors.email && touched.email && errors.email}
+            </div>
+            <div>
+            <label>password</label>
+              <input
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+              />
+              {errors.password && touched.password && errors.password}
+            </div>
             <button type="submit" disabled={isSubmitting}>
-              Submit
+              Continue
             </button>
           </form>
         )}

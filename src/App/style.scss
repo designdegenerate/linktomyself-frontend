@@ -8,8 +8,6 @@ html {
 main {
   color: var(--fg-color);
   background-color: var(--bg-color);
-  max-width: 1200px;
-  margin: 1rem auto;
 }
 
 /***************************************
@@ -30,6 +28,10 @@ main {
 /***************************************
  * Buttons
  **************************************/
+
+button:hover {
+  cursor: pointer;
+}
 
 .button-border {
   @extend %link-button;
@@ -57,6 +59,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"]
  {
+  display: block;
   border-color: var(--fg-color);
   border-width: 1px;
   border-style: solid;
