@@ -10,6 +10,7 @@ export default function Section(props) {
       {
         type === "gallery" ? (
           <SectionGallery
+            key={_id}
             _id={_id}
             sectionName={sectionName}
             content={content}
@@ -18,6 +19,7 @@ export default function Section(props) {
           />
         ) : type === "list" ? (
           <SectionList
+          key={_id}
           _id={_id}
           sectionName={sectionName}
           content={content}

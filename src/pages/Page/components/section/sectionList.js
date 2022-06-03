@@ -1,5 +1,4 @@
 export default function SectionList(props) {
-  console.log(props);
   return (
     <div key={props._id}>
       <h2 className="header-med">{props.sectionName}</h2>
