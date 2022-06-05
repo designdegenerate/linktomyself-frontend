@@ -4,6 +4,7 @@ import { selectUserProfile } from "../../store/user/selectors";
 import "./style.scss";
 export default function NavBar() {
   const user = useSelector(selectUserProfile);
+
   return (
     <nav>
       <ul>

@@ -1,10 +1,22 @@
 import { Formik } from "formik";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 import { registerUser } from "../../store/user/actions";
+import { selectUserProfile } from "../../store/user/selectors";
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
+  const hasProfile = useSelector(selectUserProfile);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (hasProfile !== null) {
+      navigate("/");
+    }
+  }, [hasProfile, navigate]);
+
   return (
     <main className="auth">
       <Formik
@@ -87,7 +99,7 @@ export default function RegisterPage() {
               />
               {errors.password && touched.password && errors.password}
             </div>
-            <button type="submit" disabled={isSubmitting}>
+            <button className="button-filled" type="submit" disabled={isSubmitting}>
               Continue
             </button>
             <div>
@@ -97,6 +109,7 @@ export default function RegisterPage() {
           </form>
         )}
       </Formik>
+      <Footer/>
     </main>
   );
 }

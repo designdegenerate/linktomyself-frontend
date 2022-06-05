@@ -1,9 +1,5 @@
 import './style.scss';
 import { Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectUserProfile } from '../store/user/selectors';
-
-import NavBar from '../components/NavBar';
 import HomePage from '../pages/HomePage';
 import PrivacyPage from '../pages/Privacy';
 import LoginPage from '../pages/auth/LoginPage';
@@ -12,14 +8,8 @@ import Page from '../pages/Page';
 import Footer from '../components/Footer';
 
 function App() {
-  const userProfile = useSelector(selectUserProfile);
   return (
     <div className="App">
-
-      {
-        userProfile ? <NavBar/> : <></>
-      }
-
       <Routes>
         {/*"static" pages*/}
         <Route path="/" element={<HomePage/>}></Route>
@@ -33,7 +23,6 @@ function App() {
         <Route path="/p/:username" element={<Page/>}></Route>
         <Route path="/p/:username/edit" element={<Page/>}></Route>
       </Routes>
-      <Footer/>
     </div>
   );
 }

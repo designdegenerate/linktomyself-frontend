@@ -69,8 +69,21 @@ html {
   --fg-color: var(--lightFG);
 }
 
+// main needs to defined twice
+// because of weird CSS namespacing
+
+main {
+  --bg-color: var(--lightBG);
+  --fg-color: var(--lightFG);
+}
+
 @media (prefers-color-scheme: light) {
   html {
+    --fg-color: var(--lightFG);
+    --bg-color: var(--lightBG);
+  }
+
+  main {
     --fg-color: var(--lightFG);
     --bg-color: var(--lightBG);
   }
@@ -88,5 +101,10 @@ html {
 
     --fontLHX1: 1.50;
     --fontLHX2: 1.45;
+  }
+
+  main {
+    --fg-color: var(--darkFG);
+    --bg-color: var(--darkBG);
   }
 }

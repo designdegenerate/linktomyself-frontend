@@ -2,6 +2,7 @@ import { Formik } from "formik";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 import { loginUser } from "../../store/user/actions";
 import { selectUserProfile } from "../../store/user/selectors";
 import "./style.scss";
@@ -71,13 +72,14 @@ export default function LoginPage() {
               />
               {errors.password && touched.password && errors.password}
             </div>
-            <button type="submit" disabled={isSubmitting}>
+            <button className="button-filled" type="submit" disabled={isSubmitting}>
               Continue
             </button>
             <Link to="/signup">Or sign up</Link>
           </form>
         )}
       </Formik>
+      <Footer/>
     </main>
   );
 }
