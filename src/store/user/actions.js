@@ -1,6 +1,7 @@
 import axios from "axios";
 import { setUserPage, setUserProfile } from "./slice";
 import apiUrl from "../../apiUrl";
+import toast from "react-hot-toast";
 
 export const loginUser = (email, password) => async(dispatch, getState) => {
   try {
@@ -9,6 +10,7 @@ export const loginUser = (email, password) => async(dispatch, getState) => {
     dispatch(setUserPage(userInfo.data.page));
   } catch (error) {
     console.log(error);
+    toast(error.response.data);
   }
 }
 
@@ -19,6 +21,7 @@ export const registerUser = (email, password, username, name) => async(dispatch,
     dispatch(setUserPage(newUser.data.page));
   } catch (error) {
     console.log(error);
+    toast(error.response.data);
   }
 
 }

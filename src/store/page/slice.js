@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading: false,
+  notFound: false,
   content: null,
 };
 
@@ -12,8 +12,11 @@ const pageSlice = createSlice({
     setPage: (state, action) => {
       state.content = action.payload;
     },
+    setNotFound: (state, action) => {
+      state.notFound = true;
+    }
   },
 });
 
-export const { setPage } = pageSlice.actions;
+export const { setPage, setNotFound } = pageSlice.actions;
 export default pageSlice.reducer;

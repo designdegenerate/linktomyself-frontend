@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (hasProfile !== null) {
-      navigate("/");
+      navigate(`/p/${hasProfile.username}`);
     }
   }, [hasProfile, navigate]);
 

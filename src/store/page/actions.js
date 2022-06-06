@@ -1,6 +1,7 @@
 import axios from "axios";
-import { setPage } from "./slice";
+import { setPage, setNotFound } from "./slice";
 import apiUrl from "../../apiUrl";
+import toast from "react-hot-toast";
 
 export const fetchPage = (username) => async(dispatch, getState) => {
   try {
@@ -8,5 +9,10 @@ export const fetchPage = (username) => async(dispatch, getState) => {
     dispatch(setPage(page.data));
   } catch (error) {
     console.log(error);
+    if (error.response.status === 404) {
+      dispatch(setNotFound());
+    } else {
+      toast(error.response.data);
+    }
   }
 }

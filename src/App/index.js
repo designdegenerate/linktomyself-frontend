@@ -5,11 +5,13 @@ import PrivacyPage from '../pages/Privacy';
 import LoginPage from '../pages/auth/LoginPage';
 import RegisterPage from '../pages/auth/RegisterPage';
 import Page from '../pages/Page';
-import Footer from '../components/Footer';
+import { Toaster } from 'react-hot-toast';
+import NotFound from '../components/NotFound';
 
 function App() {
   return (
     <div className="App">
+      <Toaster/>
       <Routes>
         {/*"static" pages*/}
         <Route path="/" element={<HomePage/>}></Route>
@@ -22,6 +24,7 @@ function App() {
         {/*User Pages*/}
         <Route path="/p/:username" element={<Page/>}></Route>
         <Route path="/p/:username/edit" element={<Page/>}></Route>
+        <Route path="*" element={<NotFound/>}></Route>
       </Routes>
     </div>
   );
