@@ -24,8 +24,7 @@ section {
   }
 
   a.full-link:hover {
-    background-color: var(--bg-color);
-    color: var(--fg-color);
+    @include mix.hoverFilledInvertEffect;
   }
 }
 
