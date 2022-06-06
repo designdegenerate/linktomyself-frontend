@@ -20,66 +20,75 @@ export default function LoginPage() {
 
   return (
     <main className="auth">
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = "Required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "Invalid email address";
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          dispatch(loginUser(values.email, values.password));
-          setSubmitting = false;
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <form onSubmit={handleSubmit}>
-            <h1>Welcome back!</h1>
-            <div>
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="user@example.com"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-              {errors.email && touched.email && errors.email}
-            </div>
-            <div>
-            <label>Password</label>
-              <input
-                type="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-              {errors.password && touched.password && errors.password}
-            </div>
-            <button className="button-filled" type="submit" disabled={isSubmitting}>
-              Continue
-            </button>
-            <Link to="/signup">Or sign up</Link>
-          </form>
-        )}
-      </Formik>
-      <Footer/>
+      <div className="auth-form-wrapper">
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validate={(values) => {
+            const errors = {};
+            if (!values.email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = (<p className="error">Invalid email address</p>);
+            }
+            return errors;
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            dispatch(loginUser(values.email, values.password));
+            setSubmitting = false;
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <h1>Login</h1>
+              <div>
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="user@example.com"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
+                {errors.email && touched.email && errors.email}
+              </div>
+              <div>
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder=" •  •  •  •  •  •  •  •"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
+                {errors.password && touched.password && errors.password}
+              </div>
+              <button
+                className="button-filled"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Continue
+              </button>
+              <Link to="/signup">Or sign up</Link>
+            </form>
+          )}
+        </Formik>
+      </div>
+      <Footer />
     </main>
   );
 }

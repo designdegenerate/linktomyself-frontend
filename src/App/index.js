@@ -20,7 +20,11 @@ function App() {
 
   return (
     <div className="App">
-      <Toaster/>
+      <Toaster
+      toastOptions={{
+        className: 'toaster'
+      }}
+      />
       <Routes>
         {/*"static" pages*/}
         <Route path="/" element={<HomePage/>}></Route>
