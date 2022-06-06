@@ -19,14 +19,13 @@
     flex-direction: column;
     gap: 1rem;
     width: fit-content;
-    // max-width: 600px;
     margin: 0 auto;
 
-    // input[type="text"],
-    // input[type="email"],
-    // input[type="password"] {
-    //   // max-width: 300px;
-    // }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      max-width: 100%;
+    }
 
     p.error {
       margin-top: 0.25rem;

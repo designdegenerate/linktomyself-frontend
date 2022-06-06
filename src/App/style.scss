@@ -1,4 +1,4 @@
-@use '../scss/_global-mixins' as mix;
+@use "../scss/_global-mixins" as mix;
 
 html {
   color: var(--fg-color);
@@ -50,32 +50,30 @@ button[disabled] {
 
 .button-border {
   @extend %link-button;
+}
 
-  :hover {
-    @include mix.hoverInvertEffect;
-  }
+.button-border:hover {
+  @include mix.hoverInvertEffect;
+}
 
-  [disabled]:hover {
-    background-color: var(--bg-color);
-    color: var(--fg-color);
-  }
-
+.button-border:disabled:hover {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
 }
 
 .button-filled {
   @extend %link-button;
   background-color: var(--fg-color);
   color: var(--bg-color);
+}
 
-  :hover {
-    @include mix.hoverFilledInvertEffect;
-  }
+.button-filled:hover {
+  @include mix.hoverFilledInvertEffect;
+}
 
-  [disabled]:hover {
-    background-color: var(--fg-color);
-    color: var(--bg-color);
-  }
-
+.button-filled:disabled:hover {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
 }
 
 /***************************************
@@ -84,12 +82,11 @@ button[disabled] {
 
 input[type="text"],
 input[type="email"],
-input[type="password"]
- {
+input[type="password"] {
   display: block;
   border-color: var(--fg-color);
   background-color: var(--bg-color);
   border-width: 2px;
   border-style: solid;
-  padding: 0.25rem;
+  padding: 0.25rem 0.5rem;
 }
