@@ -31,12 +31,17 @@ export const restoreLogin = () => async (dispatch, getState) => {
     dispatch(setUserPage(restoredUser.data.page));
   } catch (error) {
     if (error.response.status === 401) {
-      //401 is fine
-      return;
+      return; //401 is fine
     }
+
     //anything else is not
-    console.log(error);
-    toast(error.response.data);
+    if(error.response.data) {
+      toast(error.response.data);
+      console.log(error);
+    } else {
+      console.log(error);
+    }
+
   }
 };
 
