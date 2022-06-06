@@ -7,8 +7,17 @@ import RegisterPage from '../pages/auth/RegisterPage';
 import Page from '../pages/Page';
 import { Toaster } from 'react-hot-toast';
 import NotFound from '../components/NotFound';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { restoreLogin } from '../store/user/actions';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+    dispatch(restoreLogin());
+  }, [])
+
   return (
     <div className="App">
       <Toaster/>

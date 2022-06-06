@@ -21,6 +21,25 @@ export const loginUser = (email, password) => async (dispatch, getState) => {
   }
 };
 
+export const restoreLogin = () => async (dispatch, getState) => {
+  try {
+    const restoredUser = await axios.get(`${apiUrl}/auth/user`, {
+      withCredentials: true,
+      mode: "cors",
+    });
+    dispatch(setUserProfile(restoredUser.data.profile));
+    dispatch(setUserPage(restoredUser.data.page));
+  } catch (error) {
+    if (error.response.status === 401) {
+      //401 is fine
+      return;
+    }
+    //anything else is not
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
 export const registerUser =
   (email, password, username, name) => async (dispatch, getState) => {
     try {
