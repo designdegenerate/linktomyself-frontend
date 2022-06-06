@@ -1,9 +1,13 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logoutUser } from "../../store/user/actions";
 import { selectUserProfile } from "../../store/user/selectors";
 import "./style.scss";
 export default function NavBar() {
   const user = useSelector(selectUserProfile);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <nav>
@@ -29,7 +33,18 @@ export default function NavBar() {
                   <Link to={`/p/${user.username}/edit-sections`}>Edit My Sections</Link>
                 </li>
                 <li>
-                  <Link to="/">Log Out</Link>
+                  <button onClick={
+                    () => {
+                      dispatch(logoutUser())
+                      if(
+                        location.pathname === `/p/${user.username}/settings` ||
+                        location.pathname === `/p/${user.username}/edit-links` ||
+                        location.pathname === `/p/${user.username}/edit-sections`
+                        ) {
+                          navigate(`/p/${user.username}`)
+                        }
+                    }
+                  }>Log Out</button>
                 </li>
               </ul>
             </div>

@@ -7,10 +7,16 @@ export default function Footer() {
       <p>Linktomyself by © 2022 Laurens Spangenberg</p>
       <ul>
         <li>
-          <Link to="/">Linktomyself Home</Link>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
         </li>
         <li>
           <Link to="/privacy">Privacy Policy</Link>
+        </li>
+        <li>
+          <Link to="/tos">Terms of Service</Link>
         </li>
       </ul>
     </footer>

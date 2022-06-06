@@ -9,6 +9,7 @@ footer {
 
   ul {
     @extend %flexList;
+    row-gap: 0.25rem;
     justify-content: center;
     margin-bottom: 0.25rem;
   }

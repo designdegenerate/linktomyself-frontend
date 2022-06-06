@@ -40,7 +40,8 @@ nav {
 
     li {
       width: 100%;
-      a {
+      a,
+      button {
         font-size: 0.85rem;
         text-decoration: none;
         color: inherit;
@@ -48,7 +49,15 @@ nav {
         display: block;
       }
 
-      a:hover {
+      button {
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+      }
+
+      a:hover,
+      button:hover {
         @include mix.hoverInvertEffect;
       }
 
