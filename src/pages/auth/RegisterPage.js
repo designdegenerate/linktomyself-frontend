@@ -57,6 +57,12 @@ export default function RegisterPage() {
                 errors.password = <FormError string="password needs to be at least 8 characters"/>
               }
 
+              if (!values.passwordRepeat) {
+                errors.passwordRepeat = <Required/>
+              } else if (values.password !== values.passwordRepeat) {
+                errors.passwordRepeat = <FormError string="Passwords don't match"/>
+              }
+
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
@@ -131,6 +137,17 @@ export default function RegisterPage() {
                     minLenght={8}
                   ></Field>
                   {errors.password && touched.password && errors.password}
+                </div>
+                <div>
+                  <label htmlFor="passwordRepeat">Repeat Password</label>
+                  <Field
+                    id="passwordRepeat"
+                    type="password"
+                    name="passwordRepeat"
+                    required
+                    minLenght={8}
+                  ></Field>
+                  {errors.passwordRepeat && touched.passwordRepeat && errors.passwordRepeat}
                 </div>
                 <button
                   className="button-filled"
