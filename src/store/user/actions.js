@@ -1,10 +1,11 @@
 import axios from "axios";
-import { clearUserStore, setUserPage, setUserProfile } from "./slice";
+import { clearUserStore, setUserLoading, setUserPage, setUserProfile } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
 
 export const loginUser = (email, password) => async (dispatch, getState) => {
   try {
+    dispatch(setUserLoading(true));
     const userInfo = await axios.post(
       `${apiUrl}/auth/login`,
       { email, password },
@@ -18,6 +19,7 @@ export const loginUser = (email, password) => async (dispatch, getState) => {
   } catch (error) {
     console.log(error);
     toast(error.response.data);
+    dispatch(setUserLoading(false));
   }
 };
 
@@ -48,6 +50,7 @@ export const restoreLogin = () => async (dispatch, getState) => {
 export const registerUser =
   (email, password, username, name) => async (dispatch, getState) => {
     try {
+      dispatch(setUserLoading(true));
       const newUser = await axios.post(
         `${apiUrl}/auth/register`,
         {
@@ -66,6 +69,7 @@ export const registerUser =
     } catch (error) {
       console.log(error);
       toast(error.response.data);
+      dispatch(setUserLoading(false));
     }
   };
 

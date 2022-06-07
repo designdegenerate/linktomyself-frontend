@@ -32,7 +32,11 @@
       margin-top: 0.2rem;
       font-weight: var(--bold);
       font-size: 0.90rem;
-      max-width: 300px;
+      max-width: 280px;
+    }
+
+    p.error:empty {
+      margin: 0
     }
 
     .input-notes {

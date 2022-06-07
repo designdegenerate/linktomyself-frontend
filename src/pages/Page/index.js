@@ -1,7 +1,7 @@
 import "./style.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchPage } from "../../store/page/actions";
 import { selectNotfound, selectPage } from "../../store/page/selectors";
 import Sidebar from "./components/Sidebar";

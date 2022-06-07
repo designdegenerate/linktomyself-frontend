@@ -16,7 +16,7 @@ function App() {
 
   useEffect( () => {
     dispatch(restoreLogin());
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="App">
@@ -36,7 +36,9 @@ function App() {
 
         {/*User Pages*/}
         <Route path="/p/:username" element={<Page/>}></Route>
-        <Route path="/p/:username/edit" element={<Page/>}></Route>
+        <Route path="/p/:username/settings" element={<Page/>}></Route>
+        <Route path="/p/:username/edit-links" element={<Page/>}></Route>
+        <Route path="/p/:username/edit-sections" element={<Page/>}></Route>
         <Route path="*" element={<NotFound/>}></Route>
       </Routes>
     </div>

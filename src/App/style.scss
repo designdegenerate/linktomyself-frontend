@@ -60,6 +60,7 @@ button[disabled] {
 .button-border:disabled:hover {
   background-color: var(--bg-color);
   color: var(--fg-color);
+  cursor: pointer;
 }
 
 .button-filled {
@@ -70,11 +71,34 @@ button[disabled] {
 
 .button-filled:hover {
   @include mix.hoverFilledInvertEffect;
+  cursor: pointer;
 }
 
 .button-filled:disabled:hover {
+  @extend %link-button;
   background-color: var(--fg-color);
   color: var(--bg-color);
+}
+
+.button-loading {
+  @extend %link-button;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .loaderIcon {
+    stroke: #fff;
+  }
 }
 
 /***************************************
