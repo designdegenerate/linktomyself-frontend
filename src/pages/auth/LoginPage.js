@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
+import InvalidEmail from "../../components/Forms/InvalidEmail";
+import Required from "../../components/Forms/Required";
 import { loginUser } from "../../store/user/actions";
 import { selectUserProfile } from "../../store/user/selectors";
 import "./style.scss";
@@ -27,15 +29,15 @@ export default function LoginPage() {
             const errors = {};
 
             if (!values.email) {
-              errors.email = <p className="error">Required</p>;
+              errors.email = <Required/>;
             } else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
-              errors.email = <p className="error">Invalid email address</p>;
+              errors.email = <InvalidEmail/>;
             }
 
             if (!values.password) {
-              errors.password = <p className="error">Required</p>;
+              errors.password = <Required/>;
             }
             return errors;
 

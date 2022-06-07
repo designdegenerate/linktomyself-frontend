@@ -32,7 +32,7 @@ export default function Page() {
   ) : (
     <main
       style={
-        getPage
+        getPage.colors
           ? {
               "--lightFG": getPage.colors.lightFG,
               "--lightBG": getPage.colors.lightBG,
