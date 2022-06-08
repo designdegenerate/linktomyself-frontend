@@ -1,6 +1,5 @@
 @use "../../../../scss/_global-mixins" as mix;
 
-
 .sidebar {
   margin-bottom: 2rem;
 
@@ -26,11 +25,16 @@
     background-position: center;
   }
 
+  @media (min-width: 600px) {
+    .profile-image {
+      margin: 0;
+    }
+  }
+
   @media (min-width: 700px) {
     .profile-image {
       width: 200px;
       height: 200px;
-      margin: 0;
     }
   }
 
@@ -85,6 +89,19 @@
     max-width: 45ch;
   }
 
+  .no-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    
+    a {
+      width: 200px;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
   @include mix.tablet {
     .link-bio-wrapper {
       display: grid;
@@ -124,6 +141,7 @@
       display: none;
     }
   }
+
 }
 
 .link-collection {

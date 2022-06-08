@@ -6,8 +6,33 @@
     display: none;
   }
 
+  .no-content {
+    border: 1px solid var(--fg-color);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+
+    h2 {
+      font-size: var(--fontX2);
+      font-weight: var(--roman);
+      text-align: center;
+    }
+
+    a {
+      @extend %link-button;
+      width: fit-content;
+      margin: 1rem auto;
+    }
+
+    a:hover {
+      @include mix.hoverInvertEffect;
+    }
+  }
+
   @include mix.tablet-large {
-    width: fit-content;
 
     h2.oneliner {
       display: block;

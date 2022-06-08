@@ -25,7 +25,6 @@ export default function LoginPage() {
 
   const onSubmit = (data) => {
     dispatch(loginUser(data.email, data.password));
-    console.log(data);
   };
 
   useEffect(() => {
