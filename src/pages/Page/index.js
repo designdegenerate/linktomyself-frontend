@@ -22,10 +22,9 @@ export default function Page() {
     dispatch(fetchPage(params.username));
   }, [dispatch, params.username]);
 
-  return isNotFound ?
-  <NotFound/>
-  :
-  !getPage ? (
+  return isNotFound ? (
+    <NotFound />
+  ) : !getPage ? (
     <div className="loading-screen">
       <p>loading...</p>
     </div>
