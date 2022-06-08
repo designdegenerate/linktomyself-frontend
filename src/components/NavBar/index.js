@@ -24,13 +24,13 @@ export default function NavBar() {
                   <Link to={`/p/${user.username}`}>My Homepage</Link>
                 </li>
                 <li>
-                  <Link to={`/p/${user.username}/settings`}>Profile Settings</Link>
+                  <Link to={`/u/settings`}>Profile Settings</Link>
                 </li>
                 <li>
-                  <Link to={`/p/${user.username}/edit-links`}>Edit My Links</Link>
+                  <Link to={`/u/edit-links`}>Edit My Links</Link>
                 </li>
                 <li>
-                  <Link to={`/p/${user.username}/edit-sections`}>Edit My Sections</Link>
+                  <Link to={`/u/edit-sections`}>Edit My Sections</Link>
                 </li>
                 <li>
                   <button onClick={
