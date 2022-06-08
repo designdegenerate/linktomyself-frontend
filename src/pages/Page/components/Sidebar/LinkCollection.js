@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectPage } from "../../../store/page/selectors";
+import { selectPage } from "../../../../store/page/selectors";
 
 export default function LinkCollection() {
   const getPage = useSelector(selectPage);

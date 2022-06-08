@@ -1,0 +1,29 @@
+@use "../../../../scss/_global-mixins" as mix;
+
+.content {
+  h2.oneliner,
+  p.bio {
+    display: none;
+  }
+
+  @include mix.tablet-large {
+    width: fit-content;
+
+    h2.oneliner {
+      display: block;
+      font-size: var(--fontX3);
+      line-height: var(--fontLHX3);
+      margin: 1rem 0;
+    }
+
+    p.bio {
+      display: block;
+      margin-bottom: 6rem;
+      max-width: 60ch;
+    }
+  }
+
+  @include mix.desktop {
+    margin-right: 2rem;
+  }
+}

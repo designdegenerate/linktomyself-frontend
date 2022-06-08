@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import { selectPage } from "../../../store/page/selectors";
+import { selectPage } from "../../../../store/page/selectors";
 import LinkCollection from "./LinkCollection";
+import './style.scss';
 
 export default function Sidebar() {
   const getPage = useSelector(selectPage);

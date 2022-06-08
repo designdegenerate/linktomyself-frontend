@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { fetchPage } from "../../store/page/actions";
 import { selectNotfound, selectPage } from "../../store/page/selectors";
 import Sidebar from "./components/Sidebar";
-import Content from "./components/content";
+import Content from "./components/Content";
 import { selectUserProfile } from "../../store/user/selectors";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
