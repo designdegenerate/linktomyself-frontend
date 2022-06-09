@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingButton from "../../../components/Forms/Buttons/LoadingButton";
@@ -13,7 +12,8 @@ import {
 } from "../../../store/user/selectors";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import { updateData } from "../../../store/user/actions";
+import { restoreLogin, updateData } from "../../../store/user/actions";
+import { useEffect } from "react";
 
 export default function SettingsPage() {
   const dispatch = useDispatch();
@@ -31,6 +31,15 @@ export default function SettingsPage() {
   } = useForm();
 
   const watchUsername = watch("username");
+
+  useEffect(() => {
+    // MongoDB doesn't store 
+    // keys with empty strings by default
+    // so fetching this data once more to be
+    // safe.
+    dispatch(restoreLogin());
+  }, [])
+
 
   const onSubmit = (data) => {
     let dataToSend = [];

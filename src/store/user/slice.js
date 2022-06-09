@@ -26,6 +26,9 @@ const userSlice = createSlice({
     setUserPage: (state, action) => {
       state.page = action.payload;
     },
+    setUserPageByKey: (state, action) => {
+      state.page[action.payload.key] = action.payload.value;
+    },
     clearUserStore: (state, action) => {
       state.profile = null;
       state.page = null
@@ -33,5 +36,5 @@ const userSlice = createSlice({
   }
 })
 
-export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, clearUserStore} = userSlice.actions;
+export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, setUserPageByKey, clearUserStore} = userSlice.actions;
 export default userSlice.reducer;

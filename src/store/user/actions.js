@@ -3,6 +3,7 @@ import {
   clearUserStore,
   setUserLoading,
   setUserPage,
+  setUserPageByKey,
   setUserProfile,
   setUserProfileByKey,
 } from "./slice";
@@ -22,6 +23,7 @@ export const loginUser = (email, password) => async (dispatch, getState) => {
     );
     dispatch(setUserProfile(userInfo.data.profile));
     dispatch(setUserPage(userInfo.data.page));
+    dispatch(setUserLoading(false));
   } catch (error) {
     console.log(error);
     toast(error.response.data);
@@ -71,6 +73,7 @@ export const registerUser =
       );
       dispatch(setUserProfile(newUser.data.profile));
       dispatch(setUserPage(newUser.data.page));
+      dispatch(setUserLoading(false));
     } catch (error) {
       console.log(error);
       toast(error.response.data);
@@ -111,6 +114,14 @@ export const updateData = (data) => async (dispatch, getState) => {
 
     if (sanitizedData.name) {
       dispatch(setUserProfileByKey({ key: "name", value: sanitizedData.name}));
+    }
+
+    if (sanitizedData.oneLiner) {
+      dispatch(setUserPageByKey({ key: "bio", value: sanitizedData.name}));
+    }
+
+    if (sanitizedData.bio) {
+      dispatch(setUserPageByKey({ key: "bio", value: sanitizedData.name}));
     }
 
     toast("Profile Updated");
