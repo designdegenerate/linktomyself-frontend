@@ -1,19 +1,18 @@
 import FormError from "../FormError";
 
-export default function TextField(props) {
+export default function TextAreaField(props) {
   return (
     <div>
       <label htmlFor={props.name}>
         {props.title ? props.title : props.name}
       </label>
-      <input
+      <textarea
         {...props.register}
         id={props.name}
         placeholder={props.placeholder ? props.placeholder : ""}
-        maxLength={props.maxlength ? props.maxlength : "infinite"}
         type="text"
         name={props.name}
-      ></input>
+      ></textarea>
       <FormError string={props.errors} />
     </div>
   );

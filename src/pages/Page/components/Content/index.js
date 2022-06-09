@@ -18,7 +18,7 @@ export default function Content() {
       getUser?.username === params.username ? (
         <div className="no-content">
           <div>
-            <h2>It's so empty here, add some content!</h2>
+            <h2>It's so quiet here, add some content!</h2>
             <Link to="/u/edit-sections">Edit Sections</Link>
           </div>
         </div>

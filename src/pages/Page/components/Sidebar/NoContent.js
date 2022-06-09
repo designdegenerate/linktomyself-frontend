@@ -13,14 +13,14 @@ export default function NoContent() {
       {getUser && getUser?.username === params.username ? (
         <div className="no-content">
           {getPage.permaLinks.length === 0 ? (
-              <Link className="button-border" to="/u/edit-profile">
+              <Link className="button-border" to="/u/edit-links">
                 Add some links
               </Link>
           ) : (
             <></>
           )}
           {!getPage.bio ? (
-            <Link className="button-border" to="/u/edit-profile">
+            <Link className="button-border" to="/u/settings">
               Edit your profile
             </Link>
           ) : (

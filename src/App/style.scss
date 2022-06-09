@@ -130,8 +130,13 @@ button[disabled] {
     font-size: 0.90rem;
   }
 
-  label + input {
+  label + input,
+  label + textarea {
     margin-top: 0.25rem;
+  }
+
+  div + div {
+    margin-top: 0.5rem;
   }
 
   button[type="submit"] {
@@ -142,7 +147,9 @@ button[disabled] {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+textarea {
+  color: inherit;
   display: block;
   border-color: var(--fg-color);
   background-color: var(--bg-color);
@@ -151,4 +158,8 @@ input[type="password"] {
   max-width: 100%;
   width: 100%;
   padding: 0.25rem 0.5rem;
+}
+
+textarea {
+  max-width: 300px;
 }

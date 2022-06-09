@@ -1,0 +1,21 @@
+@use "../../../scss/_global-mixins" as mix;
+
+.change-password {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 0.25rem;
+    width: fit-content;
+  }
+
+  a {
+    @extend %link-button;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+  }
+
+  a:hover {
+    @include mix.hoverInvertEffect;
+  }
+}

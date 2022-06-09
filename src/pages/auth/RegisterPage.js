@@ -53,6 +53,7 @@ export default function RegisterPage() {
               name="username"
               title="Username"
               errors={errors.username?.message}
+              maxlength="20"
               register={register("username", {
                 required: {
                   value: true,
@@ -63,6 +64,7 @@ export default function RegisterPage() {
                   message:
                     "Username can only contain the following characters: aA–zZ, 0–9, '_', and '-'",
                 },
+                maxLength: 20
               })}
             />
             {watchUsername ? (

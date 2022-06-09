@@ -1,5 +1,11 @@
 import axios from "axios";
-import { clearUserStore, setUserLoading, setUserPage, setUserProfile } from "./slice";
+import {
+  clearUserStore,
+  setUserLoading,
+  setUserPage,
+  setUserProfile,
+  setUserProfileByKey,
+} from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
 
@@ -37,13 +43,12 @@ export const restoreLogin = () => async (dispatch, getState) => {
     }
 
     //anything else is not
-    if(error.response.data) {
+    if (error.response.data) {
       toast(error.response.data);
       console.log(error);
     } else {
       console.log(error);
     }
-
   }
 };
 
@@ -80,6 +85,35 @@ export const logoutUser = () => async (dispatch, getState) => {
       withCredentials: true,
       mode: "cors",
     });
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
+export const updateData = (data) => async (dispatch, getState) => {
+  try {
+    await axios.patch(`${apiUrl}/auth/user`, data, {
+      withCredentials: true,
+      mode: "cors",
+      data: data,
+    });
+
+    const sanitizedData = Object.assign({}, ...data);
+
+    if (sanitizedData.email) {
+      dispatch(setUserProfileByKey({ key: "email", value: sanitizedData.email }));
+    }
+
+    if (sanitizedData.username) {
+      dispatch(setUserProfileByKey({ key: "username", value: sanitizedData.username}));
+    }
+
+    if (sanitizedData.name) {
+      dispatch(setUserProfileByKey({ key: "name", value: sanitizedData.name}));
+    }
+
+    toast("Profile Updated");
   } catch (error) {
     console.log(error);
     toast(error.response.data);

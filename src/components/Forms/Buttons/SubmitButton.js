@@ -1,7 +1,7 @@
-export default function SubmitButton() {
+export default function SubmitButton(props) {
   return (
     <button className="button-filled" type="submit">
-      Continue
+      {props.title ? props.title : "Continue"}
     </button>
   );
 }

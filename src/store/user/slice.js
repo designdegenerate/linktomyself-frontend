@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: false,
+  updating: false,
   profile: null,
   page: null,
 };
@@ -13,8 +14,14 @@ const userSlice = createSlice({
     setUserLoading: (state, action) => {
       state.loading = action.payload;
     },
+    setUpdating: (state, action) => {
+      state.updating = action.payload;
+    },
     setUserProfile: (state, action) => {
       state.profile = action.payload;
+    },
+    setUserProfileByKey: (state, action) => {
+      state.profile[action.payload.key] = action.payload.value;
     },
     setUserPage: (state, action) => {
       state.page = action.payload;
@@ -26,5 +33,5 @@ const userSlice = createSlice({
   }
 })
 
-export const {setUserLoading, setUserPage, setUserProfile, clearUserStore} = userSlice.actions;
+export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, clearUserStore} = userSlice.actions;
 export default userSlice.reducer;
