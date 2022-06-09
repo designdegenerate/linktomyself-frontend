@@ -13,6 +13,7 @@ import {
 import "./style.scss";
 import { Link } from "react-router-dom";
 import { restoreLogin, updateData } from "../../../store/user/actions";
+import colorThemes from "../../../colors.json";
 import { useEffect } from "react";
 
 export default function SettingsPage() {
@@ -21,7 +22,7 @@ export default function SettingsPage() {
   const userPage = useSelector(selectUserPage);
   const isLoading = useSelector(isDataUpdating);
   const { email: oldEmail, username: oldUsername, name: oldName } = userProfile;
-  const { bio: oldBio, oneLiner: oldOneLiner } = userPage;
+  const { bio: oldBio, oneLiner: oldOneLiner, colors } = userPage;
 
   const {
     register,
@@ -33,13 +34,12 @@ export default function SettingsPage() {
   const watchUsername = watch("username");
 
   useEffect(() => {
-    // MongoDB doesn't store 
+    // MongoDB doesn't store
     // keys with empty strings by default
     // so fetching this data once more to be
     // safe.
     dispatch(restoreLogin());
-  }, [])
-
+  }, []);
 
   const onSubmit = (data) => {
     let dataToSend = [];
@@ -54,12 +54,11 @@ export default function SettingsPage() {
     }
 
     dispatch(updateData(dataToSend));
-
   };
 
   return (
     <article>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="edit-form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Profile Settings</h1>
         <Email
           error={errors.email?.message}
@@ -87,7 +86,7 @@ export default function SettingsPage() {
                 "Username can only contain the following characters: aA–zZ, 0–9, '_', and '-'",
             },
             value: oldUsername,
-            maxLength: 20
+            maxLength: 20,
           })}
         />
         <div className="input-notes">
@@ -135,6 +134,36 @@ export default function SettingsPage() {
             maxLength: 300,
           })}
         />
+        <div className="select-color-scheme">
+          <label htmlFor="lightColors">Light Color Scheme</label>
+          <select
+            {...register("lightColors", { value: colors.light.name })}
+            name="lightColors"
+            id="lightColors"
+          >
+            {colorThemes.light.map((theme) => {
+              return <option key={theme.name} value={theme.name}>{theme.name}</option>;
+            })}
+          </select>
+        </div>
+        <div className="input-notes">
+          <p>When the device is in light mode.</p>
+        </div>
+        <div className="select-color-scheme">
+          <label>Dark Color Scheme</label>
+          <select
+            {...register("darkColors", { value: colors.dark.name })}
+            name="darkColors"
+            id="darkColors"
+          >
+            {colorThemes.dark.map((theme) => {
+              return <option key={theme.name} value={theme.name}>{theme.name}</option>;
+            })}
+          </select>
+        </div>
+        <div className="input-notes">
+          <p>When the device is in dark mode.</p>
+        </div>
         {isLoading ? (
           <LoadingButton />
         ) : (

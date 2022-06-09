@@ -14,6 +14,7 @@ import EditLinksPage from "../pages/EditPage/EditLinksPage";
 import EditSectionsPage from "../pages/EditPage/EditSectionsPage";
 import NotFound from "../components/NotFound";
 import EditPage from "../pages/EditPage";
+import ChangePasswordPage from "../pages/EditPage/ChangePasswordPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,10 @@ function App() {
           <Route
             path="edit-sections"
             element={<EditSectionsPage />}
+          ></Route>
+          <Route
+            path="change-password"
+            element={<ChangePasswordPage />}
           ></Route>
         </Route>
 

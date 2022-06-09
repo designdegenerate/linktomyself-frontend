@@ -19,3 +19,12 @@
     @include mix.hoverInvertEffect;
   }
 }
+
+.select-color-scheme {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    margin-bottom: 0.25rem;
+  }
+}

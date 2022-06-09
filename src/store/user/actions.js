@@ -1,6 +1,8 @@
 import axios from "axios";
 import {
   clearUserStore,
+  setUserDarkTheme,
+  setUserLightTheme,
   setUserLoading,
   setUserPage,
   setUserPageByKey,
@@ -9,6 +11,7 @@ import {
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
+import colorThemes from "../../colors.json";
 
 export const loginUser = (email, password) => async (dispatch, getState) => {
   try {
@@ -96,6 +99,47 @@ export const logoutUser = () => async (dispatch, getState) => {
 
 export const updateData = (data) => async (dispatch, getState) => {
   try {
+    const hasLightColors = data.find((obj) => {
+      return "lightColors" in obj;
+    });
+
+    const hasDarkColors = data.find((obj) => {
+      return "darkColors" in obj;
+    });
+
+    if (hasLightColors) {
+      const newLightColor = colorThemes.light.find(
+        (color) => color.name === hasLightColors.lightColors
+      );
+
+      data = [...data, { colors: { light: { ...newLightColor } } }];
+
+      const toDel = data.findIndex((obj) => "lightColors" in obj);
+
+      data.splice(toDel, 1)
+    }
+
+    if (hasDarkColors) {
+      const newDarkColor = colorThemes.dark.find(
+        (color) => color.name === hasDarkColors.darkColors
+      );
+
+      if (hasLightColors) {
+        const colorIndex = data.findIndex((obj) => "colors" in obj);
+
+        data[colorIndex].colors = {
+          ...data[colorIndex].colors,
+          dark: { ...newDarkColor },
+        };
+      } else {
+        data = [...data, { colors: { dark: { ...newDarkColor } } }];
+      }
+
+      const toDel = data.findIndex((obj) => "darkColors" in obj);
+
+      data.splice(toDel, 1)
+    }
+
     await axios.patch(`${apiUrl}/auth/user`, data, {
       withCredentials: true,
       mode: "cors",
@@ -104,24 +148,37 @@ export const updateData = (data) => async (dispatch, getState) => {
 
     const sanitizedData = Object.assign({}, ...data);
 
+    //TODO: Replace all of this with a .map()!
     if (sanitizedData.email) {
-      dispatch(setUserProfileByKey({ key: "email", value: sanitizedData.email }));
+      dispatch(
+        setUserProfileByKey({ key: "email", value: sanitizedData.email })
+      );
     }
 
     if (sanitizedData.username) {
-      dispatch(setUserProfileByKey({ key: "username", value: sanitizedData.username}));
+      dispatch(
+        setUserProfileByKey({ key: "username", value: sanitizedData.username })
+      );
     }
 
     if (sanitizedData.name) {
-      dispatch(setUserProfileByKey({ key: "name", value: sanitizedData.name}));
+      dispatch(setUserProfileByKey({ key: "name", value: sanitizedData.name }));
     }
 
     if (sanitizedData.oneLiner) {
-      dispatch(setUserPageByKey({ key: "bio", value: sanitizedData.name}));
+      dispatch(setUserPageByKey({ key: "bio", value: sanitizedData.name }));
     }
 
     if (sanitizedData.bio) {
-      dispatch(setUserPageByKey({ key: "bio", value: sanitizedData.name}));
+      dispatch(setUserPageByKey({ key: "bio", value: sanitizedData.name }));
+    }
+
+    if (sanitizedData.colors?.light ) {
+      dispatch(setUserLightTheme(sanitizedData.colors.light));
+    }
+
+    if (sanitizedData.colors?.dark ) {
+      dispatch(setUserDarkTheme(sanitizedData.colors.dark));
     }
 
     toast("Profile Updated");

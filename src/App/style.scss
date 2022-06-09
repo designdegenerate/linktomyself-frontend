@@ -163,3 +163,10 @@ textarea {
 textarea {
   max-width: 300px;
 }
+
+select {
+  @extend %link-button;
+  background-color: var(--bg-color);
+  padding: 0.5rem;
+  border-radius: 0;
+}

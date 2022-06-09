@@ -23,6 +23,12 @@ const userSlice = createSlice({
     setUserProfileByKey: (state, action) => {
       state.profile[action.payload.key] = action.payload.value;
     },
+    setUserLightTheme: (state, action) => {
+      state.page.colors.light = action.payload;
+    },
+    setUserDarkTheme: (state, action) => {
+      state.page.colors.dark = action.payload;
+    },
     setUserPage: (state, action) => {
       state.page = action.payload;
     },
@@ -36,5 +42,5 @@ const userSlice = createSlice({
   }
 })
 
-export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, setUserPageByKey, clearUserStore} = userSlice.actions;
+export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, setUserDarkTheme, setUserLightTheme, setUserPageByKey, clearUserStore} = userSlice.actions;
 export default userSlice.reducer;

@@ -1,0 +1,12 @@
+@use "../../../scss/_global-mixins" as mix;
+
+.return-to-profile {
+  @extend %link-button;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  margin-bottom: 2rem;
+}
+
+.return-to-profile:hover {
+  @include mix.hoverInvertEffect;
+}

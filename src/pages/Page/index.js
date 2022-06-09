@@ -33,10 +33,10 @@ export default function Page() {
       style={
         getPage.colors
           ? {
-              "--lightFG": getPage.colors.lightFG,
-              "--lightBG": getPage.colors.lightBG,
-              "--darkFG": getPage.colors.darkFG,
-              "--darkBG": getPage.colors.darkBG,
+            "--lightFG": getPage.colors.light.lightFG,
+            "--lightBG": getPage.colors.light.lightBG,
+            "--darkFG": getPage.colors.dark.darkFG,
+            "--darkBG": getPage.colors.dark.darkBG,
             }
           : {}
       }
