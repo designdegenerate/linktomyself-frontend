@@ -7,13 +7,14 @@ nav {
   width: 100%;
 
   @media (min-width: 500px) {
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
   }
 
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     padding: 0;
     list-style: none;
     display: flex;
@@ -24,6 +25,10 @@ nav {
     li {
       display: block;
       width: fit-content;
+      
+      a {
+        text-decoration: none;
+      }
     }
 
     li:last-child {
@@ -71,12 +76,23 @@ nav {
 
   summary {
     list-style: none;
-    display: inline;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     position: relative;
     cursor: pointer;
     user-select: none;
-    padding: 0.5rem 1rem;
+    padding: 0 1rem 0 0;
+    height: 50px;
     border: 1px solid var(--fg-color);
+    width: fit-content;
+
+    img {
+      height: auto;
+      width: auto;
+      max-height: 48px;
+      max-width: 48px;
+    }
   }
 
   summary::-webkit-details-marker {

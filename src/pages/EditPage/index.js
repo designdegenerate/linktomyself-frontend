@@ -10,7 +10,6 @@ export default function EditPage() {
   const getUser = useSelector(selectUserProfile);
   const getPage = useSelector(selectUserPage);
 
-
   return !getUser ? (
     <NotFound />
   ) : (
