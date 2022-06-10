@@ -12,7 +12,6 @@ export default function NavBar() {
 
   return (
     <nav>
-      <button onClick={() => { console.log(location)}}>log</button>
       <ul>
         <li>
           <Link to={`/p/${user.username}`}>
