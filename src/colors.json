@@ -7,38 +7,38 @@
     },
     {
       "name": "orange",
-      "lightFG": "#9f2500",
-      "lightBG": "#ffd8c0"
+      "lightFG": "#db450b",
+      "lightBG": "#f9efe9"
     },
     {
       "name": "yellow",
-      "lightFG": "#8a4700",
-      "lightBG": "#ffebae"
+      "lightFG": "#936b1e",
+      "lightBG": "#fbf7ed"
     },
     {
       "name": "green",
       "lightFG": "#114000",
-      "lightBG": "#f5ffc4"
+      "lightBG": "#f8fbeb"
     },
     {
       "name": "blue",
       "lightFG": "#00199d",
-      "lightBG": "#d8ecee"
+      "lightBG": "#eff8f9"
     },
     {
       "name": "purple",
       "lightFG": "#64006c",
-      "lightBG": "#e8d9f0"
+      "lightBG": "#f6edfb"
     },
     {
       "name": "pink",
-      "lightFG": "#9f0788",
-      "lightBG": "#f4dcf2"
+      "lightFG": "#b52a92",
+      "lightBG": "#f9edf8"
     },
     {
       "name": "red",
-      "lightFG": "#820000",
-      "lightBG": "#eacfcf"
+      "lightFG": "#b50000",
+      "lightBG": "#f7e6e6"
     }
   ],
   "dark": [
@@ -69,17 +69,17 @@
     },
     {
       "name": "purple",
-      "darkFG": "#b38aca",
+      "darkFG": "#d3a6ec",
       "darkBG": "#120113"
     },
     {
       "name": "pink",
-      "darkFG": "#ce8bc8",
-      "darkBG": "#150a11"
+      "darkFG": "#f09be9",
+      "darkBG": "#150a0a"
     },
     {
       "name": "red",
-      "darkFG": "#ff6b6b",
+      "darkFG": "#ff5f5f",
       "darkBG": "#150000"
     }
   ]

@@ -21,7 +21,7 @@ export default function NavBar() {
         <li>
           <details className="menu">
             <summary>
-              <img src={page.profileImage} alt=""></img>
+              <img src={page.profileImage? page.profileImage : "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="} alt=""></img>
               {user.name}{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

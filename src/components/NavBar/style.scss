@@ -3,7 +3,6 @@
 nav {
   padding: 1rem;
   margin-bottom: 2rem;
-  border-bottom: 1px solid var(--fg-color);
   width: 100%;
 
   @media (min-width: 500px) {
@@ -90,8 +89,12 @@ nav {
     img {
       height: auto;
       width: auto;
-      max-height: 48px;
-      max-width: 48px;
+      height: 48px;
+      width: 48px;
+      background-color: var(--fg-color);
+      border: none;
+      outline: none;
+      border-image-width: 0;
     }
   }
 
