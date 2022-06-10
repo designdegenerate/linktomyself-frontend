@@ -2,7 +2,6 @@
 
   article {
     padding: 1rem;
-    max-width: 750px;
     margin: 2rem auto;
     min-height: 60vh;
   }
@@ -19,5 +18,14 @@
     select {
       max-width: 200px;
     }
+  }
+
+  .content-empty {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--fg-color);
+    width: 100%;
   }
 }

@@ -57,7 +57,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <article>
+    <article className="edit-profile">
       <form className="edit-form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Profile Settings</h1>
         <Email

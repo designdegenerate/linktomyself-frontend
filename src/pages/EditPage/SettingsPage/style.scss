@@ -1,5 +1,8 @@
 @use "../../../scss/_global-mixins" as mix;
 
+.edit-profile {
+  max-width: 750px;
+}
 .change-password {
   display: flex;
   flex-direction: column;
