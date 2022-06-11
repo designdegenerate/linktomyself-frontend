@@ -102,15 +102,6 @@
     }
   }
 
-  @include mix.tablet {
-    .link-bio-wrapper {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: 250px auto;
-      margin: 2rem 0;
-    }
-  }
-
   @include mix.tablet-large {
     .link-bio-wrapper {
       display: block;
@@ -164,6 +155,7 @@
 
   @media (min-width: 500px) {
     flex-direction: row;
+    flex-wrap: wrap;
 
     li a {
       max-width: 250px;
@@ -174,11 +166,8 @@
     }
   }
 
-  @include mix.tablet {
-    flex-direction: column;
-  }
-
   @include mix.tablet-large {
+    flex-direction: column;
     margin: 0 auto;
     width: fit-content;
 

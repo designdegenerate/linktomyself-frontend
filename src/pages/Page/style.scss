@@ -4,6 +4,10 @@
   max-width: 1200px;
   padding: 2rem 1rem;
 
+  @include mix.tablet {
+    padding: 2rem;
+  }
+
   @include mix.tablet-large {
     display: grid;
     grid-template-columns: clamp(275px, 25%, 400px) auto;

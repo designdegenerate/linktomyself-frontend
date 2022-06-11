@@ -35,6 +35,9 @@ const userSlice = createSlice({
     setUserPageByKey: (state, action) => {
       state.page[action.payload.key] = action.payload.value;
     },
+    addPermaLink: (state, action) => {
+      state.page.permaLinks = [...state.page.permaLinks, action.payload]
+    },
     clearUserStore: (state, action) => {
       state.profile = null;
       state.page = null
@@ -42,5 +45,5 @@ const userSlice = createSlice({
   }
 })
 
-export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, setUserDarkTheme, setUserLightTheme, setUserPageByKey, clearUserStore} = userSlice.actions;
+export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, setUserDarkTheme, setUserLightTheme, setUserPageByKey, clearUserStore, addPermaLink} = userSlice.actions;
 export default userSlice.reducer;

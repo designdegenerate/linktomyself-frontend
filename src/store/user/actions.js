@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  addPermaLink,
   clearUserStore,
   setUserDarkTheme,
   setUserLightTheme,
@@ -116,7 +117,7 @@ export const updateData = (data) => async (dispatch, getState) => {
 
       const toDel = data.findIndex((obj) => "lightColors" in obj);
 
-      data.splice(toDel, 1)
+      data.splice(toDel, 1);
     }
 
     if (hasDarkColors) {
@@ -137,7 +138,7 @@ export const updateData = (data) => async (dispatch, getState) => {
 
       const toDel = data.findIndex((obj) => "darkColors" in obj);
 
-      data.splice(toDel, 1)
+      data.splice(toDel, 1);
     }
 
     await axios.patch(`${apiUrl}/auth/user`, data, {
@@ -173,15 +174,63 @@ export const updateData = (data) => async (dispatch, getState) => {
       dispatch(setUserPageByKey({ key: "bio", value: sanitizedData.name }));
     }
 
-    if (sanitizedData.colors?.light ) {
+    if (sanitizedData.colors?.light) {
       dispatch(setUserLightTheme(sanitizedData.colors.light));
     }
 
-    if (sanitizedData.colors?.dark ) {
+    if (sanitizedData.colors?.dark) {
       dispatch(setUserDarkTheme(sanitizedData.colors.dark));
     }
 
     toast("Profile Updated");
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
+export const addLink = (data) => async (dispatch, getState) => {
+  try {
+    const newLink = await axios.post(`${apiUrl}/auth/links`, data, {
+      withCredentials: true,
+      mode: "cors",
+      data: data,
+    });
+
+    dispatch(addPermaLink(newLink.data));
+
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
+export const updateLink = (data) => async (dispatch, getState) => {
+  try {
+    await axios.patch(`${apiUrl}/auth/links`, data, {
+      withCredentials: true,
+      mode: "cors",
+      data: data,
+    });
+
+    //Find link by id and patch redux
+
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
+export const deleteLink = (data) => async (dispatch, getState) => {
+  try {
+    await axios.patch(`${apiUrl}/auth/user`, data, {
+      withCredentials: true,
+      mode: "cors",
+      data: data,
+    });
+
+  //Find link by id and patch redux
+
   } catch (error) {
     console.log(error);
     toast(error.response.data);

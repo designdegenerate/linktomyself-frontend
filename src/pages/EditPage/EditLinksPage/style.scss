@@ -1,62 +1,21 @@
 article.edit-links {
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 1200px;
 
   h1 {
+    font-size: var(--fontX4);
     margin-bottom: 2rem;
   }
 
-  max-width: 100%;
-  > form.edit-form {
-    display: flex;
-    flex-direction: column;
-
-
-    @media (min-width: 670px){
-
-      flex-direction: row;
-      flex-wrap: wrap;
-      max-width: 100%;
-      gap: 2rem;
-    }
-
+  > div {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
-  form > div {
+  > div > form {
     border: 1px solid var(--fg-color);
-    padding: 2rem;
-    max-width: 400px;
-    min-width: 300px;
-
-    + div {
-      margin-top: 0;
-    }
-    
-  }
-
-  details {
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 4rem;
-
-    form {
-      margin-top: -1px;
-      border: 1px solid var(--fg-color);
-      padding: 2rem;
-
-      div {
-        border: none;
-        padding: 0;
-      }
-    }
-  }
-
-  summary {
-    border: 1px solid var(--fg-color);
-    padding: 0.5rem 1rem;
-    width: fit-content;
-    user-select: none;
-    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
   }
 
   .edit-links-btn-row {
