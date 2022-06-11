@@ -22,7 +22,6 @@ export default function EditLinksPage() {
             />
           );
         })}
-
         <AddLinkForm />
       </div>
     </article>

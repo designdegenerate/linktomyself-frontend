@@ -6,6 +6,7 @@ import LoadingButton from "../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../components/Forms/Buttons/SubmitButton";
 import { isDataUpdating } from "../../../store/user/selectors";
 import ButtonBorder from "../../../components/Forms/Buttons/ButtonBorder";
+import { updateLink } from "../../../store/user/actions";
 
 export default function EditLinkForm(props) {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function EditLinkForm(props) {
   const onSubmit = (data) => {
     data._id = props.id
     console.log(data);
+    dispatch(updateLink(data));
   };
 
   return (
