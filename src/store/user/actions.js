@@ -14,7 +14,6 @@ import {
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
-import colorThemes from "../../colors.json";
 import formatColors from "./formatColors";
 
 export const loginUser = (email, password) => async (dispatch, getState) => {
@@ -95,6 +94,29 @@ export const logoutUser = () => async (dispatch, getState) => {
       withCredentials: true,
       mode: "cors",
     });
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
+export const deleteUser = (data, navigate) => async (dispatch, getState) => {
+  try {
+
+    await axios.patch(`${apiUrl}/auth/user/delete`, data, {
+      withCredentials: true,
+      mode: "cors",
+    });
+
+    toast("user deleted")
+    dispatch(clearUserStore());
+    await axios.get(`${apiUrl}/auth/logout`, {
+      withCredentials: true,
+      mode: "cors",
+    });
+
+    navigate("/");
+
   } catch (error) {
     console.log(error);
     toast(error.response.data);

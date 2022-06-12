@@ -14,7 +14,7 @@ export default function EditLinkForm(props) {
 
   const {
     register,
-    formState: { errors, dirtyFields },
+    formState: { errors },
     handleSubmit,
   } = useForm();
 

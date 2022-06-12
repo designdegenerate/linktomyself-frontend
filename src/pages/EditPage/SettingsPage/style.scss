@@ -3,7 +3,8 @@
 .edit-profile {
   max-width: 750px;
 }
-.change-password {
+.change-password,
+.delete-user {
   display: flex;
   flex-direction: column;
 
@@ -23,10 +24,14 @@
   }
 }
 
+.delete-user {
+  margin-top: 2rem;
+}
+
 .select-color-scheme {
   display: flex;
   flex-direction: column;
-  
+
   label {
     margin-bottom: 0.25rem;
   }

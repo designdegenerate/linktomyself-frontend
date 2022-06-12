@@ -15,6 +15,7 @@ import EditSectionsPage from "../pages/EditPage/EditSectionsPage";
 import NotFound from "../components/NotFound";
 import EditPage from "../pages/EditPage";
 import ChangePasswordPage from "../pages/EditPage/ChangePasswordPage";
+import DeleteUserPage from "../pages/EditPage/DeleteUserPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,10 +29,10 @@ function App() {
       <Toaster
         toastOptions={{
           style: {
-            border: '1px solid var(--fg-color)',
-            padding: '0.5rem',
-            color: 'var(--fg-color)',
-            backgroundColor: 'var(--bg-color)'
+            border: "1px solid var(--fg-color)",
+            padding: "0.5rem",
+            color: "var(--fg-color)",
+            backgroundColor: "var(--bg-color)",
           },
         }}
       />
@@ -49,21 +50,16 @@ function App() {
 
         {/*Settings/Editing Pages*/}
         <Route path="/u" element={<EditPage />}>
-          <Route 
-          path="settings"
-          element={<SettingsPage />}
-          ></Route>
-          <Route
-            path="edit-links"
-            element={<EditLinksPage />}
-          ></Route>
-          <Route
-            path="edit-sections"
-            element={<EditSectionsPage />}
-          ></Route>
+          <Route path="settings" element={<SettingsPage />}></Route>
+          <Route path="edit-links" element={<EditLinksPage />}></Route>
+          <Route path="edit-sections" element={<EditSectionsPage />}></Route>
           <Route
             path="change-password"
             element={<ChangePasswordPage />}
+          ></Route>
+          <Route
+            path="delete-account"
+            element={<DeleteUserPage/>}
           ></Route>
         </Route>
 

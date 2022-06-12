@@ -1,0 +1,29 @@
+@use "../../../scss/_global-mixins" as mix;
+
+.return-to-profile {
+  @extend %link-button;
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  margin-bottom: 2rem;
+}
+
+.return-to-profile:hover {
+  @include mix.hoverFilledInvertEffect;
+}
+
+.delete-account {
+  p {
+    max-width: 400px;
+  }
+
+  input {
+    margin: -0.75rem 0 -0.5rem 0;
+  }
+
+  button {
+    margin-top: 2rem;
+    width: fit-content;
+  }
+}

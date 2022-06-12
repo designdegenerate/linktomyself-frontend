@@ -95,7 +95,9 @@ export default function SettingsPage() {
         </div>
         <div className="change-password">
           <label htmlFor="password">Password</label>
-          <Link to="/u/change-password">Change Password</Link>
+          <Link id="password" to="/u/change-password">
+            Change Password
+          </Link>
         </div>
         <TextField
           name="name"
@@ -142,7 +144,11 @@ export default function SettingsPage() {
             id="lightColors"
           >
             {colorThemes.light.map((theme) => {
-              return <option key={theme.name} value={theme.name}>{theme.name}</option>;
+              return (
+                <option key={theme.name} value={theme.name}>
+                  {theme.name}
+                </option>
+              );
             })}
           </select>
         </div>
@@ -157,7 +163,11 @@ export default function SettingsPage() {
             id="darkColors"
           >
             {colorThemes.dark.map((theme) => {
-              return <option key={theme.name} value={theme.name}>{theme.name}</option>;
+              return (
+                <option key={theme.name} value={theme.name}>
+                  {theme.name}
+                </option>
+              );
             })}
           </select>
         </div>
@@ -169,9 +179,13 @@ export default function SettingsPage() {
         ) : (
           <SubmitButton title="Update Profile" />
         )}
+        <div className="delete-user">
+          <label htmlFor="deleteUser">Danger Zone</label>
+          <Link id="deleteUser" to="/u/delete-account">
+            Delete Account 
+          </Link>
+        </div>
       </form>
-
-      <form></form>
     </article>
   );
 }

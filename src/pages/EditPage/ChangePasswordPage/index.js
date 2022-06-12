@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingButton from "../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../components/Forms/Buttons/SubmitButton";
-import TextField from "../../../components/Forms/TextFields/TextField";
 import { isDataUpdating } from "../../../store/user/selectors";
 import "./style.scss";
 import { Link } from "react-router-dom";
@@ -17,7 +16,7 @@ export default function ChangePasswordPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
