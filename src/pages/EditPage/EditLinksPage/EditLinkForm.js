@@ -20,7 +20,6 @@ export default function EditLinkForm(props) {
 
   const onSubmit = (data) => {
     data._id = props.id
-    console.log(data);
     dispatch(updateLink(data));
   };
 

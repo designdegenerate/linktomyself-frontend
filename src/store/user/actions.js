@@ -9,6 +9,7 @@ import {
   setUserPageByKey,
   setUserProfile,
   setUserProfileByKey,
+  updatePermaLink,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -100,16 +101,14 @@ export const logoutUser = () => async (dispatch, getState) => {
 };
 
 export const updateData = (data) => async (dispatch, getState) => {
-  //Sorry
-
   try {
 
-    const hasColors = data.filter((obj) => {
-      if ("lightColors" in obj || "darkColors" in obj ) return true;
-      return false;
-    })
-
-    if (hasColors) {
+    if (
+      data.filter((obj) => {
+        if ("lightColors" in obj || "darkColors" in obj ) return true;
+        return false;
+      })
+    ) {
       data = formatColors(data);
     }
 
@@ -119,15 +118,14 @@ export const updateData = (data) => async (dispatch, getState) => {
       data: data,
     });
 
-    const sanitizedData = Object.assign({}, ...data);
-
     data.map( obj => {
       if ('colors' in obj) {
+
         if (obj.colors?.light) {
           dispatch(setUserLightTheme(obj.colors.light));
         }
     
-        if (sanitizedData.colors?.dark) {
+        if (obj.colors?.dark) {
           dispatch(setUserDarkTheme(obj.colors.dark));
         }
 
@@ -185,7 +183,9 @@ export const updateLink = (data) => async (dispatch, getState) => {
       data: data,
     });
 
-    //Find link by id and patch redux
+    dispatch(updatePermaLink(data));
+
+    toast("link updated");
 
   } catch (error) {
     console.log(error);
