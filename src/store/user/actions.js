@@ -10,6 +10,7 @@ import {
   setUserProfile,
   setUserProfileByKey,
   updatePermaLink,
+  deletePermaLink,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -195,13 +196,14 @@ export const updateLink = (data) => async (dispatch, getState) => {
 
 export const deleteLink = (data) => async (dispatch, getState) => {
   try {
-    await axios.patch(`${apiUrl}/auth/user`, data, {
+    await axios.patch(`${apiUrl}/auth/links/delete`, data, {
       withCredentials: true,
       mode: "cors",
-      data: data,
     });
 
-  //Find link by id and patch redux
+    dispatch(deletePermaLink(data));
+
+    toast("link deleted");
 
   } catch (error) {
     console.log(error);

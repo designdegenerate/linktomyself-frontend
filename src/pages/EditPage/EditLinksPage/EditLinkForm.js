@@ -6,7 +6,7 @@ import LoadingButton from "../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../components/Forms/Buttons/SubmitButton";
 import { isDataUpdating } from "../../../store/user/selectors";
 import ButtonBorder from "../../../components/Forms/Buttons/ButtonBorder";
-import { updateLink } from "../../../store/user/actions";
+import { updateLink, deleteLink } from "../../../store/user/actions";
 
 export default function EditLinkForm(props) {
   const dispatch = useDispatch();
@@ -19,9 +19,14 @@ export default function EditLinkForm(props) {
   } = useForm();
 
   const onSubmit = (data) => {
-    data._id = props.id
+    data._id = props.id;
     dispatch(updateLink(data));
   };
+
+  const removeLink = (data) => {
+    data._id = props.id;
+    dispatch(deleteLink(data))
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +59,11 @@ export default function EditLinkForm(props) {
       ) : (
         <div className="edit-links-btn-row">
           <SubmitButton title="Apply" />
-          <ButtonBorder linkId={props.id} title="Delete" />
+          <ButtonBorder
+            linkId={props.id}
+            title="Delete"
+            onClick={handleSubmit(removeLink)}
+          />
         </div>
       )}
     </form>

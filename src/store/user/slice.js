@@ -8,10 +8,9 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
-
     // Loaders
     setUpdating: (state, action) => {
       state.updating = action.payload;
@@ -44,24 +43,49 @@ const userSlice = createSlice({
 
     //set links
     addPermaLink: (state, action) => {
-      state.page.permaLinks = [...state.page.permaLinks, action.payload]
+      state.page.permaLinks = [...state.page.permaLinks, action.payload];
     },
     updatePermaLink: (state, action) => {
       const draftState = current(state.page.permaLinks);
 
-      const index = draftState.findIndex( link => {
+      const index = draftState.findIndex((link) => {
         return link._id === action.payload._id;
-      })
+      });
 
       state.page.permaLinks[index] = action.payload;
+    },
+    deletePermaLink: (state, action) => {
+      const currentState = current(state.page.permaLinks);
+      const newState = [...currentState];
+
+      const index = newState.findIndex((link) => {
+        return link._id === action.payload._id;
+      });
+
+      newState.splice(index);
+
+      state.page.permaLinks = newState;
     },
 
     clearUserStore: (state, action) => {
       state.profile = null;
-      state.page = null
-    }
-  }
-})
+      state.page = null;
+    },
+  },
+});
 
-export const {setUserLoading, setUpdating, setUserPage, setUserProfile, setUserProfileByKey, setUserDarkTheme, setUserLightTheme, setUserPageByKey, clearUserStore, addPermaLink, updatePermaLink} = userSlice.actions;
+export const {
+  setUserLoading,
+  setUpdating,
+  setUserPage,
+  setUserProfile,
+  setUserProfileByKey,
+  setUserDarkTheme,
+  setUserLightTheme,
+  setUserPageByKey,
+  clearUserStore,
+  addPermaLink,
+  updatePermaLink,
+  deletePermaLink,
+} = userSlice.actions;
 export default userSlice.reducer;
