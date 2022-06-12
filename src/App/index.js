@@ -27,7 +27,12 @@ function App() {
     <div className="App">
       <Toaster
         toastOptions={{
-          className: "toaster",
+          style: {
+            border: '1px solid var(--fg-color)',
+            padding: '0.5rem',
+            color: 'var(--fg-color)',
+            backgroundColor: 'var(--bg-color)'
+          },
         }}
       />
       <Routes>
