@@ -201,14 +201,12 @@ export const updateProfileImage = (img) => async (dispatch, getState) => {
 };
 
 export const addLink = (data) => async (dispatch, getState) => {
+  console.log(data);
   try {
     const newLink = await axios.post(`${apiUrl}/auth/links`, data, {
       withCredentials: true,
       mode: "cors",
       data: data,
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
     });
     dispatch(addPermaLink(newLink.data));
   } catch (error) {
