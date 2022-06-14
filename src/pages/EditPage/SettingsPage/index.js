@@ -12,7 +12,11 @@ import {
 } from "../../../store/user/selectors";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import { restoreLogin, updateData, updateProfileImage } from "../../../store/user/actions";
+import {
+  restoreLogin,
+  updateData,
+  updateProfileImage,
+} from "../../../store/user/actions";
 import colorThemes from "../../../colors.json";
 import { useEffect } from "react";
 
@@ -55,7 +59,6 @@ export default function SettingsPage() {
 
     dispatch(updateData(dataToSend));
   };
-
 
   return (
     <article className="edit-profile">
@@ -103,16 +106,48 @@ export default function SettingsPage() {
         <div className="profile-picture">
           <p>Profile Picture</p>
           <div
-          className="image"
-          style={{ backgroundImage: `url(${profileImage})` }}
-        ></div>
-        <input
+            className="image"
+            style={{
+              backgroundImage: `url($}), url(${profileImage})`,
+            }}
+          >
+            {isLoading ? (
+              <div>
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="loaderIcon"
+                >
+                  <g fill="none" fillRule="evenodd">
+                    <g transform="translate(1 1)" strokeWidth="2">
+                      <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
+                      <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform
+                          attributeName="transform"
+                          type="rotate"
+                          from="0 18 18"
+                          to="360 18 18"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        />
+                      </path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            ) : (
+              <> </>
+            )}
+          </div>
+          <input
             type="file"
             id="profileImage"
             name="profileImage"
             accept="image/png, image/jpeg"
-            onChange={ e => {
-              dispatch(updateProfileImage(e.target.files))
+            onChange={(e) => {
+              dispatch(updateProfileImage(e.target.files));
             }}
           ></input>
           <label htmlFor="profileImage">Update Picture</label>

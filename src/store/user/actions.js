@@ -173,6 +173,8 @@ export const updateData = (data) => async (dispatch, getState) => {
 
 export const updateProfileImage = (img) => async (dispatch, getState) => {
   try {
+    dispatch(setUserLoading(true));
+
     const formData = new FormData();
     formData.append("image", img[0]);
 
@@ -188,10 +190,12 @@ export const updateProfileImage = (img) => async (dispatch, getState) => {
         value: imgURL.data.profileImage,
       }))
 
+    dispatch(setUserLoading(false));
     toast("Updated Profile Picture");
 
   } catch (error) {
     console.log(error);
+    dispatch(setUserLoading(false));
     toast(error.response.data);
   }
 };

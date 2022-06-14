@@ -51,6 +51,20 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
+    div {
+      display: flex;
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      background-color: var(--fg-color);
+
+      svg.loaderIcon {
+        stroke: var(--bg-color);
+      }
+    }
   }
 
   label {
