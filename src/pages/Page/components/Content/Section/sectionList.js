@@ -10,12 +10,19 @@ export default function SectionList(props) {
                 <h3>{item.title}</h3>
                 {item.author ? <p className="author">{item.author}</p> : <></>}
               </div>
-              <p>{item.description}</p>
+              {item.description ? <p>{item.description}</p> : <></>}
+              {item.link ? <a href={item.link}>About</a> : <></>}
             </li>
           );
         })}
       </ul>
-      {props.fullLink? <a className="full-link" href={props.fullLink.link}>{props.fullLink.text}</a> : <></>}
+      {props.fullLink ? (
+        <a className="full-link" href={props.fullLink.link}>
+          {props.fullLink.text}
+        </a>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

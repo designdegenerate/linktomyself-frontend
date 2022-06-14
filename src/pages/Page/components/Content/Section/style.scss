@@ -78,6 +78,16 @@ section + section {
       margin-top: auto;
       padding: 1rem;
     }
+
+    a {
+      margin-top: 0.5rem;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    a:hover {
+      opacity: 0.5;
+    }
   }
 
   li:last-child {
@@ -125,6 +135,16 @@ section + section {
 
     p:last-child {
       margin-top: auto;
+    }
+
+    a {
+      margin-top: 0.5rem;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    a:hover {
+      opacity: 0.5;
     }
   }
 }
