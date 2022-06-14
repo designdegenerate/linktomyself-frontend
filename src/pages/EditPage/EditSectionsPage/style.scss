@@ -1,0 +1,100 @@
+article.edit-sections {
+  max-width: 1200px;
+
+  h1 {
+    font-size: var(--fontX4);
+    margin-bottom: 2rem;
+  }
+
+  .main-card {
+    border: 1px solid var(--fg-color);
+
+    summary {
+      font-size: var(--fontX2);
+      padding: 1rem;
+      user-select: none;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    > form {
+      width: 100%;
+      position: relative;
+
+      .header {
+        display: flex;
+        flex-direction: row;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        gap: 1rem;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: baseline;
+
+        @media (min-width: 440px) {
+          justify-content: flex-end;
+          gap: 0.5rem;
+          margin-top: -3.5rem;
+          width: fit-content;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        button {
+          margin: 0;
+        }
+      }
+
+      input {
+        max-width: 200px;
+      }
+
+      .section-info {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2rem 1rem 4rem 1rem;
+        gap: 2rem;
+        flex-direction: row;
+        border-top: 1px solid var(--fg-color);
+
+        div {
+          display: flex;
+          align-items: baseline;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          flex-direction: row;
+        }
+
+        @media (min-width: 630px) {
+          justify-content: center;
+
+          div {
+            margin: 0;
+          }
+        }
+
+        div + div {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .main-card + .main-card {
+    margin-top: 2rem;
+  }
+
+  .sub-card-wrapper {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 2rem 2rem 4rem 2rem;
+  }
+
+  .sub-card {
+    border: 1px solid var(--fg-color);
+    padding: 1rem;
+    width: 100%;
+  }
+}

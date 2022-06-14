@@ -12,5 +12,6 @@
     display: grid;
     grid-template-columns: clamp(275px, 25%, 400px) auto;
     column-gap: 1rem;
+    margin: 0 auto;
   }
 }
