@@ -36,3 +36,51 @@
     margin-bottom: 0.25rem;
   }
 }
+
+.profile-picture {
+  p {
+    margin-bottom: 0.25rem;
+  }
+
+  .image {
+    border-radius: 8px;
+    margin: 0.35rem 0 1rem 0;
+    width: 160px;
+    height: 160px;
+    background-color: var(--fg-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  label {
+    @extend %link-button;
+    width: fit-content;
+    cursor: pointer;
+  }
+
+  .image {
+    width: 300px;
+    height: 300px;
+  }
+
+  label:hover {
+    @include mix.hoverInvertEffect;
+  }
+
+  input[type="file"] {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  input[type="file"].visually-hidden:focus + label {
+    outline: thin dotted;
+  }
+  input[type="file"].visually-hidden:focus-within + label {
+    outline: thin dotted;
+  }
+
+}

@@ -1,7 +1,7 @@
 export default function EditSectionsPage() {
   return (
-    <div>
+    <article>
       <h1>edit sections</h1>
-    </div>
+    </article>
   )
 }

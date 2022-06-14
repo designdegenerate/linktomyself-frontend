@@ -16,12 +16,12 @@ export default function NavBar() {
         <li>
           <Link to={`/p/${user.username}`}>
             <h1>Linktomyself</h1>
-            </Link>
+          </Link>
         </li>
         <li>
           <details className="menu">
             <summary>
-              <img src={page.profileImage? page.profileImage : "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="} alt=""></img>
+              <div style={{ backgroundImage: `url(${page.profileImage})` }}></div>
               {user.name}{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -56,10 +56,8 @@ export default function NavBar() {
                       dispatch(logoutUser());
                       if (
                         location.pathname === "/u/settings" ||
-                        location.pathname ===
-                          "/u/edit-links" ||
-                        location.pathname ===
-                          "/u/edit-sections"
+                        location.pathname === "/u/edit-links" ||
+                        location.pathname === "/u/edit-sections"
                       ) {
                         navigate(`/p/${user.username}`);
                       }

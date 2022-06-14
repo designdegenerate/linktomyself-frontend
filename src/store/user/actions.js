@@ -102,13 +102,12 @@ export const logoutUser = () => async (dispatch, getState) => {
 
 export const deleteUser = (data, navigate) => async (dispatch, getState) => {
   try {
-
     await axios.patch(`${apiUrl}/auth/user/delete`, data, {
       withCredentials: true,
       mode: "cors",
     });
 
-    toast("user deleted")
+    toast("user deleted");
     dispatch(clearUserStore());
     await axios.get(`${apiUrl}/auth/logout`, {
       withCredentials: true,
@@ -116,7 +115,6 @@ export const deleteUser = (data, navigate) => async (dispatch, getState) => {
     });
 
     navigate("/");
-
   } catch (error) {
     console.log(error);
     toast(error.response.data);
@@ -125,10 +123,9 @@ export const deleteUser = (data, navigate) => async (dispatch, getState) => {
 
 export const updateData = (data) => async (dispatch, getState) => {
   try {
-
     if (
       data.filter((obj) => {
-        if ("lightColors" in obj || "darkColors" in obj ) return true;
+        if ("lightColors" in obj || "darkColors" in obj) return true;
         return false;
       })
     ) {
@@ -141,42 +138,58 @@ export const updateData = (data) => async (dispatch, getState) => {
       data: data,
     });
 
-    data.map( obj => {
-      if ('colors' in obj) {
-
+    data.map((obj) => {
+      if ("colors" in obj) {
         if (obj.colors?.light) {
           dispatch(setUserLightTheme(obj.colors.light));
         }
-    
+
         if (obj.colors?.dark) {
           dispatch(setUserDarkTheme(obj.colors.dark));
         }
-
-      } else if (
-        'email' in obj ||
-        'username' in obj ||
-        'name' in obj
-      ) {
+      } else if ("email" in obj || "username" in obj || "name" in obj) {
         dispatch(
           setUserProfileByKey({
             key: Object.keys(obj)[0],
-            value: obj[Object.keys(obj)[0]]
+            value: obj[Object.keys(obj)[0]],
           })
-        )
-      } else if (
-        'oneLiner' in obj ||
-        'bio' in obj
-      ) {
+        );
+      } else if ("oneLiner" in obj || "bio" in obj) {
         dispatch(
           setUserPageByKey({
             key: Object.keys(obj)[0],
-            value: obj[Object.keys(obj)[0]]
+            value: obj[Object.keys(obj)[0]],
           })
-        )
+        );
       }
-    })
+    });
 
     toast("Profile Updated");
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
+export const updateProfileImage = (img) => async (dispatch, getState) => {
+  try {
+    const formData = new FormData();
+    formData.append("image", img[0]);
+
+    const imgURL = await axios.post(`${apiUrl}/auth/user/image`, formData, {
+      withCredentials: true,
+      mode: "cors",
+      data: formData,
+    });
+
+    dispatch(
+      setUserPageByKey({
+        key: "profileImage",
+        value: imgURL.data.profileImage,
+      }))
+
+    toast("Updated Profile Picture");
+
   } catch (error) {
     console.log(error);
     toast(error.response.data);
@@ -189,9 +202,11 @@ export const addLink = (data) => async (dispatch, getState) => {
       withCredentials: true,
       mode: "cors",
       data: data,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
     });
     dispatch(addPermaLink(newLink.data));
-
   } catch (error) {
     console.log(error);
     toast(error.response.data);
@@ -209,7 +224,6 @@ export const updateLink = (data) => async (dispatch, getState) => {
     dispatch(updatePermaLink(data));
 
     toast("link updated");
-
   } catch (error) {
     console.log(error);
     toast(error.response.data);
@@ -226,7 +240,6 @@ export const deleteLink = (data) => async (dispatch, getState) => {
     dispatch(deletePermaLink(data));
 
     toast("link deleted");
-
   } catch (error) {
     console.log(error);
     toast(error.response.data);

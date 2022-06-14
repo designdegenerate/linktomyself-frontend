@@ -12,7 +12,7 @@ import {
 } from "../../../store/user/selectors";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import { restoreLogin, updateData } from "../../../store/user/actions";
+import { restoreLogin, updateData, updateProfileImage } from "../../../store/user/actions";
 import colorThemes from "../../../colors.json";
 import { useEffect } from "react";
 
@@ -22,7 +22,7 @@ export default function SettingsPage() {
   const userPage = useSelector(selectUserPage);
   const isLoading = useSelector(isDataUpdating);
   const { email: oldEmail, username: oldUsername, name: oldName } = userProfile;
-  const { bio: oldBio, oneLiner: oldOneLiner, colors } = userPage;
+  const { bio: oldBio, oneLiner: oldOneLiner, colors, profileImage } = userPage;
 
   const {
     register,
@@ -39,7 +39,7 @@ export default function SettingsPage() {
     // so fetching this data once more to be
     // safe.
     dispatch(restoreLogin());
-  }, []);
+  }, [dispatch]);
 
   const onSubmit = (data) => {
     let dataToSend = [];
@@ -55,6 +55,7 @@ export default function SettingsPage() {
 
     dispatch(updateData(dataToSend));
   };
+
 
   return (
     <article className="edit-profile">
@@ -98,6 +99,23 @@ export default function SettingsPage() {
           <Link id="password" to="/u/change-password">
             Change Password
           </Link>
+        </div>
+        <div className="profile-picture">
+          <p>Profile Picture</p>
+          <div
+          className="image"
+          style={{ backgroundImage: `url(${profileImage})` }}
+        ></div>
+        <input
+            type="file"
+            id="profileImage"
+            name="profileImage"
+            accept="image/png, image/jpeg"
+            onChange={ e => {
+              dispatch(updateProfileImage(e.target.files))
+            }}
+          ></input>
+          <label htmlFor="profileImage">Update Picture</label>
         </div>
         <TextField
           name="name"
@@ -182,7 +200,7 @@ export default function SettingsPage() {
         <div className="delete-user">
           <label htmlFor="deleteUser">Danger Zone</label>
           <Link id="deleteUser" to="/u/delete-account">
-            Delete Account 
+            Delete Account
           </Link>
         </div>
       </form>

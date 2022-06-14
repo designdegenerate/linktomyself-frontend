@@ -86,15 +86,13 @@ nav {
     border: 1px solid var(--fg-color);
     width: fit-content;
 
-    img {
-      height: auto;
-      width: auto;
-      height: 48px;
-      width: 48px;
+    div {
       background-color: var(--fg-color);
-      border: none;
-      outline: none;
-      border-image-width: 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top;
+      height: 100%;
+      width: 3rem;
     }
   }
 

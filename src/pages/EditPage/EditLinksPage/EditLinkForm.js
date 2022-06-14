@@ -58,7 +58,7 @@ export default function EditLinkForm(props) {
         <LoadingButton />
       ) : (
         <div className="edit-links-btn-row">
-          <SubmitButton title="Apply" />
+          <SubmitButton title="Update" />
           <ButtonBorder
             linkId={props.id}
             title="Delete"
