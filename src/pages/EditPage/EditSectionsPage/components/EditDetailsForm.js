@@ -6,6 +6,7 @@ import LoadingButton from "../../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../../components/Forms/Buttons/SubmitButton";
 import { isDataUpdating } from "../../../../store/user/selectors";
 import ButtonBorder from "../../../../components/Forms/Buttons/ButtonBorder";
+import { updateSectionDetails } from "../../../../store/user/actions";
 
 export default function EditDetailsForm(props) {
   const dispatch = useDispatch();
@@ -18,12 +19,12 @@ export default function EditDetailsForm(props) {
   } = useForm();
 
   const onSubmit = (data) => {
-    data._id = props.id;
-    // dispatch(updateLink(data));
+    data._id = props._id;
+    dispatch(updateSectionDetails(data));
   };
 
   const removeSection = (data) => {
-    data._id = props.id;
+    data._id = props._id;
     // dispatch(deleteLink(data));
   };
 

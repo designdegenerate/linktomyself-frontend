@@ -107,7 +107,7 @@ export const deleteUser = (data, navigate) => async (dispatch, getState) => {
       mode: "cors",
     });
 
-    toast("user deleted");
+    toast("User Deleted");
     dispatch(clearUserStore());
     await axios.get(`${apiUrl}/auth/logout`, {
       withCredentials: true,
@@ -225,7 +225,7 @@ export const updateLink = (data) => async (dispatch, getState) => {
 
     dispatch(updatePermaLink(data));
 
-    toast("link updated");
+    toast("Link Updated");
   } catch (error) {
     console.log(error);
     toast(error.response.data);
@@ -241,9 +241,24 @@ export const deleteLink = (data) => async (dispatch, getState) => {
 
     dispatch(deletePermaLink(data));
 
-    toast("link deleted");
+    toast("Link Deleted");
   } catch (error) {
     console.log(error);
     toast(error.response.data);
   }
 };
+
+export const updateSectionDetails = (data) => async (dispatch, getState) => {
+  try {
+    await axios.patch(`${apiUrl}/auth/sections/details`, data, {
+      withCredentials: true,
+      mode: "cors",
+    });
+
+    toast("Section Updated");
+    
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+}

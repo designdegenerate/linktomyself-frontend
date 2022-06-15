@@ -9,6 +9,7 @@ export default function EditSectionForm(props) {
       <summary>{data.sectionName}</summary>
       <EditDetailsForm
         key={data._id}
+        _id={data._id}
         fullLink={data.fullLink}
       />
       <div className="sub-card-wrapper">
