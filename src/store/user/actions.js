@@ -281,7 +281,7 @@ export const updateSectionCard =
 
       dispatch(updateReduxSectionCard({ data, section_id }));
 
-      toast("Section Updated");
+      toast("Card Updated");
     } catch (error) {
       console.log(error);
       toast(error.response.data);
@@ -312,7 +312,7 @@ export const updateCardImage =
       dispatch(updateReduxSectionCardImage({ _id, section_id, image}));
 
       dispatch(setUserLoading(false));
-      toast("Updated Profile Picture");
+      toast("Updated Card Picture");
     } catch (error) {
       console.log(error);
       dispatch(setUserLoading(false));
