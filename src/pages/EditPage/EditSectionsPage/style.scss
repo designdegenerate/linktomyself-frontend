@@ -93,8 +93,18 @@ article.edit-sections {
   }
 
   .sub-card {
-    border: 1px solid var(--fg-color);
+    border: 1px dashed var(--fg-color);
     padding: 1rem;
     width: 100%;
+
+    .edit-links-btn-row {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 1rem;
+      justify-content: space-between;
+      align-content: center;
+      align-items: baseline;
+    }
   }
 }

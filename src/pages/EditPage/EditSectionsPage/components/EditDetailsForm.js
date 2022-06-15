@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import TextField from "../../../components/Forms/TextFields/TextField";
-import LinkField from "../../../components/Forms/TextFields/LinkField";
-import LoadingButton from "../../../components/Forms/Buttons/LoadingButton";
-import SubmitButton from "../../../components/Forms/Buttons/SubmitButton";
-import { isDataUpdating } from "../../../store/user/selectors";
-import ButtonBorder from "../../../components/Forms/Buttons/ButtonBorder";
-import { updateLink, deleteLink } from "../../../store/user/actions";
+import TextField from "../../../../components/Forms/TextFields/TextField";
+import LinkField from "../../../../components/Forms/TextFields/LinkField";
+import LoadingButton from "../../../../components/Forms/Buttons/LoadingButton";
+import SubmitButton from "../../../../components/Forms/Buttons/SubmitButton";
+import { isDataUpdating } from "../../../../store/user/selectors";
+import ButtonBorder from "../../../../components/Forms/Buttons/ButtonBorder";
 
 export default function EditDetailsForm(props) {
   const dispatch = useDispatch();
@@ -20,12 +19,12 @@ export default function EditDetailsForm(props) {
 
   const onSubmit = (data) => {
     data._id = props.id;
-    dispatch(updateLink(data));
+    // dispatch(updateLink(data));
   };
 
   const removeSection = (data) => {
     data._id = props.id;
-    dispatch(deleteLink(data));
+    // dispatch(deleteLink(data));
   };
 
   return (
@@ -46,27 +45,15 @@ export default function EditDetailsForm(props) {
       <div className="section-info">
         <TextField
           name="text"
-          title="Title"
+          title="Link Title"
           errors={errors.text?.message}
-          register={register("text", {
-            required: {
-              value: true,
-              message: "Required",
-            },
-            value: props.fullLink.text,
-          })}
+          register={register("text", { value: props.fullLink.text })}
         />
         <LinkField
           name="link"
-          title="URL"
+          title="Link URL"
           errors={errors.link?.message}
-          register={register("link", {
-            required: {
-              value: true,
-              message: "Required",
-            },
-            value: props.fullLink.link,
-          })}
+          register={register("link", { value: props.fullLink.link })}
         />
       </div>
     </form>

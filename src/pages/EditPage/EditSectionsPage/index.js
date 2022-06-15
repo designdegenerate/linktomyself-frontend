@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectUserPage } from "../../../store/user/selectors";
-import EditSectionForm from "./EditSectionForm";
+import EditSectionForm from "./components/EditSectionForm";
 import "./style.scss";
 
 export default function EditSectionsPage() {
