@@ -14,7 +14,7 @@ export default function EditSectionForm(props) {
       />
       <div className="sub-card-wrapper">
         {data.content.map((obj) => {
-          return <EditCardForm key={obj._id} data={obj} type={data.type} contentType={data.contentType} />;
+          return <EditCardForm key={obj._id} _id={obj._id} section_id={data._id} data={obj} type={data.type} contentType={data.contentType} />;
         })}
       </div>
     </details>

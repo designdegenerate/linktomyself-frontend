@@ -4,7 +4,7 @@ import LoadingButton from "../../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../../components/Forms/Buttons/SubmitButton";
 import { isDataUpdating } from "../../../../store/user/selectors";
 import ButtonBorder from "../../../../components/Forms/Buttons/ButtonBorder";
-import { updateLink, deleteLink } from "../../../../store/user/actions";
+import { updateLink, deleteLink, updateSectionCard } from "../../../../store/user/actions";
 import TextField from "../../../../components/Forms/TextFields/TextField";
 import LinkField from "../../../../components/Forms/TextFields/LinkField";
 import { useEffect, useState } from "react";
@@ -51,13 +51,14 @@ export default function EditCardForm(props) {
   } = useForm();
 
   const onSubmit = (data) => {
-    data._id = props.id;
-    dispatch(updateLink(data));
+    data._id = props._id;
+    const section_id = props.section_id;
+    dispatch(updateSectionCard(data, section_id));
   };
 
   const removeSection = (data) => {
     data._id = props.id;
-    dispatch(deleteLink(data));
+    // dispatch(deleteLink(data));
   };
 
   useEffect(() => {
@@ -113,9 +114,56 @@ export default function EditCardForm(props) {
       )}
 
       {getSection.image ? (
-        <div>
-          <p>image upload thing</p>
-        </div>
+        <p>image</p>
+        // <div className="profile-picture">
+        //   <p>Picture</p>
+        //   <div
+        //     className="image"
+        //     style={{
+        //       backgroundImage: `url($}), url(${profileImage})`,
+        //     }}
+        //   >
+        //     {isLoading ? (
+        //       <div>
+        //         <svg
+        //           width="38"
+        //           height="38"
+        //           viewBox="0 0 38 38"
+        //           xmlns="http://www.w3.org/2000/svg"
+        //           className="loaderIcon"
+        //         >
+        //           <g fill="none" fillRule="evenodd">
+        //             <g transform="translate(1 1)" strokeWidth="2">
+        //               <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
+        //               <path d="M36 18c0-9.94-8.06-18-18-18">
+        //                 <animateTransform
+        //                   attributeName="transform"
+        //                   type="rotate"
+        //                   from="0 18 18"
+        //                   to="360 18 18"
+        //                   dur="1s"
+        //                   repeatCount="indefinite"
+        //                 />
+        //               </path>
+        //             </g>
+        //           </g>
+        //         </svg>
+        //       </div>
+        //     ) : (
+        //       <> </>
+        //     )}
+        //   </div>
+        //   <input
+        //     type="file"
+        //     id="profileImage"
+        //     name="profileImage"
+        //     accept="image/png, image/jpeg"
+        //     onChange={(e) => {
+        //       dispatch(updateProfileImage(e.target.files));
+        //     }}
+        //   ></input>
+        //   <label htmlFor="profileImage">Update Picture</label>
+        // </div>
       ) : (
         <></>
       )}

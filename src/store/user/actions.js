@@ -12,6 +12,7 @@ import {
   updatePermaLink,
   deletePermaLink,
   updateSectionLink,
+  updateReduxSectionCard,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -257,6 +258,23 @@ export const updateSectionDetails = (data) => async (dispatch, getState) => {
     });
 
     dispatch(updateSectionLink(data));
+
+    toast("Section Updated");
+    
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+}
+
+export const updateSectionCard= (data, section_id) => async (dispatch, getState) => {
+  try {
+    await axios.patch(`${apiUrl}/auth/sections/cards`, {data, section_id} , {
+      withCredentials: true,
+      mode: "cors",
+    });
+
+    dispatch(updateReduxSectionCard({data, section_id}));
 
     toast("Section Updated");
     
