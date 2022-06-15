@@ -108,7 +108,7 @@ export default function SettingsPage() {
           <div
             className="image"
             style={{
-              backgroundImage: `url($}), url(${profileImage})`,
+              backgroundImage: `url(${profileImage})`,
             }}
           >
             {isLoading ? (

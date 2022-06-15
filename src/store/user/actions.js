@@ -13,6 +13,7 @@ import {
   deletePermaLink,
   updateSectionLink,
   updateReduxSectionCard,
+  updateReduxSectionCardImage,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -190,11 +191,11 @@ export const updateProfileImage = (img) => async (dispatch, getState) => {
       setUserPageByKey({
         key: "profileImage",
         value: imgURL.data.profileImage,
-      }))
+      })
+    );
 
     dispatch(setUserLoading(false));
     toast("Updated Profile Picture");
-
   } catch (error) {
     console.log(error);
     dispatch(setUserLoading(false));
@@ -260,26 +261,61 @@ export const updateSectionDetails = (data) => async (dispatch, getState) => {
     dispatch(updateSectionLink(data));
 
     toast("Section Updated");
-    
   } catch (error) {
     console.log(error);
     toast(error.response.data);
   }
-}
+};
 
-export const updateSectionCard= (data, section_id) => async (dispatch, getState) => {
-  try {
-    await axios.patch(`${apiUrl}/auth/sections/cards`, {data, section_id} , {
-      withCredentials: true,
-      mode: "cors",
-    });
+export const updateSectionCard =
+  (data, section_id) => async (dispatch, getState) => {
+    try {
+      await axios.patch(
+        `${apiUrl}/auth/sections/cards`,
+        { data, section_id },
+        {
+          withCredentials: true,
+          mode: "cors",
+        }
+      );
 
-    dispatch(updateReduxSectionCard({data, section_id}));
+      dispatch(updateReduxSectionCard({ data, section_id }));
 
-    toast("Section Updated");
-    
-  } catch (error) {
-    console.log(error);
-    toast(error.response.data);
-  }
-}
+      toast("Section Updated");
+    } catch (error) {
+      console.log(error);
+      toast(error.response.data);
+    }
+  };
+
+export const updateCardImage =
+  (img, _id, section_id) => async (dispatch, getState) => {
+    try {
+      dispatch(setUserLoading(true));
+
+      const formData = new FormData();
+      formData.append("image", img[0]);
+      formData.append("_id", _id);
+      formData.append("section_id", section_id);
+
+      const imgURL = await axios.post(
+        `${apiUrl}/auth/sections/cards/image`,
+        formData,
+        {
+          withCredentials: true,
+          mode: "cors",
+          data: formData,
+        }
+      );
+      const image = imgURL.data;
+
+      dispatch(updateReduxSectionCardImage({ _id, section_id, image}));
+
+      dispatch(setUserLoading(false));
+      toast("Updated Profile Picture");
+    } catch (error) {
+      console.log(error);
+      dispatch(setUserLoading(false));
+      toast(error.response.data);
+    }
+  };

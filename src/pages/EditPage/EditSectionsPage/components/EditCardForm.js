@@ -2,9 +2,17 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingButton from "../../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../../components/Forms/Buttons/SubmitButton";
-import { isDataUpdating } from "../../../../store/user/selectors";
+import {
+  isDataUpdating,
+  selectUserPage,
+} from "../../../../store/user/selectors";
 import ButtonBorder from "../../../../components/Forms/Buttons/ButtonBorder";
-import { updateLink, deleteLink, updateSectionCard } from "../../../../store/user/actions";
+import {
+  updateLink,
+  deleteLink,
+  updateSectionCard,
+  updateCardImage,
+} from "../../../../store/user/actions";
 import TextField from "../../../../components/Forms/TextFields/TextField";
 import LinkField from "../../../../components/Forms/TextFields/LinkField";
 import { useEffect, useState } from "react";
@@ -52,9 +60,15 @@ export default function EditCardForm(props) {
 
   const onSubmit = (data) => {
     data._id = props._id;
+    data.image = props.image;
     const section_id = props.section_id;
+    console.log("_id: ", props._id, " section: ", props.section_id);
     dispatch(updateSectionCard(data, section_id));
   };
+
+  const handleImage = (e) => {
+    dispatch(updateCardImage(e.target.files, props._id, props.section_id));
+  }
 
   const removeSection = (data) => {
     data._id = props.id;
@@ -114,56 +128,62 @@ export default function EditCardForm(props) {
       )}
 
       {getSection.image ? (
-        <p>image</p>
-        // <div className="profile-picture">
-        //   <p>Picture</p>
-        //   <div
-        //     className="image"
-        //     style={{
-        //       backgroundImage: `url($}), url(${profileImage})`,
-        //     }}
-        //   >
-        //     {isLoading ? (
-        //       <div>
-        //         <svg
-        //           width="38"
-        //           height="38"
-        //           viewBox="0 0 38 38"
-        //           xmlns="http://www.w3.org/2000/svg"
-        //           className="loaderIcon"
-        //         >
-        //           <g fill="none" fillRule="evenodd">
-        //             <g transform="translate(1 1)" strokeWidth="2">
-        //               <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
-        //               <path d="M36 18c0-9.94-8.06-18-18-18">
-        //                 <animateTransform
-        //                   attributeName="transform"
-        //                   type="rotate"
-        //                   from="0 18 18"
-        //                   to="360 18 18"
-        //                   dur="1s"
-        //                   repeatCount="indefinite"
-        //                 />
-        //               </path>
-        //             </g>
-        //           </g>
-        //         </svg>
-        //       </div>
-        //     ) : (
-        //       <> </>
-        //     )}
-        //   </div>
-        //   <input
-        //     type="file"
-        //     id="profileImage"
-        //     name="profileImage"
-        //     accept="image/png, image/jpeg"
-        //     onChange={(e) => {
-        //       dispatch(updateProfileImage(e.target.files));
-        //     }}
-        //   ></input>
-        //   <label htmlFor="profileImage">Update Picture</label>
-        // </div>
+        <div className="card-image">
+          <p>Picture</p>
+          {props.image ? (
+            <div
+              className="image"
+              style={{
+                backgroundImage: `url(${props.image})`,
+              }}
+            >
+              {isLoading ? (
+                <div>
+                  <svg
+                    width="38"
+                    height="38"
+                    viewBox="0 0 38 38"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="loaderIcon"
+                  >
+                    <g fill="none" fillRule="evenodd">
+                      <g transform="translate(1 1)" strokeWidth="2">
+                        <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
+                        <path d="M36 18c0-9.94-8.06-18-18-18">
+                          <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 18 18"
+                            to="360 18 18"
+                            dur="1s"
+                            repeatCount="indefinite"
+                          />
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+              ) : (
+                <> </>
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
+          <input
+            type="file"
+            id={`image_${props._id}`}
+            name="image"
+            accept="image/png, image/jpeg"
+            onChange={handleImage}
+          ></input>
+          <label htmlFor={`image_${props._id}`}>Update Picture</label>
+          <div className="input-notes">
+          <p>
+            Will be cropped
+          </p>
+        </div>
+        </div>
       ) : (
         <></>
       )}

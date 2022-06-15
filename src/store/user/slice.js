@@ -91,6 +91,20 @@ const userSlice = createSlice({
 
       state.page.sections[sectIndex].content[cardIndex] = action.payload.data;
     },
+    updateReduxSectionCardImage: (state, action) => {
+      const draftState = current(state.page.sections);
+
+      const sectIndex = draftState.findIndex((sect) => {
+        return sect._id === action.payload.section_id;
+      });
+
+      const cardIndex = draftState[sectIndex].content.findIndex((card) => {
+        return card._id === action.payload._id;
+      });
+
+      console.log(action.payload);
+      state.page.sections[sectIndex].content[cardIndex].image = action.payload.image.image;
+    },
 
     clearUserStore: (state, action) => {
       state.profile = null;
@@ -113,6 +127,7 @@ export const {
   updatePermaLink,
   deletePermaLink,
   updateSectionLink,
-  updateReduxSectionCard
+  updateReduxSectionCard,
+  updateReduxSectionCardImage
 } = userSlice.actions;
 export default userSlice.reducer;
