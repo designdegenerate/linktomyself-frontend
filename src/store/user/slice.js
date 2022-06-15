@@ -67,6 +67,17 @@ const userSlice = createSlice({
       state.page.permaLinks = newState;
     },
 
+    updateSectionLink: (state, action) => {
+      const draftState = current(state.page.sections);
+
+      const index = draftState.findIndex((sect) => {
+        return sect._id === action.payload._id;
+      });
+
+      state.page.sections[index].fullLink = action.payload;
+
+    },
+
     clearUserStore: (state, action) => {
       state.profile = null;
       state.page = null;
@@ -87,5 +98,6 @@ export const {
   addPermaLink,
   updatePermaLink,
   deletePermaLink,
+  updateSectionLink
 } = userSlice.actions;
 export default userSlice.reducer;

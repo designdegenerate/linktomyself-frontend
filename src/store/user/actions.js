@@ -11,6 +11,7 @@ import {
   setUserProfileByKey,
   updatePermaLink,
   deletePermaLink,
+  updateSectionLink,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -254,6 +255,8 @@ export const updateSectionDetails = (data) => async (dispatch, getState) => {
       withCredentials: true,
       mode: "cors",
     });
+
+    dispatch(updateSectionLink(data));
 
     toast("Section Updated");
     

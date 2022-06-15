@@ -16,7 +16,7 @@ export default function SectionList(props) {
           );
         })}
       </ul>
-      {props.fullLink ? (
+      {props.fullLink.visible ? (
         <a className="full-link" href={props.fullLink.link}>
           {props.fullLink.text}
         </a>

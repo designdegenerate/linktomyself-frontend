@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from "../../../../components/Forms/TextFields/TextField";
 import LinkField from "../../../../components/Forms/TextFields/LinkField";
+import Checkbox from "../../../../components/Forms/Checkbox";
 import LoadingButton from "../../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../../components/Forms/Buttons/SubmitButton";
 import { isDataUpdating } from "../../../../store/user/selectors";
@@ -55,6 +56,12 @@ export default function EditDetailsForm(props) {
           title="Link URL"
           errors={errors.link?.message}
           register={register("link", { value: props.fullLink.link })}
+        />
+        <Checkbox
+          name="visible"
+          title="Visible"
+          errors={errors.link?.message}
+          register={register("visible", { value: props.fullLink.visible})}
         />
       </div>
     </form>

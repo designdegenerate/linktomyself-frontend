@@ -162,6 +162,48 @@ textarea {
   padding: 0.25rem 0.5rem;
 }
 
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
+input[type=checkbox] {
+  display: block;
+  place-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  color: currentColor;
+  border: 1px solid var(--fg-color);
+  border-radius: 4px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  cursor: pointer;
+}
+input[type=checkbox]::before {
+  content: "✓";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-style: solid;
+  border-color: transparent;
+  color: var(--bg-color);
+  opacity: 0;
+}
+input[type=checkbox]:checked {
+  color: var(--fg-color);
+  background: var(--fg-color);
+}
+input[type=checkbox]:checked::before {
+  opacity: 1;
+  position: absolute;
+  left: 0.15rem;
+  top: -0.15rem;
+}
+
 textarea {
   max-width: 300px;
 }
