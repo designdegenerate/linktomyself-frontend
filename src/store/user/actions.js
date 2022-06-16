@@ -14,6 +14,7 @@ import {
   updateSectionLink,
   updateReduxSectionCard,
   updateReduxSectionCardImage,
+  createReduxSectionCard,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -309,13 +310,35 @@ export const updateCardImage =
       );
       const image = imgURL.data;
 
-      dispatch(updateReduxSectionCardImage({ _id, section_id, image}));
+      dispatch(updateReduxSectionCardImage({ _id, section_id, image }));
 
       dispatch(setUserLoading(false));
       toast("Updated Card Picture");
     } catch (error) {
       console.log(error);
       dispatch(setUserLoading(false));
+      toast(error.response.data);
+    }
+  };
+
+export const createSectionCard =
+  (data, section_id) => async (dispatch, getState) => {
+    try {
+      const res = await axios.post(
+        `${apiUrl}/auth/sections/cards`,
+        { data, section_id },
+        {
+          withCredentials: true,
+          mode: "cors",
+        }
+      );
+      const obj = res.data;
+
+      dispatch(createReduxSectionCard({ obj , section_id }));
+
+      toast("Card Updated");
+    } catch (error) {
+      console.log(error);
       toast(error.response.data);
     }
   };

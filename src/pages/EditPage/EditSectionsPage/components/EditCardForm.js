@@ -2,14 +2,9 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingButton from "../../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../../components/Forms/Buttons/SubmitButton";
-import {
-  isDataUpdating,
-  selectUserPage,
-} from "../../../../store/user/selectors";
+import { isDataUpdating } from "../../../../store/user/selectors";
 import ButtonBorder from "../../../../components/Forms/Buttons/ButtonBorder";
 import {
-  updateLink,
-  deleteLink,
   updateSectionCard,
   updateCardImage,
 } from "../../../../store/user/actions";
@@ -68,7 +63,7 @@ export default function EditCardForm(props) {
 
   const handleImage = (e) => {
     dispatch(updateCardImage(e.target.files, props._id, props.section_id));
-  }
+  };
 
   const removeSection = (data) => {
     data._id = props.id;
@@ -104,12 +99,7 @@ export default function EditCardForm(props) {
           name="author"
           title={getSection.authorType}
           errors={errors.author?.message}
-          register={register("author", {
-            required: {
-              value: true,
-              message: "Required",
-            },
-            value: data.author,
+          register={register("author", { value: data.author,
           })}
         />
       ) : (
@@ -179,10 +169,8 @@ export default function EditCardForm(props) {
           ></input>
           <label htmlFor={`image_${props._id}`}>Update Picture</label>
           <div className="input-notes">
-          <p>
-            Will be cropped
-          </p>
-        </div>
+            <p>Will be cropped</p>
+          </div>
         </div>
       ) : (
         <></>

@@ -1,3 +1,4 @@
+import CreateCardForm from "./CreateCardForm";
 import EditCardForm from "./EditCardForm";
 import EditDetailsForm from "./EditDetailsForm";
 
@@ -22,6 +23,11 @@ export default function EditSectionForm(props) {
             />
           );
         })}
+        <CreateCardForm
+          type={data.type}
+          contentType={data.contentType}
+          section_id={data._id}
+        />
       </div>
     </details>
   );
