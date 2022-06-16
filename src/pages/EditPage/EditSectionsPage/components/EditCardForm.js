@@ -7,6 +7,7 @@ import ButtonBorder from "../../../../components/Forms/Buttons/ButtonBorder";
 import {
   updateSectionCard,
   updateCardImage,
+  deleteCard,
 } from "../../../../store/user/actions";
 import TextField from "../../../../components/Forms/TextFields/TextField";
 import LinkField from "../../../../components/Forms/TextFields/LinkField";
@@ -66,8 +67,9 @@ export default function EditCardForm(props) {
   };
 
   const removeSection = (data) => {
-    data._id = props.id;
-    // dispatch(deleteLink(data));
+    data._id = props._id;
+    data.section_id = props.section_id;
+    dispatch(deleteCard(data));
   };
 
   useEffect(() => {

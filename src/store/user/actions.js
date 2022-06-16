@@ -15,6 +15,7 @@ import {
   updateReduxSectionCard,
   updateReduxSectionCardImage,
   createReduxSectionCard,
+  deleteReduxSectionCard,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -337,6 +338,24 @@ export const createSectionCard =
       dispatch(createReduxSectionCard({ obj , section_id }));
 
       toast("Card Updated");
+    } catch (error) {
+      console.log(error);
+      toast(error.response.data);
+    }
+  };
+
+
+  export const deleteCard = (data) => async (dispatch, getState) => {
+    try {
+      await axios.patch(`${apiUrl}/auth/sections/cards/delete`, data, {
+        withCredentials: true,
+        mode: "cors",
+      });
+  
+      dispatch(deleteReduxSectionCard(data));
+      
+  
+      toast("Link Deleted");
     } catch (error) {
       console.log(error);
       toast(error.response.data);
