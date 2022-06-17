@@ -28,26 +28,6 @@ export default function EditCardForm(props) {
     url: false,
   });
 
-  const categories = [
-    "quote",
-    "books",
-    "films",
-    "tvShows",
-    "games",
-    "podcasts",
-    "albums",
-    "artwork",
-    "food",
-    "drinks",
-    "bars",
-    "restaurants",
-    "places",
-    "musicians",
-    "artists",
-    "directors",
-    "actors",
-  ];
-
   const {
     register,
     formState: { errors },

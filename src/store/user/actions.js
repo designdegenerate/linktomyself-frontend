@@ -16,6 +16,7 @@ import {
   updateReduxSectionCardImage,
   createReduxSectionCard,
   deleteReduxSectionCard,
+  createReduxSection,
 } from "./slice";
 import apiUrl from "../../apiUrl";
 import toast from "react-hot-toast";
@@ -335,7 +336,7 @@ export const createSectionCard =
       );
       const obj = res.data;
 
-      dispatch(createReduxSectionCard({ obj , section_id }));
+      dispatch(createReduxSectionCard({ obj, section_id }));
 
       toast("Card Updated");
     } catch (error) {
@@ -344,20 +345,46 @@ export const createSectionCard =
     }
   };
 
+export const deleteCard = (data) => async (dispatch, getState) => {
+  try {
+    await axios.patch(`${apiUrl}/auth/sections/cards/delete`, data, {
+      withCredentials: true,
+      mode: "cors",
+    });
 
-  export const deleteCard = (data) => async (dispatch, getState) => {
-    try {
-      await axios.patch(`${apiUrl}/auth/sections/cards/delete`, data, {
-        withCredentials: true,
-        mode: "cors",
-      });
-  
-      dispatch(deleteReduxSectionCard(data));
-      
-  
-      toast("Link Deleted");
-    } catch (error) {
-      console.log(error);
-      toast(error.response.data);
+    dispatch(deleteReduxSectionCard(data));
+
+    toast("Link Deleted");
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};
+
+export const createSection = (data, type) => async (dispatch, getState) => {
+  try {
+    const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
+
+    const sectionName = data === "tvShows" ? "TV Shows" : capitalize(data);
+
+    const obj = {
+      sectionName: `Favourite ${sectionName}`,
+      type,
+      contentType: data
     }
-  };
+
+    const newSection = await axios.post(`${apiUrl}/auth/sections`, obj, {
+      withCredentials: true,
+      mode: "cors",
+    });
+
+    console.log(newSection);
+
+    dispatch(createReduxSection(newSection.data));
+
+    toast("Section Created");
+  } catch (error) {
+    console.log(error);
+    toast(error.response.data);
+  }
+};

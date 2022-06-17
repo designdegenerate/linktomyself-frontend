@@ -77,6 +77,9 @@ const userSlice = createSlice({
       state.page.sections[index].fullLink = action.payload;
 
     },
+    createReduxSection: (state, action) => {
+      state.page.sections = [...state.page.sections, action.payload];
+    },
 
     updateReduxSectionCard: (state, action) => {
       const draftState = current(state.page.sections);
@@ -160,6 +163,7 @@ export const {
   updateReduxSectionCard,
   updateReduxSectionCardImage,
   createReduxSectionCard,
-  deleteReduxSectionCard
+  deleteReduxSectionCard,
+  createReduxSection
 } = userSlice.actions;
 export default userSlice.reducer;

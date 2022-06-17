@@ -10,7 +10,7 @@ export default function determineSection(contentType) {
   };
 
   switch (contentType) {
-    case "quote":
+    case "quotes":
       section.title = true;
       section.author = true;
       break;

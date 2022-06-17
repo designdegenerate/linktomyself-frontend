@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectUserPage } from "../../../store/user/selectors";
+import CreateSectionForm from "./components/CreateSectionForm";
 import EditSectionForm from "./components/EditSectionForm";
 import "./style.scss";
 
@@ -17,6 +18,7 @@ export default function EditSectionsPage() {
             key={sect._id}
           />
         })}
+        <CreateSectionForm/>
 
       </div>
     </article>
