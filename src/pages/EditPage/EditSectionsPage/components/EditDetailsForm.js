@@ -7,7 +7,7 @@ import LoadingButton from "../../../../components/Forms/Buttons/LoadingButton";
 import SubmitButton from "../../../../components/Forms/Buttons/SubmitButton";
 import { isDataUpdating } from "../../../../store/user/selectors";
 import ButtonBorder from "../../../../components/Forms/Buttons/ButtonBorder";
-import { updateSectionDetails } from "../../../../store/user/actions";
+import { deleteSection, updateSectionDetails } from "../../../../store/user/actions";
 
 export default function EditDetailsForm(props) {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function EditDetailsForm(props) {
 
   const removeSection = (data) => {
     data._id = props._id;
-    // dispatch(deleteCard(data));
+    dispatch(deleteSection(data));
   };
 
   return (

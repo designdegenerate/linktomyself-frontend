@@ -62,7 +62,7 @@ const userSlice = createSlice({
         return link._id === action.payload._id;
       });
 
-      newState.splice(index);
+      newState.splice(index, 1);
 
       state.page.permaLinks = newState;
     },
@@ -79,6 +79,18 @@ const userSlice = createSlice({
     },
     createReduxSection: (state, action) => {
       state.page.sections = [...state.page.sections, action.payload];
+    },
+    deleteReduxSection: (state, action) => {
+      const currentState = current(state.page.sections);
+      const newState = [...currentState];
+
+      const index = newState.findIndex((sect) => {
+        return sect._id === action.payload._id;
+      });
+
+      newState.splice(index, 1);
+
+      state.page.sections = newState;
     },
 
     updateReduxSectionCard: (state, action) => {
@@ -164,6 +176,7 @@ export const {
   updateReduxSectionCardImage,
   createReduxSectionCard,
   deleteReduxSectionCard,
-  createReduxSection
+  createReduxSection,
+  deleteReduxSection
 } = userSlice.actions;
 export default userSlice.reducer;
