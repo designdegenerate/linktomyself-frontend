@@ -379,8 +379,6 @@ export const createSection = (data, type) => async (dispatch, getState) => {
       mode: "cors",
     });
 
-    console.log(newSection);
-
     dispatch(createReduxSection(newSection.data));
 
     toast("Section Created");

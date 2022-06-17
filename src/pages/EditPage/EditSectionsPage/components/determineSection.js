@@ -28,6 +28,8 @@ export default function determineSection(contentType) {
       section.author = true;
       section.description = true;
       section.authorType = "Director";
+      section.image = true;
+      section.imageAlt = true;
       section.url = true;
       break;
 
@@ -36,6 +38,8 @@ export default function determineSection(contentType) {
       section.author = true;
       section.description = true;
       section.authorType = "Made By";
+      section.image = true;
+      section.imageAlt = true;
       section.url = true;
       break;
 

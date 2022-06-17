@@ -40,7 +40,7 @@ export default function CreateSectionForm(props) {
   const onSubmit = (data) => {
     
     let type;
-    const getType = determineSection(data);
+    const getType = determineSection(data.section);
 
     getType.image ? type = "gallery" : type = "list";
 

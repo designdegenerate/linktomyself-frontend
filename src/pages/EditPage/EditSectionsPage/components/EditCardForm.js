@@ -27,7 +27,6 @@ export default function EditCardForm(props) {
     imageAlt: false,
     url: false,
   });
-  console.log(props);
 
   const {
     register,
