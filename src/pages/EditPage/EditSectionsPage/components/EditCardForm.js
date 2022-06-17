@@ -27,6 +27,7 @@ export default function EditCardForm(props) {
     imageAlt: false,
     url: false,
   });
+  console.log(props);
 
   const {
     register,
@@ -175,7 +176,7 @@ export default function EditCardForm(props) {
           title="URL"
           errors={errors.link?.message}
           register={register("link", {
-            value: props.link,
+            value: data.link,
           })}
         />
       ) : (
