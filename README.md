@@ -1,6 +1,46 @@
-# Getting Started with Create React App
+# Linktomyself
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Linktomyself is a public homepage in a world where our digital life is spread across multiple platforms.
+
+## Features
+- Name, bio, profile picture
+- List of Links
+- Galleries with an optional link (e.g: My 5 favorite books and a link to the person's GoodReads)
+- Clean, fully responsive, design.
+- Light and Dark mode support and a selection of colour schemes.
+
+## Screenshots
+
+Link to more screenshots
+
+## Not Implemented (yet?)
+- validate forms better
+- links could use icons
+- API integration for automatically fetching content such as books, movies, etc.
+- The ability to change the arrangment of content (links, sections, section cards).
+- Reset password via email.
+- Public deployment!
+
+## Instructions
+
+### Backend Server
+This only contains the front-end code, you'll probably want [the server too](https://).
+
+### Fonts
+This project was designed with the [Cabinet Grotesque Variable fonts](https://www.fontshare.com/fonts/cabinet-grotesk) from Indian Type Foundry with specific typographic adjustments. You'll need to download this yourself as its license does not allow redistribution (although it has free unlimited usage for personal and commercial use). If you choose to use another font, you'll probably want to change the CSS in the following places:
+- ``src/scss/fonts.scss`` (fonts are imported here)
+- ``src/scss/typography.scss`` (font sizing)
+- ``src/scss/global-variables.scss`` (font weight and scaling)
+
+Run ``npm install`` to fetch dependencies.
+
+Rename ``apiUrl-template.js`` to ``apiUrl.js`` and add the URL to your own server.
+
+Now you can run the development server using ``npm start`` or build it using ``npm build``.
+
+## Deployment
+The Terms of Service and Privacy Policy pages have been left blank, however, it is your responsibility to write them and follow the local laws in your jurisdiction. 
+
 
 ## Available Scripts
 
@@ -39,7 +79,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## React Stuff
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
@@ -68,3 +108,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Technologies
+- React
+- Redux
+- Mongoose
+- Axios
+- Sass
+- Cloudinary
+- React Router
+- React hot toast
+
+## LICENSE
+Licensed under the terms of the GPL 2.
