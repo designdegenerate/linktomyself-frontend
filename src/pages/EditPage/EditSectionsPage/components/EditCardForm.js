@@ -161,7 +161,7 @@ export default function EditCardForm(props) {
       {getSection.imageAlt ? (
         <TextField
           name="imageAlt"
-          title="Image Descrription (for blind users)"
+          title="Image Description (for blind users)"
           errors={errors.description?.message}
           register={register("imageAlt", { value: data.description })}
         />
