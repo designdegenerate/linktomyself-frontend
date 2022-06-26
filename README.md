@@ -28,7 +28,7 @@ TODO: Add screenshot here
 This only contains the front-end code, you'll probably want [the server too](https://github.com/designdegenerate/linktomyself-backend).
 
 ### Fonts
-This project was designed with the [Cabinet Grotesque Variable fonts](https://www.fontshare.com/fonts/cabinet-grotesk) from Indian Type Foundry with specific typographic adjustments. You'll need to download this yourself as its license does not allow redistribution (although it has free unlimited usage for personal and commercial use). If you choose to use another font, you'll probably want to change the CSS in the following places:
+This project was designed with the [Cabinet Grotesque Variable fonts](https://www.fontshare.com/fonts/cabinet-grotesk) from Indian Type Foundry with specific typographic adjustments. You'll need to download this yourself and place the files in ``src/fonts/`` as its license does not allow redistribution (although it has free unlimited usage for personal and commercial use). If you choose to use another font, you'll probably want to change the CSS in the following places:
 - ``src/scss/fonts.scss`` (fonts are imported here)
 - ``src/scss/typography.scss`` (font sizing)
 - ``src/scss/global-variables.scss`` (font setting, weight and scaling)
