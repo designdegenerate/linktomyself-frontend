@@ -11,7 +11,8 @@ Linktomyself is a public homepage in a world where our digital life is spread ac
 
 ## Screenshots
 
-Link to more screenshots
+TODO: Add screenshot here
+[More screenshots]()
 
 ## Not Implemented (yet?)
 - validate forms better
@@ -24,13 +25,13 @@ Link to more screenshots
 ## Instructions
 
 ### Backend Server
-This only contains the front-end code, you'll probably want [the server too](https://).
+This only contains the front-end code, you'll probably want [the server too](https://github.com/designdegenerate/linktomyself-backend).
 
 ### Fonts
 This project was designed with the [Cabinet Grotesque Variable fonts](https://www.fontshare.com/fonts/cabinet-grotesk) from Indian Type Foundry with specific typographic adjustments. You'll need to download this yourself as its license does not allow redistribution (although it has free unlimited usage for personal and commercial use). If you choose to use another font, you'll probably want to change the CSS in the following places:
 - ``src/scss/fonts.scss`` (fonts are imported here)
 - ``src/scss/typography.scss`` (font sizing)
-- ``src/scss/global-variables.scss`` (font weight and scaling)
+- ``src/scss/global-variables.scss`` (font setting, weight and scaling)
 
 Run ``npm install`` to fetch dependencies.
 
@@ -122,4 +123,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - React hot toast
 
 ## LICENSE
-Licensed under the terms of the GPL 2.
+Licensed under the terms of the MIT License.
