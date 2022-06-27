@@ -16,6 +16,7 @@ import EditPage from "../pages/EditPage";
 import ChangePasswordPage from "../pages/EditPage/ChangePasswordPage";
 import DeleteUserPage from "../pages/EditPage/DeleteUserPage";
 import PrivacyPolicyPage from "../pages/PrivacyTOS/PrivacyPolicyPage";
+import TOSPage from "../pages/PrivacyTOS/TOSPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
         {/*"static" pages*/}
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/privacypolicy" element={<PrivacyPolicyPage/>}></Route>
+        <Route path="/tos" element={<TOSPage/>}></Route>
 
         {/*Auth pages*/}
         <Route path="/login" element={<LoginPage />}></Route>
