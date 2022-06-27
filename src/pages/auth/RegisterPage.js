@@ -109,9 +109,14 @@ export default function RegisterPage() {
             </p>
             <Checkbox
               name="agreeToTerms"
-              title="I agree to these terms "
-              errors={errors.link?.message}
-              register={register("visible")}
+              title="I agree to these terms"
+              errors={errors.agreeToTerms?.message}
+              register={register("agreeToTerms", {
+                required: {
+                  value: true,
+                  message: "Required"
+                }
+              })}
             />
             {loadingUser ? <LoadingButton /> : <SubmitButton />}
             <div>

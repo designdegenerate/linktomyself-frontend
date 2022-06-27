@@ -167,6 +167,11 @@ textarea {
   align-items: center;
   height: fit-content;
   gap: 0.5rem;
+  flex-wrap: wrap;
+
+  p {
+    flex-basis: 100%;
+  }
 }
 
 input[type=checkbox] {
