@@ -13,7 +13,7 @@ export default function Footer() {
           <Link to="/login">Login</Link>
         </li>
         <li>
-          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/privacypolicy">Privacy Policy</Link>
         </li>
         <li>
           <Link to="/tos">Terms of Service</Link>

@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { restoreLogin } from "../store/user/actions";
 import HomePage from "../pages/HomePage";
-import PrivacyPage from "../pages/Privacy";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import Page from "../pages/Page";
@@ -16,6 +15,7 @@ import NotFound from "../components/NotFound";
 import EditPage from "../pages/EditPage";
 import ChangePasswordPage from "../pages/EditPage/ChangePasswordPage";
 import DeleteUserPage from "../pages/EditPage/DeleteUserPage";
+import PrivacyPolicyPage from "../pages/PrivacyTOS/PrivacyPolicyPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ function App() {
       <Routes>
         {/*"static" pages*/}
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/privacy" element={<PrivacyPage />}></Route>
+        <Route path="/privacypolicy" element={<PrivacyPolicyPage/>}></Route>
 
         {/*Auth pages*/}
         <Route path="/login" element={<LoginPage />}></Route>
