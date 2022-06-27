@@ -1,6 +1,6 @@
 # Linktomyself
 
-Linktomyself is a public homepage in a world where our digital life is spread across multiple platforms.
+Linktomyself is a public homepage as-a-service in a world where our digital life is spread across multiple platforms.
 
 ## Features
 - Name, bio, profile picture
@@ -11,8 +11,9 @@ Linktomyself is a public homepage in a world where our digital life is spread ac
 
 ## Screenshots
 
-TODO: Add screenshot here
-[More screenshots]()
+![](https://raw.githubusercontent.com/designdegenerate/linktomyself-frontend/main/screenshots/linktomyself.png)
+
+[More screenshots](https://laurensdesign.design/work/linktomyself)
 
 ## Not Implemented (yet?)
 - validate forms better
