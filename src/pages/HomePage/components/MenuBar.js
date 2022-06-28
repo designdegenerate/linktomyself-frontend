@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 export default function MenuBar() {
   return (
     <div className="menubar">
-      <p>Linktomyself</p>
+      <Link to="/">Linktomyself</Link>
       <div>
         <Link className="button-border" to="/login">
           login
         </Link>
-        <Link className="button-border" to="/signup">
+        <Link className="button-filled" to="/signup">
           signup
         </Link>
       </div>

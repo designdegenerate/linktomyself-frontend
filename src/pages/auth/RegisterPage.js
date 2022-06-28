@@ -7,6 +7,7 @@ import { isUserLoading, selectUserProfile } from "../../store/user/selectors";
 import { useForm } from "react-hook-form";
 import Email from "../../components/Forms/TextFields/Email";
 import TextField from "../../components/Forms/TextFields/TextField";
+import Checkbox from "../../components/Forms/Checkbox";
 import Password from "../../components/Forms/TextFields/Password";
 import SubmitButton from "../../components/Forms/Buttons/SubmitButton";
 import LoadingButton from "../../components/Forms/Buttons/LoadingButton";
@@ -64,7 +65,7 @@ export default function RegisterPage() {
                   message:
                     "Username can only contain the following characters: aA–zZ, 0–9, '_', and '-'",
                 },
-                maxLength: 20
+                maxLength: 20,
               })}
             />
             {watchUsername ? (
@@ -102,11 +103,22 @@ export default function RegisterPage() {
                 },
               })}
             />
-            {loadingUser ? (
-              <LoadingButton />
-            ) : (
-              <SubmitButton />
-            )}
+            <br></br>
+            <p className="input-notes">
+              By using this service, you agree with the <Link to="/privacypolicy" target="_blank" rel="noopener noreferrer">Privacy Policy</Link> and <Link to="/tos" target="_blank" rel="noopener noreferrer">Terms of Service</Link>.
+            </p>
+            <Checkbox
+              name="agreeToTerms"
+              title="I agree to these terms"
+              errors={errors.agreeToTerms?.message}
+              register={register("agreeToTerms", {
+                required: {
+                  value: true,
+                  message: "Required"
+                }
+              })}
+            />
+            {loadingUser ? <LoadingButton /> : <SubmitButton />}
             <div>
               <p>Have an account?</p>
               <Link to="/login">Login instead</Link>
