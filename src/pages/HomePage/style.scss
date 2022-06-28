@@ -6,8 +6,10 @@
   align-items: baseline;
   gap: 1rem;
 
-  > p {
+  > a {
     font-size: var(--fontX2);
+    text-decoration: none;
+    cursor: pointer;
   }
 
   div:last-child {
