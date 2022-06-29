@@ -71,10 +71,14 @@
       line-height: 1.3;
     }
 
-    a {
-      margin-left: auto;
-      margin-right: auto;
+    div {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem auto 0 auto;
+      width: fit-content;
     }
+
   }
 
   .subtitle {
