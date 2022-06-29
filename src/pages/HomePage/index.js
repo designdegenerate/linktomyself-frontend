@@ -6,6 +6,7 @@ import { selectUserProfile } from "../../store/user/selectors";
 import MenuBar from "./components/MenuBar";
 import "./style.scss";
 import homeImage from "../../images/linktomyself-home.png";
+import homeImageDark from "../../images/linktomyself-home-dark.png";
 
 export default function HomePage() {
   const getUser = useSelector(selectUserProfile);
@@ -14,9 +15,12 @@ export default function HomePage() {
       {getUser ? <NavBar /> : <MenuBar />}
       <article>
         <div className="header">
-          <img src={homeImage} alt=""></img>
+          <picture>
+            <source srcSet={homeImageDark} media="(prefers-color-scheme: dark)" type="image/png"></source>
+            <img src={homeImage} alt="" type="image/png"></img>
+          </picture>
           <h1>Your uncomplicated personal homepage in a <br></br>decentralized world</h1>
-          <Link to="/signup#top" className="button-border">
+          <Link to="/signup" className="button-border">
             Create yours
           </Link>
         </div>
