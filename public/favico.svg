@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>favico</title>
+    <g id="favico" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FFFFFF" x="2" y="2" width="60" height="60" rx="8"></rect>
+        <g id="iconmonstr-cursor-32" transform="translate(23.000000, 14.000000)" fill="#000000" fill-rule="nonzero">
+            <polygon id="Path" points="0 0 24 18.4185 13.5735 20.1735 20.061 33.399 14.667 36 8.142 22.6815 -1.33226763e-15 29.7345"></polygon>
+        </g>
+    </g>
+</svg>
