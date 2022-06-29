@@ -1,19 +1,31 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import { selectUserProfile } from "../../store/user/selectors";
 import MenuBar from "./components/MenuBar";
 import "./style.scss";
+import homeImage from "../../images/linktomyself-home.png";
 
 export default function HomePage() {
   const getUser = useSelector(selectUserProfile);
   return (
     <main className="homepage">
-      {getUser ? <NavBar/> : <MenuBar />}
+      {getUser ? <NavBar /> : <MenuBar />}
       <article>
-        <h1>homepage</h1>
+        <div className="header">
+          <img src={homeImage} alt=""></img>
+          <h1>Your uncomplicated personal homepage in a <br></br>decentralized world</h1>
+          <Link to="/signup#top" className="button-border">
+            Create yours
+          </Link>
+        </div>
+        <div className="subtitle">
+          <p><strong>Because a personal homepage is a public profile</strong>. Most website builders are focused on structure with ugly, complicated, and bloated defaults. We keep it simple: tell a bit about yourself, show off your links to relevant places, show a selection of favourite things with an optional list to a full collection, and choose a colour scheme (with dark mode support). What more do you really need?
+          </p>
+        </div>
       </article>
-      <Footer/>
+      <Footer />
     </main>
   );
 }
