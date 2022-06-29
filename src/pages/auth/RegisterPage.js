@@ -30,13 +30,14 @@ export default function RegisterPage() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (hasProfile !== null) {
       navigate(`/p/${hasProfile.username}`);
     }
   }, [hasProfile, navigate]);
 
   return (
-    <main>
+    <main id="top">
       <div className="auth">
         <div className="auth-form-wrapper">
           <form onSubmit={handleSubmit(onSubmit)}>

@@ -107,6 +107,26 @@ export const logoutUser = () => async (dispatch, getState) => {
   }
 };
 
+// export const forceRefetchData = () => async (dispatch, getState) => {
+//   try {
+//     const newData = await axios.get(`${apiUrl}/auth/user`, {
+//       withCredentials: true,
+//       mode: "cors",
+//     });
+//     dispatch(setUserProfile(restoredUser.data.profile));
+//     dispatch(setUserPage(restoredUser.data.page));
+//   } catch (error) {
+
+//     //anything else is not
+//     if (error.response.data) {
+//       toast(error.response.data);
+//       console.log(error);
+//     } else {
+//       console.log(error);
+//     }
+//   }
+// };
+
 export const deleteUser = (data, navigate) => async (dispatch, getState) => {
   try {
     await axios.patch(`${apiUrl}/auth/user/delete`, data, {
