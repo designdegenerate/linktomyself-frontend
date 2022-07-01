@@ -43,7 +43,7 @@ export default function EditCardForm(props) {
   };
 
   const handleImage = (e) => {
-    dispatch(updateCardImage(e.target.files, props._id, props.section_id));
+    dispatch(updateCardImage(e.target.files, props._id, props.section_id, props.imageId));
   };
 
   const removeSection = (data) => {

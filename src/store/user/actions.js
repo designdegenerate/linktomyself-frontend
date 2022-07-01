@@ -339,7 +339,7 @@ export const updateSectionCard =
   };
 
 export const updateCardImage =
-  (img, _id, section_id) => async (dispatch, getState) => {
+  (img, _id, section_id, imageId) => async (dispatch, getState) => {
     try {
       dispatch(setUserLoading(true));
 
@@ -347,8 +347,9 @@ export const updateCardImage =
       formData.append("image", img[0]);
       formData.append("_id", _id);
       formData.append("section_id", section_id);
+      formData.append("imageId", imageId);
 
-      const imgURL = await axios.post(
+      const newImg = await axios.post(
         `${apiUrl}/auth/sections/cards/image`,
         formData,
         {
@@ -357,9 +358,9 @@ export const updateCardImage =
           data: formData,
         }
       );
-      const image = imgURL.data;
+      const image = newImg.data;
 
-      dispatch(updateReduxSectionCardImage({ _id, section_id, image }));
+      dispatch(updateReduxSectionCardImage({ _id, section_id, image: image.image, imageId: image.imageId }));
 
       dispatch(setUserLoading(false));
       toast("Updated Card Picture");
