@@ -33,7 +33,7 @@ export default function determineSection(contentType) {
       section.url = true;
       break;
 
-    case "tvShow":
+    case "tvShows":
       section.title = true;
       section.author = true;
       section.description = true;
