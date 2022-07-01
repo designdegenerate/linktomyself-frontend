@@ -28,6 +28,7 @@ export default function LoginPage() {
   };
 
   useEffect(() => {
+    document.title = "Login — Linktomyself";
     if (hasProfile !== null) {
       navigate(`/p/${hasProfile.username}`);
     }

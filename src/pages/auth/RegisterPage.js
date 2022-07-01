@@ -30,6 +30,7 @@ export default function RegisterPage() {
   };
 
   useEffect(() => {
+    document.title = "Create Account — Linktomyself";
     window.scrollTo(0, 0);
     if (hasProfile !== null) {
       navigate(`/p/${hasProfile.username}`);

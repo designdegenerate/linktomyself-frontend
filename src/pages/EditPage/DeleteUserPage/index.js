@@ -7,7 +7,7 @@ import {
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonBorder from "../../../components/Forms/Buttons/ButtonBorder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormError from "../../../components/Forms/FormError";
 import { deleteUser } from "../../../store/user/actions";
 import toast from "react-hot-toast";
@@ -27,6 +27,10 @@ export default function DeleteUserPage() {
       toast("username doesn't match")
     }
   };
+
+  useEffect(() => {
+    document.title = "Delete Account— Linktomyself";
+  }, [])
 
   return (
     <article className="delete-account">

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
@@ -6,6 +7,11 @@ import MenuBar from "../HomePage/components/MenuBar";
 import "./style.scss";
 
 export default function TOSPage() {
+
+  useEffect(() => {
+    document.title = "Terms of Service — Linktomyself";
+  }, [])
+
   const getUser = useSelector(selectUserProfile);
   return (
     <main>

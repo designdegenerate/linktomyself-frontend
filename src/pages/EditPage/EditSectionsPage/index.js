@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectUserPage } from "../../../store/user/selectors";
 import CreateSectionForm from "./components/CreateSectionForm";
@@ -7,6 +8,10 @@ import "./style.scss";
 export default function EditSectionsPage() {
   const userPage = useSelector(selectUserPage);
   const { sections } = userPage;
+
+  useEffect(() => {
+    document.title = "Edit Sections — Linktomyself";
+  }, [])
 
   return (
     <article className="edit-sections">
