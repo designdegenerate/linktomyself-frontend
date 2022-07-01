@@ -151,7 +151,6 @@ export default function SettingsPage() {
               name="profileImage"
               accept="image/png, image/jpeg"
               onChange={(e) => {
-                console.log("test");
                 dispatch(updateProfileImage(e.target.files));
               }}
             ></input>
