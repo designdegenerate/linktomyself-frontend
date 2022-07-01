@@ -239,6 +239,12 @@ export const deleteProfileImage = () => async (dispatch, getState) => {
     });
 
     dispatch(setUserLoading(false));
+    dispatch(
+      setUserPageByKey({
+        key: "profileImage",
+        value: null,
+      })
+    )
     toast("Deleted Profile Picture");
   } catch (error) {
     console.log(error);
