@@ -227,11 +227,10 @@ export const updateProfileImage = (img) => async (dispatch, getState) => {
   }
 };
 
-
 export const deleteProfileImage = () => async (dispatch, getState) => {
   try {
     dispatch(setUserLoading(true));
-    console.log("send req")
+    console.log("send req");
 
     const response = await axios.delete(`${apiUrl}/auth/user/image`, {
       withCredentials: true,
@@ -244,7 +243,7 @@ export const deleteProfileImage = () => async (dispatch, getState) => {
         key: "profileImage",
         value: null,
       })
-    )
+    );
     toast("Deleted Profile Picture");
   } catch (error) {
     console.log(error);
@@ -360,7 +359,45 @@ export const updateCardImage =
       );
       const image = newImg.data;
 
-      dispatch(updateReduxSectionCardImage({ _id, section_id, image: image.image, imageId: image.imageId }));
+      dispatch(
+        updateReduxSectionCardImage({
+          _id,
+          section_id,
+          image: image.image,
+          imageId: image.imageId,
+        })
+      );
+
+      dispatch(setUserLoading(false));
+      toast("Updated Card Picture");
+    } catch (error) {
+      console.log(error);
+      dispatch(setUserLoading(false));
+      toast(error.response.data);
+    }
+  };
+
+export const deleteCardImage = (data) => async (dispatch, getState) => {
+    try {
+      dispatch(setUserLoading(true));
+
+      await axios.patch(
+        `${apiUrl}/auth/sections/cards/image/delete`, data,
+        {
+          withCredentials: true,
+          mode: "cors",
+          data: data
+        }
+      );
+
+      dispatch(
+        updateReduxSectionCardImage({
+          _id: data._id,
+          section_id: data.section_id,
+          image: null,
+          imageId: null,
+        })
+      );
 
       dispatch(setUserLoading(false));
       toast("Updated Card Picture");
@@ -418,8 +455,8 @@ export const createSection = (data, type) => async (dispatch, getState) => {
     const obj = {
       sectionName: `Favourite ${sectionName}`,
       type,
-      contentType: data
-    }
+      contentType: data,
+    };
 
     const newSection = await axios.post(`${apiUrl}/auth/sections`, obj, {
       withCredentials: true,

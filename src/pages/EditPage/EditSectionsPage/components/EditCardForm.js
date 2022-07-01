@@ -8,6 +8,7 @@ import {
   updateSectionCard,
   updateCardImage,
   deleteCard,
+  deleteCardImage,
 } from "../../../../store/user/actions";
 import TextField from "../../../../components/Forms/TextFields/TextField";
 import LinkField from "../../../../components/Forms/TextFields/LinkField";
@@ -43,7 +44,14 @@ export default function EditCardForm(props) {
   };
 
   const handleImage = (e) => {
-    dispatch(updateCardImage(e.target.files, props._id, props.section_id, props.imageId));
+    dispatch(
+      updateCardImage(
+        e.target.files,
+        props._id,
+        props.section_id,
+        props.imageId
+      )
+    );
   };
 
   const removeSection = (data) => {
@@ -81,8 +89,7 @@ export default function EditCardForm(props) {
           name="author"
           title={getSection.authorType}
           errors={errors.author?.message}
-          register={register("author", { value: data.author,
-          })}
+          register={register("author", { value: data.author })}
         />
       ) : (
         <></>
@@ -102,54 +109,70 @@ export default function EditCardForm(props) {
       {getSection.image ? (
         <div className="card-image">
           <p>Picture</p>
-          {props.image ? (
-            <div
-              className="image"
-              style={{
-                backgroundImage: `url(${props.image})`,
-              }}
-            >
-              {isLoading ? (
-                <div>
-                  <svg
-                    width="38"
-                    height="38"
-                    viewBox="0 0 38 38"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="loaderIcon"
-                  >
-                    <g fill="none" fillRule="evenodd">
-                      <g transform="translate(1 1)" strokeWidth="2">
-                        <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
-                        <path d="M36 18c0-9.94-8.06-18-18-18">
-                          <animateTransform
-                            attributeName="transform"
-                            type="rotate"
-                            from="0 18 18"
-                            to="360 18 18"
-                            dur="1s"
-                            repeatCount="indefinite"
-                          />
-                        </path>
-                      </g>
+          <div
+            className="image"
+            style={{
+              backgroundImage: `url(${props.image})`,
+            }}
+          >
+            {isLoading ? (
+              <div>
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="loaderIcon"
+                >
+                  <g fill="none" fillRule="evenodd">
+                    <g transform="translate(1 1)" strokeWidth="2">
+                      <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
+                      <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform
+                          attributeName="transform"
+                          type="rotate"
+                          from="0 18 18"
+                          to="360 18 18"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        />
+                      </path>
                     </g>
-                  </svg>
-                </div>
-              ) : (
-                <> </>
-              )}
-            </div>
-          ) : (
-            <></>
-          )}
-          <input
-            type="file"
-            id={`image_${props._id}`}
-            name="image"
-            accept="image/png, image/jpeg"
-            onChange={handleImage}
-          ></input>
-          <label htmlFor={`image_${props._id}`}>Update Picture</label>
+                  </g>
+                </svg>
+              </div>
+            ) : (
+              <> </>
+            )}
+          </div>
+          <div className="button-row">
+            <input
+              type="file"
+              id={`image_${props._id}`}
+              name="image"
+              accept="image/png, image/jpeg"
+              onChange={handleImage}
+            ></input>
+            <label htmlFor={`image_${props._id}`}>Update</label>
+            {props.image ? (
+              <button
+                onClick={(e) => {
+                  const data = {
+                    _id: props._id,
+                    section_id: props.section_id,
+                    imageId: props.imageId,
+                  };
+                  e.preventDefault();
+                  dispatch(deleteCardImage(data));
+                }}
+                className="button-filled"
+              >
+                Delete
+              </button>
+            ) : (
+              <></>
+            )}
+          </div>
           <div className="input-notes">
             <p>Will be cropped</p>
           </div>
