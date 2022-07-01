@@ -3,10 +3,15 @@ import { selectUserPage } from "../../../store/user/selectors";
 import "./style.scss";
 import EditLinkForm from "./EditLinkForm";
 import AddLinkForm from "./AddLinkForm";
+import { useEffect } from "react";
 
 export default function EditLinksPage() {
   const userPage = useSelector(selectUserPage);
   const { permaLinks } = userPage;
+
+  useEffect(() => {
+    document.title = "Edit Links — Linktomyself";
+  })
 
   return (
     <article className="edit-links">

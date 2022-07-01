@@ -7,8 +7,14 @@ import MenuBar from "./components/MenuBar";
 import "./style.scss";
 import homeImage from "../../images/linktomyself-home.png";
 import homeImageDark from "../../images/linktomyself-home-dark.png";
+import { useEffect } from "react";
 
 export default function HomePage() {
+
+  useEffect(() => {
+    document.title = "Home — Linktomyself";
+  }, [])
+
   const getUser = useSelector(selectUserProfile);
   return (
     <main className="homepage">

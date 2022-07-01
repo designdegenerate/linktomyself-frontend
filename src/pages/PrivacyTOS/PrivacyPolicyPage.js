@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
@@ -6,6 +7,10 @@ import MenuBar from "../HomePage/components/MenuBar";
 import "./style.scss";
 
 export default function PrivacyPolicyPage() {
+  useEffect(() => {
+    document.title = "Privacy Policy — Linktomyself";
+  }, [])
+
   const getUser = useSelector(selectUserProfile);
   return (
     <main>

@@ -39,6 +39,7 @@ export default function SettingsPage() {
   const watchUsername = watch("username");
 
   useEffect(() => {
+    document.title = "Profile Settings — Linktomyself";
     // MongoDB doesn't store
     // keys with empty strings by default
     // so fetching this data once more to be

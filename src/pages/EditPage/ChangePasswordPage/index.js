@@ -8,10 +8,15 @@ import { Link } from "react-router-dom";
 import { updateData } from "../../../store/user/actions";
 import Password from "../../../components/Forms/TextFields/Password";
 import FormError from "../../../components/Forms/FormError";
+import { useEffect } from "react";
 
 export default function ChangePasswordPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(isDataUpdating);
+
+  useEffect(() => {
+    document.title = "Change Password — Linktomyself";
+  }, []);
 
   const {
     register,
