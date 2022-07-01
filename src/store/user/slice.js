@@ -117,8 +117,8 @@ const userSlice = createSlice({
         return card._id === action.payload._id;
       });
 
-      console.log(action.payload);
       state.page.sections[sectIndex].content[cardIndex].image = action.payload.image.image;
+      state.page.sections[sectIndex].content[cardIndex].imageId = action.payload.image.imageId;
     },
     createReduxSectionCard: (state, action) => {
       const draftState = current(state.page.sections);
