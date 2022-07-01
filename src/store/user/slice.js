@@ -85,7 +85,7 @@ const userSlice = createSlice({
       const newState = [...currentState];
 
       const index = newState.findIndex((sect) => {
-        return sect._id === action.payload._id;
+        return sect._id === action.payload;
       });
 
       newState.splice(index, 1);
@@ -117,8 +117,8 @@ const userSlice = createSlice({
         return card._id === action.payload._id;
       });
 
-      console.log(action.payload);
-      state.page.sections[sectIndex].content[cardIndex].image = action.payload.image.image;
+      state.page.sections[sectIndex].content[cardIndex].image = action.payload.image;
+      state.page.sections[sectIndex].content[cardIndex].imageId = action.payload.imageId;
     },
     createReduxSectionCard: (state, action) => {
       const draftState = current(state.page.sections);

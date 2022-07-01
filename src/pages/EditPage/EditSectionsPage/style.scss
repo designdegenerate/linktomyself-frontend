@@ -175,6 +175,12 @@ article.edit-sections {
         outline: thin dotted;
       }
 
+      .button-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
       .input-notes {
         margin-top: 0.5rem;
       }

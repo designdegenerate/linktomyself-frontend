@@ -16,6 +16,7 @@ export default function EditSectionForm(props) {
               key={obj._id}
               _id={obj._id}
               image={obj.image}
+              imageId={obj.imageId}
               section_id={data._id}
               data={obj}
               type={data.type}

@@ -13,6 +13,7 @@ import {
 import "./style.scss";
 import { Link } from "react-router-dom";
 import {
+  deleteProfileImage,
   restoreLogin,
   updateData,
   updateProfileImage,
@@ -108,7 +109,7 @@ export default function SettingsPage() {
           <div
             className="image"
             style={{
-              backgroundImage: `url(${profileImage})`,
+              backgroundImage: `url(${profileImage?.link})`,
             }}
           >
             {isLoading ? (
@@ -141,16 +142,33 @@ export default function SettingsPage() {
               <> </>
             )}
           </div>
-          <input
-            type="file"
-            id="profileImage"
-            name="profileImage"
-            accept="image/png, image/jpeg"
-            onChange={(e) => {
-              dispatch(updateProfileImage(e.target.files));
-            }}
-          ></input>
-          <label htmlFor="profileImage">Update Picture</label>
+        </div>
+        <div className="profile-picture-buttons">
+          <div>
+            <input
+              type="file"
+              id="profileImage"
+              name="profileImage"
+              accept="image/png, image/jpeg"
+              onChange={(e) => {
+                dispatch(updateProfileImage(e.target.files));
+              }}
+            ></input>
+            <label htmlFor="profileImage">Update Picture</label>
+          </div>
+          {profileImage ? (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(deleteProfileImage());
+              }}
+              className="button-filled"
+            >
+              Remove
+            </button>
+          ) : (
+            <></>
+          )}
         </div>
         <TextField
           name="name"

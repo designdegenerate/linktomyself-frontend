@@ -27,7 +27,7 @@ export default function Content() {
           <h2 className="oneliner">{getPage.oneLiner}</h2>
           <p className="bio">{getPage.bio}</p>
           {getPage.sections.map((sect) => {
-            return <Section data={sect} />;
+            return <Section key={sect._id} data={sect} />;
           })}
         </>
       )}

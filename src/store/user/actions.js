@@ -227,6 +227,31 @@ export const updateProfileImage = (img) => async (dispatch, getState) => {
   }
 };
 
+export const deleteProfileImage = () => async (dispatch, getState) => {
+  try {
+    dispatch(setUserLoading(true));
+    console.log("send req");
+
+    const response = await axios.delete(`${apiUrl}/auth/user/image`, {
+      withCredentials: true,
+      mode: "cors",
+    });
+
+    dispatch(setUserLoading(false));
+    dispatch(
+      setUserPageByKey({
+        key: "profileImage",
+        value: null,
+      })
+    );
+    toast("Deleted Profile Picture");
+  } catch (error) {
+    console.log(error);
+    dispatch(setUserLoading(false));
+    toast(error.response.data);
+  }
+};
+
 export const addLink = (data) => async (dispatch, getState) => {
   console.log(data);
   try {
@@ -313,7 +338,7 @@ export const updateSectionCard =
   };
 
 export const updateCardImage =
-  (img, _id, section_id) => async (dispatch, getState) => {
+  (img, _id, section_id, imageId) => async (dispatch, getState) => {
     try {
       dispatch(setUserLoading(true));
 
@@ -321,8 +346,9 @@ export const updateCardImage =
       formData.append("image", img[0]);
       formData.append("_id", _id);
       formData.append("section_id", section_id);
+      formData.append("imageId", imageId);
 
-      const imgURL = await axios.post(
+      const newImg = await axios.post(
         `${apiUrl}/auth/sections/cards/image`,
         formData,
         {
@@ -331,9 +357,47 @@ export const updateCardImage =
           data: formData,
         }
       );
-      const image = imgURL.data;
+      const image = newImg.data;
 
-      dispatch(updateReduxSectionCardImage({ _id, section_id, image }));
+      dispatch(
+        updateReduxSectionCardImage({
+          _id,
+          section_id,
+          image: image.image,
+          imageId: image.imageId,
+        })
+      );
+
+      dispatch(setUserLoading(false));
+      toast("Updated Card Picture");
+    } catch (error) {
+      console.log(error);
+      dispatch(setUserLoading(false));
+      toast(error.response.data);
+    }
+  };
+
+export const deleteCardImage = (data) => async (dispatch, getState) => {
+    try {
+      dispatch(setUserLoading(true));
+
+      await axios.patch(
+        `${apiUrl}/auth/sections/cards/image/delete`, data,
+        {
+          withCredentials: true,
+          mode: "cors",
+          data: data
+        }
+      );
+
+      dispatch(
+        updateReduxSectionCardImage({
+          _id: data._id,
+          section_id: data.section_id,
+          image: null,
+          imageId: null,
+        })
+      );
 
       dispatch(setUserLoading(false));
       toast("Updated Card Picture");
@@ -391,8 +455,8 @@ export const createSection = (data, type) => async (dispatch, getState) => {
     const obj = {
       sectionName: `Favourite ${sectionName}`,
       type,
-      contentType: data
-    }
+      contentType: data,
+    };
 
     const newSection = await axios.post(`${apiUrl}/auth/sections`, obj, {
       withCredentials: true,
