@@ -85,7 +85,7 @@ const userSlice = createSlice({
       const newState = [...currentState];
 
       const index = newState.findIndex((sect) => {
-        return sect._id === action.payload._id;
+        return sect._id === action.payload;
       });
 
       newState.splice(index, 1);
