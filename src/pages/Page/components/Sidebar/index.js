@@ -12,7 +12,7 @@ export default function Sidebar() {
       <div className="profile-wrapper">
         <div
           className="profile-image"
-          style={{ backgroundImage: `url(${getPage.profileImage})` }}
+          style={{ backgroundImage: `url(${getPage.profileImage?.link})` }}
         ></div>
         <div>
           <h1>{getPage.user.name}</h1>

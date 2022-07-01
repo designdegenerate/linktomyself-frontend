@@ -227,6 +227,26 @@ export const updateProfileImage = (img) => async (dispatch, getState) => {
   }
 };
 
+
+export const deleteProfileImage = () => async (dispatch, getState) => {
+  try {
+    dispatch(setUserLoading(true));
+    console.log("send req")
+
+    const response = await axios.delete(`${apiUrl}/auth/user/image`, {
+      withCredentials: true,
+      mode: "cors",
+    });
+
+    dispatch(setUserLoading(false));
+    toast("Deleted Profile Picture");
+  } catch (error) {
+    console.log(error);
+    dispatch(setUserLoading(false));
+    toast(error.response.data);
+  }
+};
+
 export const addLink = (data) => async (dispatch, getState) => {
   console.log(data);
   try {

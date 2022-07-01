@@ -66,6 +66,13 @@
       }
     }
   }
+}
+
+.profile-picture-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: -1rem;
 
   label {
     @extend %link-button;
@@ -91,5 +98,4 @@
   input[type="file"].visually-hidden:focus-within + label {
     outline: thin dotted;
   }
-
 }
