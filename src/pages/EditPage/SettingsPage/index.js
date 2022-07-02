@@ -251,9 +251,13 @@ export default function SettingsPage() {
         ) : (
           <SubmitButton title="Update Profile" />
         )}
-        <div className="delete-user">
+        <div className="bottom">
+          <label htmlFor="downloaddata">Backup your data</label>
+          <Link className="button-border" id="downloaddata" to="/u/download-data">
+            Download
+          </Link>
           <label htmlFor="deleteUser">Danger Zone</label>
-          <Link id="deleteUser" to="/u/delete-account">
+          <Link className="button-border" id="deleteUser" to="/u/delete-account">
             Delete Account
           </Link>
         </div>

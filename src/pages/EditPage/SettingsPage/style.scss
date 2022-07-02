@@ -24,8 +24,23 @@
   }
 }
 
-.delete-user {
+.bottom {
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    width: fit-content;
+  }
+
+  a + label {
+    margin-top: 1.5rem;
+
+  }
 }
 
 .select-color-scheme {
