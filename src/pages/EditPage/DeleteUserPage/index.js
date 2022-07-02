@@ -29,7 +29,7 @@ export default function DeleteUserPage() {
   };
 
   useEffect(() => {
-    document.title = "Delete Account— Linktomyself";
+    document.title = "Delete Account — Linktomyself";
   }, [])
 
   return (

@@ -232,7 +232,7 @@ export const deleteProfileImage = () => async (dispatch, getState) => {
     dispatch(setUserLoading(true));
     console.log("send req");
 
-    const response = await axios.delete(`${apiUrl}/auth/user/image`, {
+    await axios.delete(`${apiUrl}/auth/user/image`, {
       withCredentials: true,
       mode: "cors",
     });
