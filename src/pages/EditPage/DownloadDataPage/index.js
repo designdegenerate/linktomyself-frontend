@@ -95,7 +95,7 @@ export default function DownloadDataPage() {
       <Link className="button-filled" to="/u/settings">
         Back to Profile Settings
       </Link>
-      <h1>Download Your Data</h1>
+      <h1>Download Your Data (Alpha)</h1>
       <ul>
         <li>
           This will be a zip file. Depending on the size of your content, this
@@ -110,6 +110,7 @@ export default function DownloadDataPage() {
           inside sections will be attached. Older pictures will not be
           downloaded as we do not store them.
         </li>
+        <li>If you have too many pictures, the download might fail.</li>
         <li>
           This might take a while as the browser downloads the data from the
           server and zips it.
