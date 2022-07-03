@@ -7,12 +7,16 @@ import {
   selectUserProfile,
 } from "../../../store/user/selectors";
 import "./style.scss";
+import { saveAs } from "file-saver";
+import axios from "axios";
+const JSZip = require("jszip");
 
 export default function DownloadDataPage() {
   const [getDownload, setDownload] = useState(false);
   const dispatch = useDispatch();
   const page = useSelector(selectUserPage);
   const profile = useSelector(selectUserProfile);
+  const zip = new JSZip();
 
   /*
   - Download files as JSON
@@ -21,15 +25,91 @@ export default function DownloadDataPage() {
   - If photos are too large, 
   */
 
-  const downloadData = () => {
+  const downloadData = async () => {
     setDownload(true);
     dispatch(forceRefetchData());
-    const jsonVariable = JSON.stringify(req.user);
-    // var path_tmp = create_tmp_file(jsonVariable);
-    // res.download(path_tmp);
-  };
 
-  // const cancelData
+    // First Download json data
+    zip.file("linktomyself_data/user_page.json", JSON.stringify(page));
+    zip.file("linktomyself_data/user_profile.json", JSON.stringify(profile));
+
+    //Fetch profile picture, it it exists
+    if (page.profileImage) {
+      const filename = page.profileImage.link.substr(page.profileImage.link.lastIndexOf('/') + 1);
+
+      const profileImage = await axios.get(page.profileImage.link, { responseType: 'blob' });
+      
+      zip.file(`linktomyself_data/${filename}`, profileImage.data);
+    }
+
+    //Download 1
+    zip.generateAsync({ type: "blob" }).then(function (blob) {
+      saveAs(blob, "linktomyself_data.zip");
+    });
+
+    //logic
+    //map over sect
+    //add image
+    //count file size
+    //if file size is under, keep going
+    //else, zip the file
+    // then, start a new file
+    //loop
+
+    //Now map over data
+    // page.sections.map( async(sect) => {
+    //   await sect.content.map( async(card) => {
+    //     if (card.image) {
+    //       const filename = card.image.substr(card.image.lastIndexOf('/') + 1);
+
+    //       const picture = await axios.get(card.image, { responseType: 'blob' });
+
+    //       zip.file(`linktomyself_content/${filename}`, picture.data)
+          
+    //     }
+
+    //   })
+
+      await Promise.all(page.sections.map(
+        sect => {
+          return sect.content.map(
+            card => {
+              return axios.get(card.image, { responseType: 'blob' });
+            }
+          )
+        }
+      )).then(image => {
+        console.log(image);
+    })
+
+    //todo: figure out promise, make it download to a new zip file and mark the other thingy as just a bug
+
+      /*
+      export function FetchGalleries( galleries_ids ) {
+
+    return function (dispatch) {
+        return Promise.all(galleries_ids.map( (record, index) => {
+            return axios.get('https://e.dgyd.com.ar/wp-json/wp/v2/media?_embed&parent='+record.id);
+        })).then(galleries => {
+            dispatch({ type: FETCH_GALLERIES_SUCCESS, payload: galleries });
+        });
+    }
+    */
+
+    //   )
+    // })
+
+    // zip.generateAsync({ type: "blob" }).then(function (blob) {
+    //   saveAs(blob, "linktomyself_content.zip");
+    // });
+
+    //
+
+    //Add loading bar thingie
+    //add warning when page is left
+
+    setDownload(false);
+  };
 
   useEffect(() => {
     document.title = "Download Your Data — Linktomyself";
@@ -63,15 +143,18 @@ export default function DownloadDataPage() {
           <strong>Closing the page will cancel the download.</strong>
         </li>
       </ul>
-      <button
-        className="button-border"
-        onClick={() => {
-          downloadData();
-        }}
-      >
-        Download Data
-      </button>
-
+      {!getDownload ? (
+        <button
+          className="button-border"
+          onClick={() => {
+            downloadData();
+          }}
+        >
+          Download Data
+        </button>
+      ) : (
+        <></>
+      )}
       {getDownload ? (
         <div className="console">
           <h2>Status</h2>
