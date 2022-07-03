@@ -10,6 +10,7 @@ import "./style.scss";
 import { saveAs } from "file-saver";
 import axios from "axios";
 import { ZipWriter, BlobReader, TextReader, BlobWriter, terminateWorkers} from "@zip.js/zip.js";
+import LoadingButton from "../../../components/Forms/Buttons/LoadingButton";
 
 export default function DownloadDataPage() {
   const [getDownload, setDownload] = useState(false);
@@ -127,18 +128,7 @@ export default function DownloadDataPage() {
           Download Data
         </button>
       ) : (
-        <></>
-      )}
-      {getDownload ? (
-        <div className="console">
-          <h2>Status</h2>
-          <ul>
-            <li>Starting download…</li>
-          </ul>
-          <button className="button-filled">Cancel Data Download</button>
-        </div>
-      ) : (
-        <></>
+        <LoadingButton/>
       )}
     </article>
   );

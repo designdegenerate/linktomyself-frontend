@@ -25,4 +25,17 @@
       padding: 0;
     }
   }
+
+  .button-loading {
+    border: 1px solid var(--fg-color);
+    width: 8rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    box-sizing: content-box;
+
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
 }
