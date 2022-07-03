@@ -107,25 +107,19 @@ export const logoutUser = () => async (dispatch, getState) => {
   }
 };
 
-// export const forceRefetchData = () => async (dispatch, getState) => {
-//   try {
-//     const newData = await axios.get(`${apiUrl}/auth/user`, {
-//       withCredentials: true,
-//       mode: "cors",
-//     });
-//     dispatch(setUserProfile(restoredUser.data.profile));
-//     dispatch(setUserPage(restoredUser.data.page));
-//   } catch (error) {
-
-//     //anything else is not
-//     if (error.response.data) {
-//       toast(error.response.data);
-//       console.log(error);
-//     } else {
-//       console.log(error);
-//     }
-//   }
-// };
+export const forceRefetchData = () => async (dispatch, getState) => {
+  try {
+    const newData = await axios.get(`${apiUrl}/auth/user`, {
+      withCredentials: true,
+      mode: "cors",
+    });
+    dispatch(setUserProfile(newData.data.profile));
+    dispatch(setUserPage(newData.data.page));
+  } catch (error) {
+    toast(error.response.data);
+    console.log(error);
+  }
+};
 
 export const deleteUser = (data, navigate) => async (dispatch, getState) => {
   try {
@@ -378,35 +372,32 @@ export const updateCardImage =
   };
 
 export const deleteCardImage = (data) => async (dispatch, getState) => {
-    try {
-      dispatch(setUserLoading(true));
+  try {
+    dispatch(setUserLoading(true));
 
-      await axios.patch(
-        `${apiUrl}/auth/sections/cards/image/delete`, data,
-        {
-          withCredentials: true,
-          mode: "cors",
-          data: data
-        }
-      );
+    await axios.patch(`${apiUrl}/auth/sections/cards/image/delete`, data, {
+      withCredentials: true,
+      mode: "cors",
+      data: data,
+    });
 
-      dispatch(
-        updateReduxSectionCardImage({
-          _id: data._id,
-          section_id: data.section_id,
-          image: null,
-          imageId: null,
-        })
-      );
+    dispatch(
+      updateReduxSectionCardImage({
+        _id: data._id,
+        section_id: data.section_id,
+        image: null,
+        imageId: null,
+      })
+    );
 
-      dispatch(setUserLoading(false));
-      toast("Updated Card Picture");
-    } catch (error) {
-      console.log(error);
-      dispatch(setUserLoading(false));
-      toast(error.response.data);
-    }
-  };
+    dispatch(setUserLoading(false));
+    toast("Updated Card Picture");
+  } catch (error) {
+    console.log(error);
+    dispatch(setUserLoading(false));
+    toast(error.response.data);
+  }
+};
 
 export const createSectionCard =
   (data, section_id) => async (dispatch, getState) => {
