@@ -15,7 +15,7 @@ export default function NavBar() {
       <ul>
         <li>
           <Link to={`/p/${user.username}`}>
-            <h1>Linktomyself</h1>
+            <h1>Linktomyself (alpha)</h1>
           </Link>
         </li>
         <li>

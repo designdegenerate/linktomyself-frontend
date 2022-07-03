@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function MenuBar() {
   return (
     <div className="menubar">
-      <Link to="/">Linktomyself</Link>
+      <Link to="/">Linktomyself (alpha)</Link>
       <div>
         <Link className="button-border" to="/login">
           login
