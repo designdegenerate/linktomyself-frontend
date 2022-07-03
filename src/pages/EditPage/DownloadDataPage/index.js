@@ -9,101 +9,75 @@ import {
 import "./style.scss";
 import { saveAs } from "file-saver";
 import axios from "axios";
-const JSZip = require("jszip");
+import { ZipWriter, BlobReader, TextReader, BlobWriter, terminateWorkers} from "@zip.js/zip.js";
 
 export default function DownloadDataPage() {
   const [getDownload, setDownload] = useState(false);
   const dispatch = useDispatch();
   const page = useSelector(selectUserPage);
   const profile = useSelector(selectUserProfile);
-  const zip = new JSZip();
-
-  /*
-  - Download files as JSON
-  - Download profile pic
-  - Map over other photos
-  - If photos are too large, 
-  */
 
   const downloadData = async () => {
     setDownload(true);
     dispatch(forceRefetchData());
 
+    const blobWriter = new BlobWriter("application/zip");
+    const zipWriter = new ZipWriter(blobWriter);
+
     // First Download json data
-    zip.file("linktomyself_data/user_page.json", JSON.stringify(page));
-    zip.file("linktomyself_data/user_profile.json", JSON.stringify(profile));
+    await zipWriter.add("user_page.json", new TextReader(JSON.stringify(page)));
+    await zipWriter.add("user_profile.json", new TextReader(JSON.stringify(profile)));
 
     //Fetch profile picture, it it exists
     if (page.profileImage) {
-      const filename = page.profileImage.link.substr(page.profileImage.link.lastIndexOf('/') + 1);
+      const filename = page.profileImage.link.substr(
+        page.profileImage.link.lastIndexOf("/") + 1
+      );
 
-      const profileImage = await axios.get(page.profileImage.link, { responseType: 'blob' });
-      
-      zip.file(`linktomyself_data/${filename}`, profileImage.data);
+      const profileImage = await axios.get(page.profileImage.link, {
+        responseType: "blob",
+      });
+
+      await zipWriter.add(filename, new BlobReader(profileImage.data));
+
     }
 
     //Download 1
-    zip.generateAsync({ type: "blob" }).then(function (blob) {
-      saveAs(blob, "linktomyself_data.zip");
+    const dataBlob = URL.createObjectURL(await zipWriter.close());
+    saveAs(dataBlob, "linktomyself_data.zip");
+    URL.revokeObjectURL(dataBlob);
+    terminateWorkers();
+
+    const imageLinks = [];
+
+    //Gather all links first
+    page.sections.map((sect) => {
+      sect.content.map((card) => {
+        if (card.image) {
+          imageLinks.push(card.image);
+        }
+      });
     });
 
-    //logic
-    //map over sect
-    //add image
-    //count file size
-    //if file size is under, keep going
-    //else, zip the file
-    // then, start a new file
-    //loop
+    const imageBlobWriter = new BlobWriter("application/zip");
+    const imageZipWriter = new ZipWriter(imageBlobWriter);
 
-    //Now map over data
-    // page.sections.map( async(sect) => {
-    //   await sect.content.map( async(card) => {
-    //     if (card.image) {
-    //       const filename = card.image.substr(card.image.lastIndexOf('/') + 1);
+    // Using for loop to allow for aync operation
+    for (const index in imageLinks) {
+      const filename = imageLinks[index].substr(
+        imageLinks[index].lastIndexOf("/") + 1
+      );
 
-    //       const picture = await axios.get(card.image, { responseType: 'blob' });
+      const picture = await axios.get(imageLinks[index], { responseType: 'blob' });
 
-    //       zip.file(`linktomyself_content/${filename}`, picture.data)
-          
-    //     }
-
-    //   })
-
-      await Promise.all(page.sections.map(
-        sect => {
-          return sect.content.map(
-            card => {
-              return axios.get(card.image, { responseType: 'blob' });
-            }
-          )
-        }
-      )).then(image => {
-        console.log(image);
-    })
-
-    //todo: figure out promise, make it download to a new zip file and mark the other thingy as just a bug
-
-      /*
-      export function FetchGalleries( galleries_ids ) {
-
-    return function (dispatch) {
-        return Promise.all(galleries_ids.map( (record, index) => {
-            return axios.get('https://e.dgyd.com.ar/wp-json/wp/v2/media?_embed&parent='+record.id);
-        })).then(galleries => {
-            dispatch({ type: FETCH_GALLERIES_SUCCESS, payload: galleries });
-        });
+      await imageZipWriter.add(filename, new BlobReader(picture.data));
     }
-    */
 
-    //   )
-    // })
-
-    // zip.generateAsync({ type: "blob" }).then(function (blob) {
-    //   saveAs(blob, "linktomyself_content.zip");
-    // });
-
-    //
+    // Download the rest of the data
+    const contentBlob = URL.createObjectURL(await imageZipWriter.close());
+    saveAs(contentBlob, "linktomyself_content.zip");
+    URL.revokeObjectURL(contentBlob);
+    terminateWorkers();
 
     //Add loading bar thingie
     //add warning when page is left
