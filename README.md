@@ -122,6 +122,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Cloudinary
 - React Router
 - React hot toast
+- zip.js
 
 ## LICENSE
 Licensed under the terms of the MIT License.
