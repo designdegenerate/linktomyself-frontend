@@ -1,0 +1,41 @@
+.download-data {
+  max-width: 600px;
+  margin: 2rem auto;
+
+  > a:first-child{
+    width: fit-content;
+    margin-bottom: 4rem;
+  }
+
+  ul {
+    margin: 0.5rem 0 2rem 0;
+    padding: 0.5rem;
+
+    li + li {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .console {
+    margin-top: 2rem;
+    max-height: 10rem;
+    overflow: scroll;
+
+    ul {
+      padding: 0;
+    }
+  }
+
+  .button-loading {
+    border: 1px solid var(--fg-color);
+    width: 8rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    box-sizing: content-box;
+
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+}

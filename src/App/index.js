@@ -17,6 +17,7 @@ import ChangePasswordPage from "../pages/EditPage/ChangePasswordPage";
 import DeleteUserPage from "../pages/EditPage/DeleteUserPage";
 import PrivacyPolicyPage from "../pages/PrivacyTOS/PrivacyPolicyPage";
 import TOSPage from "../pages/PrivacyTOS/TOSPage";
+import DownloadDataPage from "../pages/EditPage/DownloadDataPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ function App() {
         {/*Settings/Editing Pages*/}
         <Route path="/u" element={<EditPage />}>
           <Route path="settings" element={<SettingsPage />}></Route>
+          <Route path="download-data" element={<DownloadDataPage/>}></Route>
           <Route path="edit-links" element={<EditLinksPage />}></Route>
           <Route path="edit-sections" element={<EditSectionsPage />}></Route>
           <Route
