@@ -2,6 +2,8 @@
 
 Linktomyself is a public homepage as-a-service in a world where our digital life is spread across multiple platforms.
 
+### [view it live](https://linktomyself.com)
+
 ## Features
 - Name, bio, profile picture
 - List of Links
