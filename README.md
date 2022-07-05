@@ -4,6 +4,8 @@ Linktomyself is a public homepage as-a-service in a world where our digital life
 
 ### [view it live](https://linktomyself.com)
 
+[Trello board](https://trello.com/invite/b/m1C2hRb9/8577da003e286d5af3630a98c567c30e/linktomyself)
+
 ## Features
 - Name, bio, profile picture
 - List of Links
