@@ -21,7 +21,7 @@ export default function NavBar() {
         <li>
           <details className="menu">
             <summary>
-              <div style={{ backgroundImage: `url(${page.profileImage})` }}></div>
+              <div style={{ backgroundImage: `url(${page.profileImage.link})` }}></div>
               {user.name}{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
