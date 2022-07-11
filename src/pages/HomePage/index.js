@@ -34,7 +34,7 @@ export default function HomePage() {
             world
           </h1>
           <div>
-            <Link to="/p/laurensspangenberg" className="button-border" target="_blank">
+            <Link to="/p/designdegenerate" className="button-border" target="_blank">
               View Mine
             </Link>
             <Link to="/signup" className="button-filled">

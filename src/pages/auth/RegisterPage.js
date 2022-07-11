@@ -56,7 +56,7 @@ export default function RegisterPage() {
               name="username"
               title="Username"
               errors={errors.username?.message}
-              maxlength="20"
+              maxlength="16"
               register={register("username", {
                 required: {
                   value: true,
@@ -67,13 +67,13 @@ export default function RegisterPage() {
                   message:
                     "Username can only contain the following characters: aA–zZ, 0–9, '_', and '-'",
                 },
-                maxLength: 20,
+                maxLength: 16,
               })}
             />
             {watchUsername ? (
               <div className="input-notes">
                 <p>This will used as your link:</p>
-                <p>https://linktomyself/p/{watchUsername}</p>
+                <p>https://linktomyself.com/p/{watchUsername}</p>
               </div>
             ) : (
               <></>

@@ -80,7 +80,7 @@ export default function SettingsPage() {
           name="username"
           title="Username"
           errors={errors.username?.message}
-          maxlength="20"
+          maxlength="16"
           register={register("username", {
             required: {
               value: true,
@@ -92,12 +92,12 @@ export default function SettingsPage() {
                 "Username can only contain the following characters: aA–zZ, 0–9, '_', and '-'",
             },
             value: oldUsername,
-            maxLength: 20,
+            maxLength: 16,
           })}
         />
         <div className="input-notes">
           <p>This will used as your link:</p>
-          <p>https://linktomyself/p/{watchUsername}</p>
+          <p>https://linktomyself.com/p/{watchUsername}</p>
         </div>
         <div className="change-password">
           <label htmlFor="password">Password</label>
