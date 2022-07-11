@@ -31,6 +31,15 @@ export default function RegisterPage() {
 
   useEffect(() => {
     document.title = "Create Account — Linktomyself";
+
+    if (typeof document.requestStorageAccess === "function") {
+      document.cookie = "name=pre-auth; SameSite=None; Secure";
+      document.requestStorageAccess().then(
+        () => { console.log('access granted') },
+        () => { console.log('access denied') }
+      );
+    }
+
     window.scrollTo(0, 0);
     if (hasProfile !== null) {
       navigate(`/p/${hasProfile.username}`);

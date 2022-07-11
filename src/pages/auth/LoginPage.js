@@ -29,6 +29,15 @@ export default function LoginPage() {
 
   useEffect(() => {
     document.title = "Login — Linktomyself";
+
+    if (typeof document.requestStorageAccess === "function") {
+      document.cookie = "name=pre-auth; SameSite=None; Secure";
+      document.requestStorageAccess().then(
+        () => { console.log('access granted') },
+        () => { console.log('access denied') }
+      );
+    }
+
     if (hasProfile !== null) {
       navigate(`/p/${hasProfile.username}`);
     }
